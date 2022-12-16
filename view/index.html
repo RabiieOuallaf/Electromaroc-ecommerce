@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commerce</title>
-    <link rel="stylesheet" href="./assets/css/style.css"></link>
+    <link rel="stylesheet" href="./assets/css/styles.css"></link>
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
 </head>
@@ -16,14 +17,14 @@
 
     
 
-    <nav class="navbar">
+    <nav class="navbar font-mono">
 
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             
             <div class="phone">
                 <i class="fa-sharp fa-solid fa-phone text-white"></i>
-                <span class="text-white font-mono">+212 77134-9156</span>
+                <span class="text-white">+212 77134-9156</span>
             </div>
 
             <div class="announce text-white">Get 50% of your first product</div>
@@ -34,31 +35,38 @@
 
         <!-- Second section of navbar -->
 
-        <div class="S-navbar flex">
+        <div class="S-navbar h-16 flex justify-around items-center">
 
-            <div class="logo">Logo</div>
+            <div class="logo">ShopCart</div>
 
-            <div class="list flex">
-                <ul>
-                    <li>Categories</li>
-                    <li>Deals</li>
-                    <li>What's new</li>
+            <div class="list w-72">
+
+                <ul class="flex justify-between">
+                    <select class="cursor-pointer bg-inherit " >
+                        <option value="">Categories</option>
+                        <option value="">Computers</option>
+                        <option value="">Phones</option>
+                        <option value="">Tablets</option>
+                    </select>
+                    <li class="cursor-pointer">Deals</li>
+                    <li class="cursor-pointer">What's new</li>
                 </ul>
+
             </div>
 
-            <div class="search flex">
-                <input type="text" />
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+            <div class="search relative">
+                <input type="text" class="rounded-lg w-64 h-8 text-center" placeholder="Search product" id="searchInput"/>
+                <i class="fa-solid fa-magnifying-glass absolute right-px top-2"></i>
+            </div> 
 
-            <div class="features flex">
+            <div class="features flex justify-between">
 
-                <div class="account flex">
+                <div class="account flex mx-4 cursor-pointer">
                     <i class="fa-solid fa-user"></i>
                     <span>Account</span>
                 </div>
 
-                <div class="cart flex">
+                <div class="cart flex cursor-pointer">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Cart</span>
                 </div>
@@ -67,6 +75,12 @@
         </div>
 
     </nav>
+
+    <!-- Start hero section -->
+
+    <header class="hero-section" style="height: 80vh;">
+
+    </header>
 
 
 

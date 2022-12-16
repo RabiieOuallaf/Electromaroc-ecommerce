@@ -1,0 +1,7 @@
+/* == Start hero section == */ 
+
+.hero-section
+{
+    background-image: url(../images/heroImage.jpg);
+    background-size:cover;
+}
