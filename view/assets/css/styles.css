@@ -4,4 +4,18 @@
 {
     background-image: url(../images/heroImage.jpg);
     background-size:cover;
+    display: flex;
+    align-items: center;
 }
+
+
+.content 
+{
+    margin-left: 9rem;
+}
+
+.search-input::placeholder
+{
+    color: #5e5e5e;
+}
+
