@@ -19,6 +19,11 @@
 {
     color: #5e5e5e;
 }
+.h-btn:hover 
+{
+    color: rgb(0, 125, 0);
+    transition: all .7s;
+}
 
 /* == Animation classes == */
 
@@ -34,4 +39,14 @@
 }
 
 
+/* == Styling categories == */
 
+.categories
+{
+    height: 70vh;
+}
+.categories .categories-list  img 
+{
+    width: 9rem;
+    height: 11rem;
+}
