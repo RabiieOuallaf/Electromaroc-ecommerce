@@ -14,8 +14,24 @@
     margin-left: 9rem;
 }
 
+
 .search-input::placeholder
 {
     color: #5e5e5e;
 }
+
+/* == Animation classes == */
+
+.show
+{
+    opacity: 1;
+}
+
+.hidden 
+{
+    opacity: 0;
+    transition: all 1s;
+}
+
+
 
