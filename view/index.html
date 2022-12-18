@@ -56,18 +56,18 @@
 
             <div class="search relative ">
                 <input type="text" class="search-input rounded-full w-64 h-8 text-center bg-gray-200" placeholder="Search product" id="searchInput"/>
-                <i class="fa-solid fa-magnifying-glass absolute right-px top-2"></i>
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-2"></i>
             </div> 
 
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user mx-2 my-1"></i>
                     <span>Account</span>
                 </div>
 
                 <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-cart-shopping mx-2 my-1"></i>
                     <span>Cart</span>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
         <h2 class="my-10 mx-7 font-semibold text-neutral-700  font-sans text-2xl">Shop our categories</h2>
 
-        <div class="categories-list flex justify-evenly m-auto mt-3">
+        <div class="categories-list flex justify-evenly m-auto mt-3 overflow-x-auto">
 
             <!-- Category -->
             <div class="computer-cate cursor-pointerv hover:animate-pulse">
@@ -151,41 +151,43 @@
 
     <!-- Start best deals section -->
 
-    <section class="overflow-auto">
+    <section style="height: 100vh" class="overflow-x-auto">
 
-        <h2 class="my-7 mx-7 font-semibold text-neutral-700  font-sans text-2xl">Todays Best Deals For You!</h2>
+        <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Todays Best Deals For You!</h2>
 
         <div class="deals-list categories-list flex justify-evenly m-auto mt-3">
 
-            <!-- Firdt product  -->
-            <div class="product bg-green-900 product w-64 h-64 rounded-xl">
+            <!-- First product  -->
+            <div class="product">
 
-                <div class="deals-image">
-                    <!-- An image will go here --> 
-                    <!-- an icon will go here --> 
-                    <h2>test</h2>
+                <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
+                    <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
+                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    
                 </div>
     
-                <div class="deals-description">
+                <div class="deals-description flex justify-between m-auto" style="width: 100%;">
     
-                    <div class="deals-descirption-content">
-    
+                    <div class="deals-descirption-content font-mono" style="width: 65%;">
+                        <h3 class="">Canon 550</h3>
+                        <p class="text-xs text-grey">Canon 550 is a camera for photographers</p>
                     </div>
-                    <div class="deals-price">
-    
+                    <div class="deals-price" style="width: 35%;">
+                        test 1
                     </div>
                 </div>
                 
             </div>
 
+            
+
             <!-- Second product -->
 
-            <div class="product bg-green-900 product w-64 h-64 rounded-xl">
+            <div class="product bg-zinc-200 product w-64 h-64 rounded-xl">
 
-                <div class="deals-image bg-green-900">
-                    <!-- An image will go here --> 
-                    <!-- an icon will go here --> 
-                    <h2>test</h2>
+                <div class="deals-image relative m-auto">
+                    <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
+                    <img src="./assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                 </div>
     
                 <div class="deals-description">
@@ -202,12 +204,11 @@
 
             <!-- Third product -->
 
-            <div class="product bg-green-900 product w-64 h-64 rounded-xl">
+            <div class="product bg-zinc-200 product w-64 h-64 rounded-xl">
 
-                <div class="deals-image bg-green-900">
-                    <!-- An image will go here --> 
-                    <!-- an icon will go here --> 
-                    <h2>test</h2>
+                <div class="deals-image">
+                    <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
+                    <img src="./assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                 </div>
     
                 <div class="deals-description">
@@ -224,12 +225,11 @@
 
             <!-- Fourth product -->
 
-            <div class="product bg-green-900 product w-64 h-64 rounded-xl">
+            <div class="product bg-zinc-200 product w-64 h-64 rounded-xl">
 
-                <div class="deals-image bg-green-900">
-                    <!-- An image will go here --> 
-                    <!-- an icon will go here --> 
-                    <h2>test</h2>
+                <div class="deals-image">
+                    <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
+                    <img src="./assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                 </div>
     
                 <div class="deals-description">
@@ -243,6 +243,8 @@
                 </div>
                 
             </div>
+
+            
 
             
             

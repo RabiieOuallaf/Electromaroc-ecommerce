@@ -33,3 +33,30 @@ const observer = new IntersectionObserver((entries) => {
 const heroElements = document.querySelectorAll(".hidden");
 
 heroElements.forEach((element) => observer.observe(element));
+
+/* turn deals's heart to red in click == */
+
+const hearts = document.querySelectorAll("#heart");
+
+for(let heart of hearts) {
+
+    heart.addEventListener("click", _ => {
+
+        heart.classList.toggle("fav");
+
+        if(heart.classList.contains("fav")){
+
+            heart.style.color = "red";
+
+        }
+
+        if(!heart.classList.contains("fav")){
+            heart.style.color = "black";
+        }
+            
+
+        
+    })
+
+    
+}

@@ -47,6 +47,14 @@
 }
 .categories .categories-list  img 
 {
-    width: 9rem;
+    width: 12rem;
+    height: 15rem;
+}
+
+
+/* == styling best deals products == */
+
+.deals-list .product img 
+{
     height: 12rem;
 }
