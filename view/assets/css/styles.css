@@ -59,4 +59,7 @@
     height: 12rem;
 
 }
-
+.product 
+{
+    cursor: pointer;
+}
