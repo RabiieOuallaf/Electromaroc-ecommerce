@@ -1,3 +1,10 @@
+/* == General styling == */ 
+
+html
+{
+    scroll-behavior: smooth;
+}
+
 /* == Start hero section == */ 
 
 .hero-section

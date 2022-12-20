@@ -39,17 +39,18 @@
 
             <div class="logo">ShopCart</div>
 
-            <div class="list w-72">
+            <div class="list w-84">
 
-                <ul class="flex justify-between">
+                <ul class="flex justify-between gap-4" style="width: 100%;">
                     <select class="cursor-pointer bg-inherit hover:text-lime-700 transition duration-170 ease-in-out" >
-                        <option value="">Categories</option>
+                        <option value=""><a href="#categories">Categories</a></option>
                         <option value="">Computers</option>
                         <option value="">Phones</option>
                         <option value="">Tablets</option>
                     </select>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out">Deals</li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out">What's new</li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#deals">Deals</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#sales">Sales</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#services">Services</a></li>
                 </ul>
 
             </div>
@@ -62,8 +63,8 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <i class="fa-solid fa-user mx-2 my-1"></i>
-                    <span>Account</span>
+                    <a href="./register.html"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    
                 </div>
 
                 <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
@@ -97,7 +98,7 @@
     <!-- Start categories  -->
 
 
-    <section class="categories container ">
+    <section class="categories container " id="categories">
 
         <h2 class="my-10 mx-7 font-semibold text-neutral-700  font-sans text-2xl">Shop our categories</h2>
 
@@ -153,7 +154,7 @@
 
     <!-- Start best deals section -->
 
-    <section style="height: 100vh" class="overflow-x-auto">
+    <section style="height: 100vh" class="overflow-x-auto" id="deals">
 
         <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Todays Best Deals For You!</h2>
 
@@ -324,7 +325,7 @@
 
     <!-- Start best selling products -->
 
-    <section style="height: 100vh" class="overflow-x-auto">
+    <section style="height: 100vh" class="overflow-x-auto" id="sales">
 
         <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best selling products</h2>
 
@@ -506,7 +507,7 @@
 
     <!-- Start services section -->
 
-    <section class="help-services my-10" style="height: 90vh;">
+    <section class="help-services my-10" style="height: 90vh;" id="services">
 
         <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Services to help you shop</h2>
 
