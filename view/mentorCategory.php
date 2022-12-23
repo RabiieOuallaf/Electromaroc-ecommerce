@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Headphones</title>
+        <title>mentors</title>
         <link rel="stylesheet" href="./assets/css/styles.css"></link>
         <link rel="stylesheet" href="./assets/css/tailwind.css">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -43,9 +43,9 @@
                         <option value="">Phones</option>
                         <option value="">Tablets</option>
                     </select>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.html">Deals</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.html">Sales</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.html">Services</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Deals</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Sales</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Services</a></li>
                 </ul>
 
             </div>
@@ -58,7 +58,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.html"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
@@ -81,9 +81,9 @@
     <!-- products section -->
 
 
-    <section style="height: 100vh" class="phone-category my-5 mx-5" id="deals">
+    <section style="height: 100vh" class="mentor-category my-5 mx-5" id="deals">
 
-        <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best headphone's deals 🎧 </h2>
+        <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best mentor's deals 🖵</h2>
 
         <div class="deals-list categories-list grid lg:grid-cols-4 gap-10 m-auto">
 

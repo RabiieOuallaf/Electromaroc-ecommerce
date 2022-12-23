@@ -63,7 +63,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.html"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
@@ -105,42 +105,42 @@
         <div class="categories-list flex justify-evenly m-auto mt-3 overflow-x-auto">
             
             <!-- Category -->
-            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='./computersCategory.html'">
+            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='./computersCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">computers</h3>
                 <img src="./assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='./phoneCategory.html'">
+            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='./phoneCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">phone</h3>
                 <img src="./assets/images/phones.jpg" alt="phone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='./ipadCategory.html'">
+            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='./ipadCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">ipad</h3>
                 <img src="./assets/images/ipad.jpg" alt="ipad" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='./headphoneCategory.html'">
+            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='./headphoneCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">headphone</h3>
                 <img src="./assets/images/headphone.jpg" alt="headphone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='./mentorCategory.html'">
+            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='./mentorCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">mentor</h3>
                 <img src="./assets/images/mentor.jpg" alt="mentor" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='./gamingCategory.html'">
+            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='./gamingCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">gaming</h3>
                 <img src="./assets/images/gaming.jpg" alt="gaming" class="relative rounded-lg">

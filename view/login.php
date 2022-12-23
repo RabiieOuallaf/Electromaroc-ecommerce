@@ -55,7 +55,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.html"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
