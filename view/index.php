@@ -89,7 +89,7 @@
 
         <div class="next-to-content">
 
-            <img src="./assets/images/hero-next-image.png" />
+            <img src="./assets/images/macbookWhite.png" />
 
         </div>
         
