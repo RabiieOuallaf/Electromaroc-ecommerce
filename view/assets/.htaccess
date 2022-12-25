@@ -2,7 +2,7 @@
 
     Options -Multiviews
     RewriteEngine On
-    RewriteBase /E-commerce-website/view/assets
+    RewriteBase /E-commerce-website/view
     RewriteCond %{REQUEST_FILENAME} -!d
     RewriteCond %{REQUEST_FILENAME} -!f 
     RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]

@@ -84,10 +84,10 @@
         <div class="content flex flex-col flex-wrap w-96 ">
             <h2 class="text-white text-5xl font-mon mb-12">Electro maroc for <span class="text-lime-200">Electronic</span> products</h2>
             <p class="mb-12 font-semibold text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, voluptas harum! Soluta est qui doloribus temporibus officiis, libero odit expedita culpa veniam hic architecto minus</p>
-            <button class="h-btn font-mon flex flex-start w-10 h-10 rounded-full text-lime-300 animate-bounce" style="border: 2px solid ;"><i class="fa-solid fa-arrow-down mx-3 my-2"></i></button>
+            <a href="#categories"><button class="h-btn font-mon flex flex-start w-10 h-10 rounded-full text-lime-300 animate-bounce" style="border: 2px solid ;" ><i class="fa-solid fa-arrow-down mx-3 my-2"></i></button></a>
         </div>
 
-        <div class="next-to-content">
+        <div class="next-to-content" >
 
             <img src="./assets/images/macbookWhite.png" />
 
