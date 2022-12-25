@@ -24,6 +24,7 @@
             $url = $this->getUrl();
 
             if(file_exists('./controller/'.ucwords($url[0]).'.php')){ // ucwrods is a built in function that make the first character of each word capitalized
+                
                 $this->currentController = ucwords($url[0]);
                 // unset the variable value 
 
@@ -38,6 +39,14 @@
             // instantiate it 
 
             $this->currentController = new $this->currentController;
+
+            if(isset($url[1])){
+                if(method_exists($this->currentController, $url[1])){
+                    $this->currentMethod = $url[1];
+                }
+            }
+
+            echo $this->currentMethod;
         }
 
         public function getUrl() 
