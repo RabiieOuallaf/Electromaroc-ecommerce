@@ -1,11 +1,11 @@
 <?php 
 
-    class Pages {
+    class Pages extends BaseController{
 
         public function __construct() {
         }
 
-        public function about() {
-            echo "hey ";
+        public function index() {
+            $this->view("index");
         }
     }

@@ -4,7 +4,6 @@
         URL Format - /controller/method/params
     */
 
-    namespace core;
 
     class Core {
 
