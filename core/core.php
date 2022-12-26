@@ -40,13 +40,26 @@
 
             $this->currentController = new $this->currentController;
 
+            // getting the method
+
             if(isset($url[1])){
-                if(method_exists($this->currentController, $url[1])){
+                if(method_exists($this->currentController, $url[1])){ // Checking if the current controller have that methode
                     $this->currentMethod = $url[1];
+
+                    // Now unset it 
+
+                    unset($url[1]);
                 }
             }
 
-            echo $this->currentMethod;
+
+            // Get params 
+
+            $this->params = $url ? array_values($url) : [];
+
+            // Call a callback with array of params 
+
+            call_user_func_array([$this->currentController, $this->currentMethod] , $this->params);
         }
 
         public function getUrl() 
