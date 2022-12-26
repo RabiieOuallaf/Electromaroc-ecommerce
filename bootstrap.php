@@ -1,8 +1,12 @@
 <?php 
 
-    // Loading core files 
+   
 
+    // Loading config files
+    require_once './config/config.php';
 
-    require_once './core/Core.php';
-    require_once './core/BaseController.php';
-    require_once './core/Database.php';
+    // autoloader (just for scalability) (it's for loading the core files)
+
+    spl_autoload_register(function($className){
+        require_once './core/'.$className.'.php';
+    });
