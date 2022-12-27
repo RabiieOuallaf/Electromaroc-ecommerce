@@ -7,17 +7,17 @@
         private $user = DB_USER;
         private $db_name = DB_NAME;
         private $pwd = DB_PASS;
-
+        private $port = 3307;
         private $dbh;
         private $stmt;
         private $erorr;
 
 
         public function __construct() {
-            $dsn = "mysql:host=".$this->host.";dbname=".$this->db_name;
+            $dsn = "mysql:host=".$this->host.";port=$this->port;dbname=".$this->db_name;
 
             $options = array(
-                PDO::ATTR_PERSISTENT => true,
+                PDO::ATTR_PERSISTENT => false,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
 
@@ -25,7 +25,7 @@
 
             try{
 
-                $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+                $this->dbh = new PDO($dsn, $this->user, $this->pwd, $options);
 
             }catch(PDOException $e){
                 $this->erorr = $e->getMessage();

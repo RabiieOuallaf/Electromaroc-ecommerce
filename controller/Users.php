@@ -31,11 +31,25 @@
     
                 ];
 
+                // Handling unwanted cases 
+
                 if(empty($data["FName"]) || empty($data["Email"]) || empty($data["Password"])){
 
                     header("location: ../view/register.php");
     
                 }
+
+                // Hash password
+
+                $data['Password'] = password_hash($data['Password'], PASSWORD_DEFAULT);
+
+
+                if($this->userModel->Register($data)){
+                    header("location:".URLROOT."/view/login.php");
+                }else{
+                    die("Sorry, Something went wrong!");
+                }
+
 
             }else {
                 echo "Sorry , the request method should be a POST";
@@ -55,4 +69,12 @@
             
         }
 
+    }
+
+    $init = new Users;
+
+    switch($_POST['type']){
+        case 'register':
+            $init->Register();
+            break;
     }

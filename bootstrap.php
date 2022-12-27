@@ -3,7 +3,7 @@
    
 
     // Loading config files
-    require_once './config/config.php';
+    require_once 'config/config.php';
 
     // autoloader (just for scalability) (it's for loading the core files)
 
