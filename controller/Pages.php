@@ -8,4 +8,7 @@
         public function index() {
             $this->view("index");
         }
+        public function register(){
+            $this->view("register");
+        }
     }

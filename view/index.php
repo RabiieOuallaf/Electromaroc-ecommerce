@@ -12,13 +12,7 @@
 </head>
 <body>
 
-
-
-
-    
-
     <nav class="navbar font-mono">
-        <?php echo APPROOT ?>
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             
@@ -63,7 +57,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="<?php echo URLROOT; ?>/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
@@ -89,7 +83,7 @@
 
         <div class="next-to-content" >
 
-            <img src="./assets/images/macbookWhite.png" />
+            <img src="<?php echo URLROOT; ?>assets/images/macbookWhite.png" />
 
         </div>
         
@@ -166,7 +160,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?php echo URLROOT; ?>assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     

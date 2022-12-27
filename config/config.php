@@ -13,7 +13,7 @@
 
     // URL root 
 
-    define('URLROOT' , 'http://localhost/E-commerce-website/index.php?url=pages/about');
+    define('URLROOT' , 'http://localhost/E-commerce-website/view');
 
     //Site name 
 
