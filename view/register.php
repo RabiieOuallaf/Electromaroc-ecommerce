@@ -85,7 +85,7 @@
 
                 <div class="register-form my-5">
 
-                    <form action="../controller/User.con.php" class="flex flex-col mx-10" method="POST">
+                    <form action="../controller/Users.php" class="flex flex-col mx-10" method="POST">
                         <input type="text" placeholder="Full Name" name="FName" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
                         <input type="text" placeholder="Email" name="Email" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
                         <input type="text" placeholder="Password" name="Password" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
