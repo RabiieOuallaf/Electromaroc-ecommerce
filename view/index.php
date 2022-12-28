@@ -57,7 +57,18 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="<?php echo URLROOT; ?>view/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <?php 
+
+                        session_start();
+                    
+                        if(isset($_SESSION['user_username'])){
+
+                            echo "Welcome".$_SESSION['user_username'];
+
+                        }else {
+                        }
+                    ?>
+                    
                     
                 </div>
 
