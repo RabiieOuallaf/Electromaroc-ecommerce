@@ -96,7 +96,6 @@
 
                 $data = [
 
-                    "FName" => $_POST['FName'],
                     "Email" => $_POST['Email'],
                     "Password" => $_POST['Password']
     
@@ -104,27 +103,31 @@
 
                 // Handling unwanted cases 
 
-                if(empty($data["FName"]) || empty($data["Email"]) || empty($data["Password"])){
+                if( empty($data["Email"]) || empty($data["Password"])){
 
-                    header("location: ../view/register.php");
+                    header("location: ../view/index.php");
+                    die("Please fill all inputs");
     
                 }
 
-                // Hash password 
 
-                $data['Password'] = password_hash($data['Password'], PASSWORD_DEFAULT);
 
                 if($this->userModel->findUserByEmail($data['Email'])){
+                    //Then the user is found :) 
+                }else {
+                    die("User dose not exsits!");
+                }
 
-                    if($this->userModel->Login($data['FName'], $data['Password'])){
 
-                        header("location:".URLROOT."/view/login.php");
+                if($this->userModel->Login($data['Email'], $data['Password'])){
+
+                    // Create session 
     
-                    }else{
+                }else{
     
-                        die("Sorry, Something went wrong!");
+                    die("Sorry, Something went wrong!!");
     
-                    }
+                    
 
                 }
 

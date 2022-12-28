@@ -23,18 +23,35 @@
             // Execute 
 
             if($this->db->execute()){
+
                 return true;
+
             }else {
+                
                 return false;
             }
         }
 
-        public function login($data){}
+        public function Login($email, $password){
+
+            $this->db->query("SELECT * FROM users WHERE email = :email");
+            $this->db->bind(':email', $email);
+
+            $row = $this->db->single();
+        
+            $hashed_password = $row->password;
+            if($password == $hashed_password){
+                return $row;
+            } else {
+                return false;
+            }
+        }
 
         // Find user by email 
 
         public function findUserByEmail($email) {
-            $sql = "SELECT * FROM users WHERE email = :email";
+
+            $this->db->query("SELECT * FROM users WHERE email = :email");
             $this->db->bind(':email', $email);
 
             $row = $this->db->single();
@@ -42,7 +59,7 @@
             // Check rows 
 
             if($this->db->rowCount() > 0){
-                return true;
+                return $row;
             }else {
                 return false;
             }
