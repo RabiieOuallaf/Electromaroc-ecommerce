@@ -2,6 +2,7 @@
 
     require_once '../core/Database.php';
     require_once '../config/config.php';
+    require_once '../helpers/url_helpers.php';
 
     class User {
 
@@ -47,6 +48,17 @@
             }
         }
 
+        // Create session
+
+        public function createSession($user){
+
+            $_SESSION['user_id'] = $user->user_id;
+            $_SESSION['user_email'] = $user->email;
+            $_SESSION['user_username'] = $user->username;
+            
+            redirect("index.php");
+        }
+
         // Find user by email 
 
         public function findUserByEmail($email) {
@@ -59,7 +71,9 @@
             // Check rows 
 
             if($this->db->rowCount() > 0){
+
                 return $row;
+
             }else {
                 return false;
             }

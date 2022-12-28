@@ -110,10 +110,12 @@
     
                 }
 
+                $loggedInUser = $this->userModel->findUserByEmail($data['Email']);
 
-
-                if($this->userModel->findUserByEmail($data['Email'])){
+                if($loggedInUser){
                     //Then the user is found :) 
+                    $this->userModel->createSession($loggedInUser);
+                    
                 }else {
                     die("User dose not exsits!");
                 }
