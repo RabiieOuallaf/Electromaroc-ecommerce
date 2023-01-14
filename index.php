@@ -5,3 +5,5 @@
     // init core library 
 
     $init = new Core();
+
+    echo $init->counter;

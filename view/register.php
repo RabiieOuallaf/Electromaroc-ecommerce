@@ -11,6 +11,8 @@
 <body class="bg-gray-100">
     <nav class="navbar font-mono">
 
+    <?php print_r($_SESSION)?>
+
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             

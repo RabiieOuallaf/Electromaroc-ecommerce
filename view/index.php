@@ -1,16 +1,25 @@
+
+<?php
+session_start();
+
+    print_r($_SESSION);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITENAME ?></title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>view/assets/css/styles.css"></link>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>view/assets/css/tailwind.css">
+    <title><?= SITENAME ?></title>
+    <link rel="stylesheet" href="<?= URLROOT; ?>/view/assets/css/styles.css"></link>
+    <link rel="stylesheet" href="<?= URLROOT; ?>/view/assets/css/tailwind.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 
     <nav class="navbar font-mono">
         <!-- First section of navbar -->
@@ -58,16 +67,11 @@
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
                     <?php 
-
-                        session_start();
                     
-                        if(isset($_SESSION['user_username'])){
-
-                            echo "Welcome".$_SESSION['user_username'];
-
-                        }else {
-                        }
-                    ?>
+                    if(isLoggedIn()){
+                        echo $_SESSION['user_email'];
+                    } ?>
+                    <a href="<?= URLROOT; ?>/view/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                     
                 </div>
@@ -94,7 +98,7 @@
 
         <div class="next-to-content" >
 
-            <img src="<?php echo URLROOT; ?>assets/images/macbookWhite.png" />
+            <img src="<?= URLROOT ; ?>/view/assets/images/macbookWhite.png" />
 
         </div>
         
@@ -110,45 +114,45 @@
         <div class="categories-list flex justify-evenly m-auto mt-3 overflow-x-auto">
             
             <!-- Category -->
-            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='<?php echo URLROOT; ?>/computersCategory.php'">
+            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='<?= URLROOT;?>/view/computersCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">computers</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
+                <img src="<?= URLROOT;?>/view/assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?php echo URLROOT; ?>/phoneCategory.php'">
+            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?= URLROOT; ?>/phoneCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">phone</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/phones.jpg" alt="phone" class="relative rounded-lg">
+                <img src="<?= URLROOT; ?>/view/assets/images/phones.jpg" alt="phone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?php echo URLROOT; ?>/ipadCategory.php'">
+            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/ipadCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">ipad</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/ipad.jpg" alt="ipad" class="relative rounded-lg">
+                <img src="<?= URLROOT; ?>/view/assets/images/ipad.jpg" alt="ipad" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?php echo URLROOT; ?>/headphoneCategory.php'">
+            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/headphoneCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">headphone</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/headphone.jpg" alt="headphone" class="relative rounded-lg">
+                <img src="<?= URLROOT; ?>/view/assets/images/headphone.jpg" alt="headphone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?php echo URLROOT; ?>/mentorCategory.php'">
+            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/mentorCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">mentor</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/mentor.jpg" alt="mentor" class="relative rounded-lg">
+                <img src="<?= URLROOT; ?>/view/assets/images/mentor.jpg" alt="mentor" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?php echo URLROOT; ?>/gamingCategory.php'">
+            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?= URLROOT; ?>/gamingCategory.php'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">gaming</h3>
-                <img src="<?php echo URLROOT; ?>view/assets/images/gaming.jpg" alt="gaming" class="relative rounded-lg">
+                <img src="<?= URLROOT; ?>/view/assets/images/gaming.jpg" alt="gaming" class="relative rounded-lg">
             </div>
 
 
@@ -171,7 +175,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="<?php echo URLROOT; ?>view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -209,7 +213,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="<?php echo URLROOT; ?>view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -247,7 +251,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="<?php echo URLROOT; ?>view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -286,7 +290,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="<?php echo URLROOT; ?>view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -323,7 +327,7 @@
 
     <div class="cash-banner flex items-center justify-center">
 
-        <img src="<?php echo URLROOT; ?>view/assets/images/banner.jpg" alt="cash back banner" style="width: 80%;">
+        <img src="<?= URLROOT; ?>/view/assets/images/banner.jpg" alt="cash back banner" style="width: 80%;">
 
     </div>
 
@@ -347,7 +351,7 @@
                 <div class="selling-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="<?php echo URLROOT; ?>view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -390,7 +394,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="<?php echo URLROOT; ?>view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -433,7 +437,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="<?php echo URLROOT; ?>/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -477,7 +481,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="<?php echo URLROOT; ?>/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -530,7 +534,7 @@
                 </div>
 
                 <div class="service-img">
-                    <img src="<?php echo URLROOT; ?>/assets/images/service1.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
+                    <img src="<?= URLROOT; ?>/view/assets/images/service1.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
                 </div>
 
 
@@ -548,7 +552,7 @@
                 </div>
 
                 <div class="service-img">
-                    <img src="<?php echo URLROOT; ?>/assets/images/service2.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
+                    <img src="<?= URLROOT; ?>/view/assets/images/service2.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
                 </div>
 
 
@@ -566,7 +570,7 @@
                 </div>
 
                 <div class="service-img">
-                    <img src="<?php echo URLROOT; ?>/assets/images/service3.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
+                    <img src="<?= URLROOT; ?>/view/assets/images/service3.jpg" alt="image of headphones" style="border-radius: 0px 0px 10px 10px;">
                 </div>
 
 
@@ -685,6 +689,6 @@
 
 
     <!-- Link javascript files -->    
-    <script src="<?php echo URLROOT; ?>/assets/javascript/script.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
 </body>
 </html>

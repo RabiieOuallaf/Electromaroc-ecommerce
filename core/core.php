@@ -4,7 +4,7 @@
         URL Format - /controller/method/params
     */
 
-
+    
     class Core {
 
         protected  $currentController = "Pages";
@@ -13,18 +13,22 @@
 
         protected $params = [];
 
+        public $counter = 0;
+
 
         
 
         public function __construct()
         {
-            // print_r($this->getUrl());
 
+            
             $url = $this->getUrl();
+            print_r($url);
 
-            if(file_exists('./controller/'.ucwords($url[0]).'.php')){ // ucwrods is a built in function that make the first character of each word capitalized
+            if(file_exists('../controller/'.ucwords($url[0]).'.php')){ // ucwrods is a built in function that make the first character of each word capitalized
                 
                 $this->currentController = ucwords($url[0]);
+                
                 // unset the variable value 
 
                 unset($url[0]);

@@ -11,4 +11,7 @@
         public function register(){
             $this->view("register");
         }
+        public function test() {
+            $this->view('test');
+        }
     }

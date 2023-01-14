@@ -110,34 +110,37 @@
     
                 }
 
-                $loggedInUser = $this->userModel->findUserByEmail($data['Email']);
+                $loggedInUser = $this->userModel->Login($data['Email'], $data['Password']);
+
+
+
+                // Create session 
 
                 if($loggedInUser){
                     //Then the user is found :) 
-                    $this->userModel->createSession($loggedInUser);
+                    $this->createSession($loggedInUser);
                     
                 }else {
                     die("User dose not exsits!");
                 }
-
-
-                if($this->userModel->Login($data['Email'], $data['Password'])){
-
-                    // Create session 
     
-                }else{
-    
-                    die("Sorry, Something went wrong!!");
-    
-                    
-
-                }
+                
 
                 
 
             
 
         }
+
+        
+    }
+
+    public function createSession($user){
+
+        $_SESSION['user_email'] = $user->email;
+        print_r($_SESSION);
+        header("location:../view/index.php");
+        exit();
     }
 
 }

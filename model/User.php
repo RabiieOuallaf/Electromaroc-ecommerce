@@ -35,28 +35,19 @@
 
         public function Login($email, $password){
 
-            $this->db->query("SELECT * FROM users WHERE email = :email");
+            $this->db->query("SELECT * FROM users WHERE email = :email AND password = :pwd");
             $this->db->bind(':email', $email);
+            $this->db->bind(':pwd', $password);
 
             $row = $this->db->single();
         
             $hashed_password = $row->password;
+
             if($password == $hashed_password){
                 return $row;
             } else {
                 return false;
             }
-        }
-
-        // Create session
-
-        public function createSession($user){
-
-            $_SESSION['user_id'] = $user->user_id;
-            $_SESSION['user_email'] = $user->email;
-            $_SESSION['user_username'] = $user->username;
-            
-            redirect("index.php");
         }
 
         // Find user by email 
