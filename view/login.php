@@ -97,7 +97,7 @@
             </div>
 
             <div class="phone-banner" style="width: 40%">
-                <img src="./assets/images/loginPageBanner.jpg" alt="phone picture" class="h-full rounded-xl relative" style="width: 100%;">
+                <img src="<?= URLROOT; ?>/view/assets/images/loginPageBanner.jpg" alt="phone picture" class="h-full rounded-xl relative" style="width: 100%;">
             </div>
 
         </div>

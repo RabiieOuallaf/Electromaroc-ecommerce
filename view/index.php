@@ -65,7 +65,7 @@
                     if(isLoggedIn()){
                         echo $_SESSION['user_email'];
                     } ?>
-                    <a href="<?= URLROOT; ?>/view/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                     
                 </div>

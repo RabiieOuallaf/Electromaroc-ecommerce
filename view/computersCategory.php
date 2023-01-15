@@ -807,7 +807,8 @@
 
     </section>
 
-    <hr>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
+
 
 
     

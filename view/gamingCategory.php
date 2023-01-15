@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo SITENAME ?></title>
-        <link rel="stylesheet" href="./assets/css/styles.css"></link>
-        <link rel="stylesheet" href="./assets/css/tailwind.css">
+        <link rel="stylesheet" href="<?= URLROOT; ?>/view/assets/css/styles.css"></link>
+        <link rel="stylesheet" href="<?= URLROOT; ?>/view/assets/css/tailwind.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
     </head>
@@ -43,9 +43,9 @@
                         <option value="">Phones</option>
                         <option value="">Tablets</option>
                     </select>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Deals</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Sales</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="./index.php">Services</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Deals</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Sales</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Services</a></li>
                 </ul>
 
             </div>
@@ -58,7 +58,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
@@ -75,7 +75,7 @@
     <!-- The banner -->
 
     <div class="banner flex justify-center mb-10">
-        <img src="./assets/images/phonebanner.jpg" alt="computer category banner" style="width: 60%;">
+        <img src="<?= URLROOT; ?>/view/assets/images/phonebanner.jpg" alt="computer category banner" style="width: 60%;">
     </div>
 
     <!-- products section -->
@@ -93,7 +93,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -131,7 +131,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -169,7 +169,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="./assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -208,7 +208,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -243,7 +243,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -281,7 +281,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -319,7 +319,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="./assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -358,7 +358,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -392,7 +392,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -430,7 +430,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -468,7 +468,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="./assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -507,7 +507,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -541,7 +541,7 @@
                 <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
 
                     <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                    <img src="./assets/images/CameraNoBg.png" alt="camera" class="m-auto">
+                    <img src="<?= URLROOT; ?>/view/assets/images/CameraNoBg.png" alt="camera" class="m-auto">
                     
                 </div>
     
@@ -579,7 +579,7 @@
 
                     <div class="deals-image relative m-auto">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/conNobg.png" alt="xbox control" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -617,7 +617,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="./assets/images/phoneBg.png" alt="phone" class="m-auto"> 
+                        <img src="<?= URLROOT; ?>/view/assets/images/phoneBg.png" alt="phone" class="m-auto"> 
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -656,7 +656,7 @@
 
                     <div class="deals-image">
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i> 
-                        <img src="./assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
+                        <img src="<?= URLROOT; ?>/view/assets/images/tabletNoBg.png" alt="tablet" class="m-auto">
                     </div>
         
                     <div class="deals-description flex justify-between m-auto my-10" style="width: 90%;" >
@@ -807,7 +807,7 @@
 
     </section>
 
-    <hr>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
 
 
     

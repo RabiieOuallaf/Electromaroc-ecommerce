@@ -11,7 +11,6 @@
 <body class="bg-gray-100">
     <nav class="navbar font-mono">
 
-    <?php print_r($_SESSION)?>
 
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
@@ -57,7 +56,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="./register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                    <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                 </div>
 
@@ -100,15 +99,15 @@
             </div>
 
             <div class="phone-banner" style="width: 40%">
-                <button class="absolute z-10 mx-5 my-5 border-2 border-black bg-black text-white rounded-full mt-5 hover:bg-white hover:text-black transition duration-200 ease-in-out p-2 w-20"><a href="./login.php" class="text-center font-mono">Log in</a></button>
-                <img src="./assets/images/loginBanner.jpg" alt="phone picture" class="h-full rounded-xl relative" style="width: 100%;">
+                <button class="absolute z-10 mx-5 my-5 border-2 border-black bg-black text-white rounded-full mt-5 hover:bg-white hover:text-black transition duration-200 ease-in-out p-2 w-20"><a href="/login" class="text-center font-mono">Log in</a></button>
+                <img src="<?= URLROOT; ?>/view/assets/images/loginBanner.jpg" alt="phone picture" class="h-full rounded-xl relative" style="width: 100%;">
             </div>
 
         </div>
 
     </section>
 
-    <script src="./assets/javascript/register.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/register.js"></script>
 
 </body>
 </html>
