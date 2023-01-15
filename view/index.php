@@ -60,11 +60,7 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <?php 
-                    
-                    if(isLoggedIn()){
-                        echo $_SESSION['user_email'];
-                    } ?>
+                   
                     <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
                     
                     
@@ -91,7 +87,9 @@
         </div>
 
         <div class="next-to-content" >
-
+            <?php
+                var_dump($_SESSION);
+            ?>
             <img src="<?= URLROOT; ?>/view/assets/images/macbookWhite.png" alt="white macbook"/>
 
         </div>

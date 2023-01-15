@@ -35,7 +35,7 @@
 
                 if(empty($data["FName"]) || empty($data["Email"]) || empty($data["Password"])){
 
-                    header("location: ../view/register.php");
+                    header("location: /register.php");
     
                 }
 
@@ -45,7 +45,7 @@
 
 
                 if($this->userModel->Register($data)){
-                    header("location:".URLROOT."/view/login.php");
+                    header("location:'/login.php'");
                 }else{
                     die("Sorry, Something went wrong!");
                 }
@@ -105,7 +105,7 @@
 
                 if( empty($data["Email"]) || empty($data["Password"])){
 
-                    header("location: ../view/index.php");
+                    header("location: /index.php");
                     die("Please fill all inputs");
     
                 }
