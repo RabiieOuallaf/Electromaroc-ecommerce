@@ -13,6 +13,4 @@
         require_once 'core/'.$className.'.php';
     });
 
-    spl_autoload_register(function($className){
-        require_once 'controller/'.$className.'.php';
-    });
+    
