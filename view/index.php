@@ -108,42 +108,42 @@
         <div class="categories-list flex justify-evenly m-auto mt-3 overflow-x-auto">
             
             <!-- Category -->
-            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='<?= URLROOT;?>/controller/Pages.php/index'">
+            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='/computersCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">computers</h3>
                 <img src="<?= URLROOT;?>/view/assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?= URLROOT; ?>/phoneCategory.php'">
+            <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='/phoneCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">phone</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/phones.jpg" alt="phone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/ipadCategory.php'">
+            <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='/ipadCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">ipad</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/ipad.jpg" alt="ipad" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/headphoneCategory.php'">
+            <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='/headphoneCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">headphone</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/headphone.jpg" alt="headphone" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='<?= URLROOT; ?>/mentorCategory.php'">
+            <div class="mentor-cate cursor-pointer hover:animate-pulse" onclick="location.href='/mentorCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">mentor</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/mentor.jpg" alt="mentor" class="relative rounded-lg">
             </div>
 
             <!-- Category -->
-            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='<?= URLROOT; ?>/gamingCategory.php'">
+            <div class="gaming-cate cursor-pointer hover:animate-pulse" onClick="location.href='/gamingCategory'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-10 my-3">gaming</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/gaming.jpg" alt="gaming" class="relative rounded-lg">
