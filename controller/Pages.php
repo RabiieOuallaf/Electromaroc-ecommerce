@@ -1,6 +1,6 @@
 <?php 
 
-    i
+    
 
     class Pages extends BaseController{
 
