@@ -6,4 +6,3 @@
 
     $init = new Core();
 
-    echo $init->counter;

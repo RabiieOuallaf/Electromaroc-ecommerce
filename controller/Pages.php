@@ -1,8 +1,11 @@
 <?php 
 
+    
+
     class Pages extends BaseController{
 
         public function __construct() {
+            
         }
 
         public function index() {
@@ -11,7 +14,8 @@
         public function register(){
             $this->view("register");
         }
-        public function test() {
-            $this->view('test');
+        public function computersCategory() {
+            $this->view('computersCategory');
         }
+
     }

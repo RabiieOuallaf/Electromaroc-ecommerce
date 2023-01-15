@@ -10,5 +10,9 @@
     // autoloader (just for scalability) (it's for loading the core files)
 
     spl_autoload_register(function($className){
-        require_once './core/'.$className.'.php';
+        require_once 'core/'.$className.'.php';
+    });
+
+    spl_autoload_register(function($className){
+        require_once 'controller/'.$className.'.php';
     });

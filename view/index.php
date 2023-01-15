@@ -1,10 +1,4 @@
 
-<?php
-session_start();
-
-    print_r($_SESSION);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +92,7 @@ session_start();
 
         <div class="next-to-content" >
 
-            <img src="<?= URLROOT ; ?>/view/assets/images/macbookWhite.png" />
+            <img src="<?= URLROOT; ?>/view/assets/images/macbookWhite.png" alt="white macbook"/>
 
         </div>
         
@@ -114,7 +108,7 @@ session_start();
         <div class="categories-list flex justify-evenly m-auto mt-3 overflow-x-auto">
             
             <!-- Category -->
-            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='<?= URLROOT;?>/view/computersCategory.php'">
+            <div class="computer-cate cursor-pointerv hover:animate-pulse" onClick="location.href='<?= URLROOT;?>/controller/Pages.php/index'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">computers</h3>
                 <img src="<?= URLROOT;?>/view/assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
