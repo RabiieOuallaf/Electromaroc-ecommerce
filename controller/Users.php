@@ -140,9 +140,20 @@
         exit();
     }
 
+    public function destroySession(){
+        session_start();
+        session_unset();
+        session_destroy();
+
+        redirect("/index");
+      
+    }
+
 }
 
     $init = new Users;
+
+    if($_SERVER["REQUEST_METHOD"] == "POST")
 
     switch($_POST['type']){
 
@@ -156,4 +167,10 @@
             $init->Login();
             break;
 
+        default: 
+            break;
+    }else {
+        
+        $init->destroySession();
+        
     }

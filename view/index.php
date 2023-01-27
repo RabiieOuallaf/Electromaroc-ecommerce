@@ -62,7 +62,9 @@
                 
                     <?php if(isset($_SESSION['user_name']) && isset($_SESSION['user_name'])){
                         ?>
-                            <span class="mx-3">Welcome back</span><span class="text-lime-800 font-bold"><?= $_SESSION['user_name'] ?>👋🏻</span>
+                            <a href="../controller/Users.php">
+                                <span class="mx-3">Welcome back</span><span class="text-lime-800 font-bold"><?= $_SESSION['user_name'] ?>👋🏻</span>
+                            </a>
                         <?php
                     }else{
                         ?>
