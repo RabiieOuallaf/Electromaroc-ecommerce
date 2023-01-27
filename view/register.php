@@ -87,11 +87,13 @@
                 <div class="register-form my-5">
 
                     <form action="../controller/Users.php" class="flex flex-col mx-10" method="POST">
+
                         <input type="hidden" name="type" value="register">
                         <input type="text" placeholder="Full Name" name="FName" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
                         <input type="text" placeholder="Email" name="Email" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
                         <input type="text" placeholder="Password" name="Password" class="border-b-2 border-gray-300 w-64 my-4" id="inputs">
                         <input type="submit" value="Register" class="border-2 border-black bg-black text-white rounded-xl mt-10 hover:bg-white hover:text-black transition duration-200 ease-in-out" id="inputs">
+                        
                     </form>
 
                 </div>

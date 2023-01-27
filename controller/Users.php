@@ -33,26 +33,25 @@
 
                 // Handling unwanted cases 
 
-                if(empty($data["FName"]) || empty($data["Email"]) || empty($data["Password"])){
-
-                    header("location: /register.php");
+                if(empty($data["FName"] || $data["Email"] || $data["Password"] )){
+                    
+                    redirect("/register");
+                    echo "Please fill out all inputs";
     
                 }
-
                 // Hash password 
 
                 $data['Password'] = password_hash($data['Password'], PASSWORD_DEFAULT);
 
-
                 if($this->userModel->Register($data)){
-                    header("location:'/login.php'");
+                    redirect("/login");
                 }else{
-                    die("Sorry, Something went wrong!");
+                    die("Sorry, Something went wrong! Please make sure from your account informations");
                 }
 
 
-
             }else {
+
                 echo "Sorry , the request method should be a POST";
 
                 $data = [
@@ -63,7 +62,7 @@
     
                 ];
 
-                $this->view("users/register" , $data);
+                redirect("/register");
             }
 
 
@@ -103,32 +102,22 @@
 
                 // Handling unwanted cases 
 
-                if( empty($data["Email"]) || empty($data["Password"])){
+                if( empty($data["Email"] || $data["Password"])){
 
-                    header("location: /index.php");
+                    redirect("/index");
                     die("Please fill all inputs");
     
                 }
 
                 $loggedInUser = $this->userModel->Login($data['Email'], $data['Password']);
 
-
-
                 // Create session 
 
                 if($loggedInUser){
-                    //Then the user is found :) 
-                    $this->createSession($loggedInUser);
-                    
+                    $this->createSession($loggedInUser);       
                 }else {
                     die("User dose not exsits!");
-                }
-    
-                
-
-                
-
-            
+                }         
 
         }
 
@@ -136,10 +125,18 @@
     }
 
     public function createSession($user){
-
+        
+        session_start();
+        
         $_SESSION['user_email'] = $user->email;
-        print_r($_SESSION);
-        header("location:../view/index.php");
+        $_SESSION['user_name'] = $user->username;
+
+        if($user->role == "admin"){
+            redirect("/dashbaord");
+        }else if($user->role == "client"){
+            redirect("/index");
+        }
+
         exit();
     }
 

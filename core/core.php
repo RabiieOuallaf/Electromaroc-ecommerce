@@ -12,7 +12,6 @@ class Core {
     
     public function __construct() {
         $url = $this->getUrl();
-        var_dump($url);
         
         // look in controllers for first value
         if (is_array($url) && file_exists('./controller/' . ucwords($url[0]). '.php')) {

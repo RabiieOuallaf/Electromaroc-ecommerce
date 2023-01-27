@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +59,16 @@
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
                    
-                    <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                
+                    <?php if(isset($_SESSION['user_name']) && isset($_SESSION['user_name'])){
+                        ?>
+                            <span class="mx-3">Welcome back</span><span class="text-lime-800 font-bold"><?= $_SESSION['user_name'] ?>👋🏻</span>
+                        <?php
+                    }else{
+                        ?>
+                        <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                        <?php
+                    } ?>
                     
                     
                 </div>
@@ -87,9 +94,7 @@
         </div>
 
         <div class="next-to-content" >
-            <?php
-                var_dump($_SESSION);
-            ?>
+            
             <img src="<?= URLROOT; ?>/view/assets/images/macbookWhite.png" alt="white macbook"/>
 
         </div>
