@@ -132,6 +132,7 @@
         $_SESSION['user_name'] = $user->user_username;
 
         if($user->role == "admin"){
+            $_SESSION['user_role'] = $user->role;
             redirect("/dashbaord");
         }else if($user->role == "client"){
             redirect("/index");
