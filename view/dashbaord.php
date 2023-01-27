@@ -25,7 +25,7 @@
                         <div class="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
                     </li>
                     <li>
-                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='" >
+                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/addProduct'" >
 
                             <span class="inline-flex mr-1">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -39,7 +39,7 @@
                     </li>
                     
                     <li>
-                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='">
+                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/updateProduct'">
 
                             <span class="inline-flex mr-1">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>

@@ -17,6 +17,9 @@
         public function dashbaord(){
             $this->view("dashbaord");
         }
+        public function addProduct(){
+            $this->view("addProduct");
+        }
         public function computersCategory() {
             $this->view('computersCategory');
         }
