@@ -38,4 +38,11 @@
 
         }
 
+        public function DisplayProducts(){
+
+            $sql = "SELECT * FROM products";
+            return $this->Dbh->multiple($sql);
+
+        }
+
     }

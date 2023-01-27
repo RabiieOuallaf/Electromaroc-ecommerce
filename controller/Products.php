@@ -33,6 +33,7 @@
             }
 
         }
+
         public function addProduct() {
 
             $Product = $this->fetchData();
@@ -46,6 +47,12 @@
             }
         }
 
+        public function displayProducts() {
+
+            
+            return $this->ProductModel->DisplayProducts();
+    
+        }
     }
 
     $init = new Porducts;

@@ -1,4 +1,16 @@
-<?php !$_SESSION['user_role'] && redirect('/index')?>
+<?php 
+    !$_SESSION['user_role'] && redirect('/index');
+    
+    include_once "../controller/Products.php";
+
+    $init = new Porducts;
+
+    $Products = $init->displayProducts();
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,12 +180,12 @@
 
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_id"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_name"]?></td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_price"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_description"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_quantity"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><img src="<?= $Product["product_image"]?>" alt="product image"/></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_final "]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
+                                <!-- <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><img src="<?= $Product["product_image"]?>" alt="product image"/></td> -->
                                 <td class="d-flex justify-content-around">
 
                                     <form action="<?= URLROOT ?>/controller/Products.php" method="POST" class="flex flex-col">
