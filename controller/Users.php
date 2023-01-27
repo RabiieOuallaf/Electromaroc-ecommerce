@@ -128,8 +128,8 @@
         
         session_start();
         
-        $_SESSION['user_email'] = $user->email;
-        $_SESSION['user_name'] = $user->username;
+        $_SESSION['user_email'] = $user->user_email;
+        $_SESSION['user_name'] = $user->user_username;
 
         if($user->role == "admin"){
             redirect("/dashbaord");

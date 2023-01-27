@@ -15,7 +15,7 @@
         // Register 
 
         public function register($data){
-            $this->db->query('INSERT INTO users (username ,password ,email) VALUES (:username, :password, :email)');
+            $this->db->query('INSERT INTO admins (user_username ,user_password ,user_email) VALUES (:username, :password, :email)');
 
             $this->db->bind(':username' , $data['FName']);
             $this->db->bind(':password', $data['Password']);
@@ -35,7 +35,7 @@
 
         public function Login($email, $password){
 
-            $this->db->query("SELECT * FROM users WHERE email = :email AND password = :pwd");
+            $this->db->query("SELECT * FROM users WHERE user_email = :email AND user_password = :pwd");
             $this->db->bind(':email', $email);
             $this->db->bind(':pwd', $password);
 
@@ -43,7 +43,7 @@
         
             $hashed_password = $row->password;
 
-            if($password == $hashed_password){
+            if($row){
                 return $row;
             } else {
                 return false;

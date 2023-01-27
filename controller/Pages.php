@@ -14,7 +14,7 @@
         public function login(){
             $this->view('login');
         }
-        public function dashboard(){
+        public function dashbaord(){
             $this->view("dashbaord");
         }
         public function computersCategory() {
