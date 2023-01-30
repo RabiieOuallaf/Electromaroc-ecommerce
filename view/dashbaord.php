@@ -1,14 +1,14 @@
 <?php 
     !$_SESSION['user_role'] && redirect('/index');
     
-    include_once "../controller/Products.php";
+    if(file_exists("../controller/Products.php")){       
+        require_once "../controller/Products.php";
+    }else {
+        require_once "controller/Products.php";
+    }
 
-    $init = new Porducts;
 
     $Products = $init->displayProducts();
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -114,24 +114,6 @@
                 <div></div>
             </div>
 
-            <div class="product-form flex justify-center items-center" style="display: none;" id="product-form">
-
-                <form action="<?= URLROOT ?>/controller/Products.php"  method="POST" class="Product-form flex flex-col justify-cente bg-white w-96 h-[100%] px-10">
-
-                    <input type="hidden" name="type" value="add" >
-                    <input type="text" name="productName[]" placeholder="product name : " class="my-3 bg-transparent border-b-2 text-black">
-                    <input type="number" name="productPrice[]" placeholder="product price :" class="my-3 bg-transparent border-b-2 text-black">
-                    <input type="text" name="productDescription[]" placeholder="product description : " class="my-3 bg-transparent border-b-2 text-black">
-                    <input type="text" name="productImage[]" placeholder="product image : " class="my-3 bg-transparent border-b-2 text-black">
-                    <input type="submit" class="text-center rounded-full bg-black text-white cursor-pointer my-3" value="add Product">
-                    <button class="text-center rounded-full bg-black text-white cursor-pointer" id="addForm">Add multiple product</button>
-
-
-
-                </form>
-
-            </div>
-
             <div class="max-w-2xl mx-auto">
 
         <div class="flex flex-col">
@@ -182,16 +164,18 @@
 
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["product_price"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_final "]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
-                                <!-- <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><img src="<?= $Product["product_image"]?>" alt="product image"/></td> -->
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><img src="<?= $Product["produit_image"]?>" alt="product image"/></td>
                                 <td class="d-flex justify-content-around">
 
-                                    <form action="<?= URLROOT ?>/controller/Products.php" method="POST" class="flex flex-col">
+                                    <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
 
                                         <input type="submit" name="type" value="delete" class="text-red-500">
-                                        <input type="hidden" name="productid" value="<?php echo $Product['product_id'] ?>">
+                                        <input type="submit" name="type" value="update" class="text-yellow-700">
+                                        <input type="hidden" name="productid" value="<?php echo $Product['produit_id'] ?>">
 
                                     </form>
                             

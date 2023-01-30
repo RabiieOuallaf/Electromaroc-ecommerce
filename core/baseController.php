@@ -10,9 +10,19 @@
         // Load models 
 
         public function model($model){
-            // Require model file 
-            require_once "../model/".$model.".php";
+            // Check if the file exists and Require it 
+            if(file_exists("../model/".$model.".php")){
 
+                require_once "../model/".$model.".php";
+
+            }else if(file_exists("model/".$model.".php")){
+
+                require_once "model/".$model.".php";
+                
+            }else {
+                die("model does not exsit!");
+            }
+            
             // Instaitate model 
             return new $model();
         }
@@ -31,3 +41,5 @@
             }
         }
     }
+
+    

@@ -20,6 +20,9 @@
         public function addProduct(){
             $this->view("addProduct");
         }
+        public function updateProduct(){
+            $this->view("updateProduct");
+        }
         public function computersCategory() {
             $this->view('computersCategory');
         }
