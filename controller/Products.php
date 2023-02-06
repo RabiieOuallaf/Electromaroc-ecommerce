@@ -40,15 +40,23 @@
                 "Product_offer" => (int)$_POST['Product_offer'],
                 "Product_codebar" => (int)$_POST['Product_codebar'],
                 "Product_Quantity" => (int)$_POST['Product_Quantity'],
-                "Product_image" => $_POST['Product_image']
+                "Product_image_name" => $_FILES['Product_image']["name"],
+                "Product_image_tmp" => $_FILES['Product_image']["tmp_name"]
 
             ];
 
             if(isset($data['Product_name']) || isset($data['Product_description']) || isset($data['Product_price']) || isset($data['Product_offer']) || isset($data['Product_codebar'])){
+                $target_dir = "../view/assets/uploads/";
+                // echo $target_dir;
+                // exit;
+                $target_file = $target_dir . $data["Product_image_name"];
+                move_uploaded_file($data['Product_image_tmp'] , $target_file);
                 return $data;
             }else {
                 die("Please fill out all inputs!");
             }
+
+
 
         }
         // Get the only the product id (in case the admin wants to delete or update a specif product)
@@ -66,7 +74,7 @@
 
             $Product = $this->fetchData();
 
-            $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image'] );
+            $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
 
             if($addedProduct){
                 redirect('/dashbaord');
@@ -80,7 +88,7 @@
 
             $Product = $this->fetchData();
             $id = $_POST['productid'];
-            $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image'] );
+            $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
 
             if($updatedProduct){
                 redirect('/dashbaord');

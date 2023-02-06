@@ -91,13 +91,23 @@
                     </div>
                     </li>
                     <li>
-                    <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                    <a href="dashbaord" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
                             <i class="fa-solid fa-gauge"></i>
                         </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+                        <span class="ml-2 text-sm tracking-wide truncate">dashboard</span>
                     </a>
                     </li>
+
+                    <li>
+                    <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">the store</span>
+                    </a>
+                    </li>
+                    
 
                     
                 </ul>

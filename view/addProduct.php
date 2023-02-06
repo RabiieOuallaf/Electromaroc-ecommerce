@@ -106,7 +106,7 @@
 
                             <div class="lg:col-span-2">
 
-                                <form action="<?= URLROOT ?>/controller/Products.php" method="POST">
+                                <form action="<?= URLROOT ?>/controller/Products.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="type" value="add">
                                     
                                     <div class="grid gap-y-2 text-sm grid-cols-1 md:grid-cols-5 my-8">
@@ -156,7 +156,7 @@
 
                                         <div class="md:col-span-5">
                                             <label for="Product_image" class="text-black">Product image</label>
-                                            <input name="Product_image" type="text" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_image" type="file" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
                                         </div>
 
                                         
