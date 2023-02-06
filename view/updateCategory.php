@@ -107,7 +107,7 @@
                             <div class="lg:col-span-2">
 
                                 <form action="<?= URLROOT ?>/controller/Categories.php" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="type" value="add">
+                                    <input type="hidden" name="type" value="update">
                                     <input type="hidden" name="categorieID" value=1>
                                     <div class="grid gap-y-2 text-sm grid-cols-1 md:grid-cols-5 my-8">
 

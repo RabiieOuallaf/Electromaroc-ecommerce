@@ -39,12 +39,24 @@
             }
         }
 
+        // === Fetch the id === // 
+
+        public function fetchID(){
+            $categoryID = $_POST["categorieID"];
+
+            if(!empty($categoryID)){
+                return $categoryID;
+            }else {
+                return false;
+            }
+        }
+
         // === Add category === //
 
         public function addCategory(){
             $category = $this->fetchData();
 
-            $addedCategory = $this->CategoryModel->addCategory($category["CategoryName"],$category["CategoryDescription"], $category["CategoryImageName"] );
+            $addedCategory = $this->CategoryModel->addCategory($category["CategoryName"],$category["CategoryDescription"], $category["CategoryImageName"]);
 
             if($addedCategory){
                 redirect("/dashbaordCategory");
@@ -53,6 +65,28 @@
             }
         }
 
+        // === update Category === // 
+
+        public function updateCategory(){
+            $category = $this->fetchData();
+            $categoryID = $this->fetchID();
+
+            $updatedCategory = $this->CategoryModel->updateCategory($categoryID,$category["CategoryName"],$category["CategoryDescription"], $category["CategoryImageName"]);
+
+            if($updatedCategory){
+                redirect("/dashbaordCategory");
+            }else{
+                redirect("/dashbaordCategory");
+            }
+
+
+        }
+
+        // === display categories === // 
+
+        public function displayCategories(){
+            return $this->CategoryModel->displayCategories();
+        }
 
         
 

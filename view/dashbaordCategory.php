@@ -7,6 +7,7 @@
         require_once "controller/Categories.php";
     }
 
+    $categories = $init->displayCategories();
 
 
 ?>
@@ -162,17 +163,17 @@
 
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_id"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_name"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_description"]?></td>
-                                <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $category["produit_image"]?>" alt="category image" style="width:100%;"/></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["categorie_id"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["categories_name"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["categories_description"]?></td>
+                                <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $category["categorie_image_name"]?>" alt="category image" style="width:100%;"/></td>
                                 <td class="d-flex justify-content-around">
 
                                     <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
 
                                         <input type="submit" name="type" value="delete" class="text-red-500">
                                         <input type="submit" name="type" value="update" class="text-yellow-700">
-                                        <input type="hidden" name="categoryid" value="<?php echo $category['produit_id'] ?>">
+                                        <input type="hidden" name="categoryid" value="<?php echo $category['categorie_id'] ?>">
 
                                     </form>
                             

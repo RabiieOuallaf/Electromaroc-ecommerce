@@ -78,7 +78,7 @@
         public function displayCategories(){
 
             $sql = "SELECT * FROM categories";
-            $this->Dbh->multiple($sql);
+            return $this->Dbh->multiple($sql);
             
             
         }
