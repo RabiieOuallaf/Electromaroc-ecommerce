@@ -1,14 +1,13 @@
 <?php 
     !$_SESSION['user_role'] && redirect('/index');
     
-    if(file_exists("../controller/Products.php")){       
-        require_once "../controller/Products.php";
+    if(file_exists("../controller/Categories.php")){       
+        require_once "../controller/Categories.php";
     }else {
-        require_once "controller/Products.php";
+        require_once "controller/Categories.php";
     }
 
 
-    $Products = $init->displayProducts();
 
 ?>
 <!DOCTYPE html>
@@ -37,12 +36,12 @@
                         <div class="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
                     </li>
                     <li>
-                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/addProduct'" >
+                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/addCategory'" >
 
                             <span class="inline-flex mr-1">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </span>
-                                Add Product
+                                Add category
                         </div>
 
                     </li>
@@ -51,12 +50,12 @@
                     </li>
                     
                     <li>
-                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/updateProduct'">
+                        <div class="flex items-center mr-4 hover:text-blue-100 cursor-pointer" onclick="location.href='/updatecategory'">
 
                             <span class="inline-flex mr-1">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </span>
-                                Update Product
+                                Update category
                             </div>
                     </li>
                     <li>
@@ -100,15 +99,6 @@
                     </li>
 
                     <li>
-                    <a href="dashbaordCategory" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">categories</span>
-                    </a>
-                    </li>
-
-                    <li>
                     <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
                             <i class="fa-solid fa-gauge"></i>
@@ -129,7 +119,7 @@
         <div class="mt-24 h-full flex flex-wrap justify-around max-sm:flex-col max-sm:items-center col-start-2 col-span-2">
 
             <div class="w-52 h-32 bg-gradient-to-r from-red-400 to-red-700 rounded-lg p-2 mx-5">
-                <span>Products : <?= $ProductsCount ?> </span>
+                <span>categorys : <?= $categorysCount ?> </span>
                 <div></div>
             </div>
 
@@ -144,28 +134,19 @@
                             <tr>
 
                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product ID
+                                    category ID
                                 </th>
                                 
                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product Name
+                                    category Name
                                 </th>
 
                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Price
-                                </th>
-
-
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Description
+                                    category Description
                                 </th>
 
                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Quantity
-                                </th>
-
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Image
+                                    category Image
                                 </th>
 
                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -177,23 +158,21 @@
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
-                        <?php forEach($Products as $Product ){ ?>
+                        <?php forEach($categories as $category ){ ?>
 
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
-                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
-                                <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="product image" style="width:100%;"/></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_id"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_name"]?></td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["produit_description"]?></td>
+                                <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $category["produit_image"]?>" alt="category image" style="width:100%;"/></td>
                                 <td class="d-flex justify-content-around">
 
                                     <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
 
                                         <input type="submit" name="type" value="delete" class="text-red-500">
                                         <input type="submit" name="type" value="update" class="text-yellow-700">
-                                        <input type="hidden" name="productid" value="<?php echo $Product['produit_id'] ?>">
+                                        <input type="hidden" name="categoryid" value="<?php echo $category['produit_id'] ?>">
 
                                     </form>
                             

@@ -14,14 +14,20 @@
         public function login(){
             $this->view('login');
         }
+        public function addCategory(){
+            $this->view('addCategory');
+        }
+        public function dashbaordCategory(){
+            $this->view('dashbaordCategory');
+        }
         public function dashbaord(){
-            $this->view("dashbaord");
+            $this->view('dashbaord');
         }
         public function addProduct(){
-            $this->view("addProduct");
+            $this->view('addProduct');
         }
         public function updateProduct(){
-            $this->view("updateProduct");
+            $this->view('updateProduct');
         }
         public function computersCategory() {
             $this->view('computersCategory');
