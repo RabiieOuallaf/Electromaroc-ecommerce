@@ -103,7 +103,7 @@
 
                 // Handling unwanted cases 
 
-                if( empty($data["Email"] || $data["Password"])){
+                if(empty($data["Email"] || $data["Password"])){
 
                     redirect("/index");
                     die("Please fill all inputs");

@@ -35,20 +35,22 @@
 
         public function Login($email, $password){
 
-            $this->db->query("SELECT * FROM users WHERE user_email = :email AND user_password = :pwd");
+            $sql = "SELECT * FROM admins WHERE user_email = :email AND user_password = :pwd";
+            $this->db->query($sql);
             $this->db->bind(':email', $email);
             $this->db->bind(':pwd', $password);
 
             $row = $this->db->single();
         
-            $hashed_password = $row->password;
+            $user_pwd = $row->user_password;
 
-            if($row){
+            if($password == $user_pwd){
                 return $row;
             } else {
                 return false;
             }
         }
+
 
         // Find user by email 
 
