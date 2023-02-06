@@ -55,7 +55,7 @@
 
         public function fetchId() {
 
-            $id = $_POST['productid'];
+            $id = $_GET['productid'];
             return $id;
 
         }
@@ -79,8 +79,8 @@
         public function updateProduct() {
 
             $Product = $this->fetchData();
-
-            $updatedProduct = $this->ProductModel->updateProduct($Product['Product_ID'] ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image'] );
+            $id = $_POST['productid'];
+            $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image'] );
 
             if($updatedProduct){
                 redirect('/dashbaord');
