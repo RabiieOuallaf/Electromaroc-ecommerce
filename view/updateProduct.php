@@ -124,7 +124,7 @@
 
                             <div class="lg:col-span-2">
 
-                                <form action="<?= URLROOT ?>/controller/Products.php" method="POST">
+                                <form action="<?= URLROOT ?>/controller/Products.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="type" value="update">
 
                                     <input type="hidden" name="productid" value="<?= $productToUpdate->produit_id ?>">
@@ -172,9 +172,8 @@
 
                                         <div class="md:col-span-5">
                                             <label for="Product_image" class="text-black">Product image</label>
-                                            <input name="Product_image" type="text" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?=$productToUpdate->produit_image ?>"/>
+                                            <input name="Product_image" type="file" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?=$productToUpdate->produit_image ?>"/>
                                         </div>
-
                                         
                                         <div class="md:col-span-5 text-right">
                                             <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Add product">Submit</input>

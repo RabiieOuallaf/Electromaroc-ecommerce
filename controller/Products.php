@@ -78,7 +78,6 @@
                 $target_dir = "../view/assets/uploads/";
                 $target_file = $target_dir . $Product["Product_image_name"];
                 move_uploaded_file($Product['Product_image_tmp'] , $target_file);
-                
                 redirect('/dashbaord');
             }else {
                 redirect("/addProduct");
@@ -93,6 +92,10 @@
             $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
 
             if($updatedProduct){
+                $target_dir = "../view/assets/uploads/";
+                $target_file = $target_dir . $Product["Product_image_name"];
+                move_uploaded_file($Product['Product_image_tmp'] , $target_file);
+                
                 redirect('/dashbaord');
             }else {
                 redirect("/updateProduct");
