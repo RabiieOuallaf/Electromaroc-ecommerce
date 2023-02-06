@@ -46,11 +46,6 @@
             ];
 
             if(isset($data['Product_name']) || isset($data['Product_description']) || isset($data['Product_price']) || isset($data['Product_offer']) || isset($data['Product_codebar'])){
-                $target_dir = "../view/assets/uploads/";
-                // echo $target_dir;
-                // exit;
-                $target_file = $target_dir . $data["Product_image_name"];
-                move_uploaded_file($data['Product_image_tmp'] , $target_file);
                 return $data;
             }else {
                 die("Please fill out all inputs!");
@@ -76,7 +71,14 @@
 
             $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
 
+           
             if($addedProduct){
+                 // upload the image 
+
+                $target_dir = "../view/assets/uploads/";
+                $target_file = $target_dir . $Product["Product_image_name"];
+                move_uploaded_file($Product['Product_image_tmp'] , $target_file);
+                
                 redirect('/dashbaord');
             }else {
                 redirect("/addProduct");
