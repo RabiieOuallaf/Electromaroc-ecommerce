@@ -32,7 +32,6 @@
         // fetching the data 
         public function fetchData() {
             $data = [
-                "Product_ID" => $_POST['productid'],
                 "Product_name" => $_POST['Product_name'],
                 "Product_refernce" => $_POST['Product_refernce'],
                 "Product_price_final" => (int)$_POST['Product_price_final'],
@@ -56,7 +55,7 @@
 
         public function fetchId() {
 
-            $id = $_GET['productid'];
+            $id = $_POST['productid'];
             return $id;
 
         }

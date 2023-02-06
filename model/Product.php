@@ -23,9 +23,10 @@
 
         public function addProduct($Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage)
         {
-            $sql = "INSERT INTO produits(produit_name, produit_codebar,  produit_refernce ,prix_achat, prix_final ,prix_offer, produit_quantite, produit_description, produit_image) VALUES (:produit_name ,:produit_codebar, :produit_refernce, :prix_achat, :prix_offer, :prix_fianl,:produit_quantity, :produit_description, :produit_image)";
+            $sql = "INSERT INTO produits(produit_name, produit_codebar,  produit_refernce ,prix_achat,prix_offer, prix_final , produit_quantite, produit_description, produit_image) VALUES (:produit_name ,:produit_codebar, :produit_refernce, :prix_achat, :prix_offer, :prix_fianl,:produit_quantity, :produit_description, :produit_image)";
 
             $this->Dbh->query($sql);
+
             $this->Dbh->bind(":produit_name",$Productname);
             $this->Dbh->bind(":produit_refernce",$ProductRefernce );
             $this->Dbh->bind(":produit_codebar",$ProductCodeBar);
@@ -39,7 +40,7 @@
             $row = $this->Dbh->execute();
 
             if($row){
-                return $row;
+                return true;
             }else{
                 return false;
             }
