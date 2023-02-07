@@ -42,7 +42,7 @@
         // === Fetch the id === // 
 
         public function fetchID(){
-            $categoryID = $_POST["categorieID"];
+            $categoryID = $_GET["categorieID"];
 
             if(!empty($categoryID)){
                 return $categoryID;
@@ -69,13 +69,14 @@
 
         public function updateCategory(){
             $category = $this->fetchData();
-            $categoryID = $this->fetchID();
+            $categoryID = $_POST["categorieID"];
 
             $updatedCategory = $this->CategoryModel->updateCategory($categoryID,$category["CategoryName"],$category["CategoryDescription"], $category["CategoryImageName"]);
 
             if($updatedCategory){
                 redirect("/dashbaordCategory");
             }else{
+                die("Something went wrong!");
                 redirect("/dashbaordCategory");
             }
 
@@ -86,6 +87,27 @@
 
         public function displayCategories(){
             return $this->CategoryModel->displayCategories();
+        }
+
+        // === display category by ID === // 
+
+        public function displayCategoryById(){
+            $CategoryID = $this->fetchID();
+            return $this->CategoryModel->displayCategoryById($CategoryID);
+        }
+
+        // === delete cetegories === // 
+
+        public function deleteCategories(){
+            $CategoryID = $this->fetchID();
+            $deletedCategory =  $this->CategoryModel->deleteCategory($CategoryID);
+
+            if($deletedCategory){
+                redirect("/dashbaordCategory");
+            }else{
+                die("Something went wrong !");
+                redirect("/dashbaordCategory");
+            }
         }
 
         
@@ -106,8 +128,10 @@
                 $init->addCategory();
                 break;
             case 'update':
+                $init->updateCategory();
                 break;
             default:
+                $init->deleteCategories();
                 break;
 
         }

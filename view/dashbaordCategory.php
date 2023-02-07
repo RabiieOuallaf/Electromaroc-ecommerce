@@ -160,7 +160,7 @@
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                         <?php forEach($categories as $category ){ ?>
-
+                
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $category["categorie_id"]?></td>
@@ -173,7 +173,7 @@
 
                                         <input type="submit" name="type" value="delete" class="text-red-500">
                                         <input type="submit" name="type" value="update" class="text-yellow-700">
-                                        <input type="hidden" name="categoryid" value="<?php echo $category['categorie_id'] ?>">
+                                        <input type="hidden" name="categorieID" value="<?php echo $category['categorie_id'] ?>">
 
                                     </form>
                             
@@ -186,10 +186,7 @@
                         
 
                         ?>
-                            
-                            
-                        
-                            
+        
                         </tbody>
                     </table>
                 </div>

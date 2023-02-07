@@ -14,12 +14,15 @@
 
 
     class Categorie {
+        
         protected $Dbh;
 
         public function __construct()
         {
             $this->Dbh = new Database;
         }
+
+        // === add category === //
 
         public function addCategory($categoryName, $categoryDescription, $categoryImage)
         {
@@ -43,6 +46,9 @@
 
         }
 
+        // === update category === //
+
+
         public function updateCategory($categoryID,$categoryName, $categoryDescription, $categoryImage){
             $sql = "UPDATE categories SET categories_name = :categoryName ,  categories_description = :categoryDescription, categorie_image_name = :categoryImage WHERE  categorie_id = :categoryID";
             $this->Dbh->query($sql);
@@ -56,17 +62,20 @@
             $updated = $this->Dbh->execute();
 
             if($updated){
+                
                 return $updated;
             }else {
                 return false;
             }
         }
 
+      // === Delete category === //  
+
         public function deleteCategory($categoryID){
             $sql = "DELETE FROM categories WHERE categorie_id = :categoryID";
-            $delete = $this->Dbh->query($sql);
+            $this->Dbh->query($sql);
             $this->Dbh->bind(":categoryID", $categoryID);
-            $this->Dbh->execute();
+            $delete = $this->Dbh->execute();
 
             if($delete){
                 return true;
@@ -75,12 +84,30 @@
             }
         }
 
+        // === display category === // 
+
         public function displayCategories(){
 
             $sql = "SELECT * FROM categories";
             return $this->Dbh->multiple($sql);
             
             
+        }
+
+        // === display category by id === // 
+
+        public function displayCategoryById($CategoryID){
+            $sql = "SELECT * FROM categories WHERE categorie_id = :categoryID";
+            $this->Dbh->query($sql);
+
+            $this->Dbh->bind(":categoryID", $CategoryID);
+            $display = $this->Dbh->single();
+
+            if($display){
+                return $display;
+            }else{
+                return false;
+            }
         }
 
     

@@ -29,6 +29,9 @@
         public function updateProduct(){
             $this->view('updateProduct');
         }
+        public function updateCategory(){
+            $this->view('updateCategory');
+        }
         public function computersCategory() {
             $this->view('computersCategory');
         }

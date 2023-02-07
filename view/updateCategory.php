@@ -1,4 +1,23 @@
-<?php !$_SESSION['user_role'] && redirect('/index')?>
+<?php
+    if(!$_SESSION['user_role']){
+        session_start();
+    }
+    !$_SESSION['user_role'] && redirect('/index');
+
+    if(file_exists("../controller/Categories.php")){
+        
+        require_once "../controller/Categories.php";
+
+    }else {
+        require_once "controller/Categories.php";
+
+    }
+    $Product = new Categories;
+
+
+    $categoryToUpdate = $Product->displayCategoryById($_GET['categorieID']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,23 +127,23 @@
 
                                 <form action="<?= URLROOT ?>/controller/Categories.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="type" value="update">
-                                    <input type="hidden" name="categorieID" value=1>
+                                    <input type="hidden" name="categorieID" value=<?= $categoryToUpdate->categorie_id?>>
                                     <div class="grid gap-y-2 text-sm grid-cols-1 md:grid-cols-5 my-8">
 
                                         <div class="md:col-span-5">
                                             <label for="categoryName" class="text-black">Categorie name</label>
-                                            <input type="text" name="categoryName" id="categoryName" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
+                                            <input type="text" name="categoryName" id="categoryName" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?= $categoryToUpdate->categories_name?>"/>
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="categoryDescription" class="text-black">Categorie description</label>
-                                            <input type="text" name="categoryDescription" id="categoryDescription" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
+                                            <input type="text" name="categoryDescription" id="categoryDescription" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?= $categoryToUpdate->categories_description?>"/>
                                         </div>
 
 
                                         <div class="md:col-span-5">
                                             <label for="categoryImage" class="text-black">Categorie image</label>
-                                            <input name="categoryImage" type="file" id="categoryImage" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
+                                            <input name="categoryImage" type="file" id="categoryImage" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?= $categoryToUpdate->categorie_image_name?>/>
                                         </div>
 
                                         <div class="md:col-span-5 text-right">

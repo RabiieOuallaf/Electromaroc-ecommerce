@@ -142,6 +142,7 @@
                 break;
             case 'update':
                 $init->updateProduct();
+                break;
             default:
                 break;
 
