@@ -1,4 +1,17 @@
-<?php !$_SESSION['user_role'] && redirect('/index')?>
+<?php 
+    !$_SESSION['user_role'] && redirect('/index');
+
+    if(file_exists("../controller/Categories.php")){
+        
+        require_once "../controller/Categories.php";
+
+    }else {
+        require_once "controller/Categories.php";
+
+    }
+    $Categories = new Categories; 
+    $CategoriesData = $Categories->displayCategories();   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,48 +128,62 @@
 
                                         <div class="md:col-span-5">
                                             <label for="Product_name" class="text-black">Product name</label>
-                                            <input type="text" name="Product_name" id="Product_name" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                            <input type="text" name="Product_name" id="Product_name" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_refernce" class="text-black">Product refernce</label>
-                                            <input type="text" name="Product_refernce" id="Product_refernce" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                            <input type="text" name="Product_refernce" id="Product_refernce" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
+                                        <div class="md:col-span-5">
+                                            <label for="Product_category" class="text-black">Product category</label>
+                                            <select name="Product_category" id="Product_category">
+                                                <?php forEach($CategoriesData as $CategoryData){ ?>
+
+                                                    <option value="<?= $CategoryData["categorie_id"] ?>"><?= $CategoryData["categories_name"]?></option>
+
+                                                    <?php } 
+                                                
+                                                ?>
+                                                
+
+                                            </select>
+                                        </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_description" class="text-black">Product description</label>
-                                            <input name="Product_description" type="text" id="Product_description" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                            <input name="Product_description" type="text" id="Product_description" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_price" class="text-black">Product price</label>
-                                            <input name="Product_price" type="number" id="Product_price" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_price" type="number" id="Product_price" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_offer" class="text-black">Product Offer</label>
-                                            <input name="Product_offer" type="number" id="Product_offer" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_offer" type="number" id="Product_offer" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_price_final" class="text-black">Product price final</label>
-                                            <input type="text" name="Product_price_final" id="Product_product_final" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                            <input type="text" name="Product_price_final" id="Product_product_final" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_Quantity" class="text-black">Product Quantity</label>
-                                            <input name="Product_Quantity" type="number" id="Product_Quantity" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_Quantity" type="number" id="Product_Quantity" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_codebar" class="text-black">Product codebar</label>
-                                            <input name="Product_codebar" type="number" id="Product_codebar" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_codebar" type="number" id="Product_codebar" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_image" class="text-black">Product image</label>
-                                            <input name="Product_image" type="file" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""/>
+                                            <input name="Product_image" type="file" id="produit_image " class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
                                         </div>
 
                                         
