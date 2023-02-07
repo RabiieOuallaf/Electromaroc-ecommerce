@@ -41,11 +41,11 @@
                 "Product_codebar" => (int)$_POST['Product_codebar'],
                 "Product_Quantity" => (int)$_POST['Product_Quantity'],
                 "Product_image_name" => $_FILES['Product_image']["name"],
-                "Product_image_tmp" => $_FILES['Product_image']["tmp_name"]
-
+                "Product_image_tmp" => $_FILES['Product_image']["tmp_name"],
+                "Porduct_category" => (int)$_POST['Product_category']
             ];
 
-            if(isset($data['Product_name']) || isset($data['Product_description']) || isset($data['Product_price']) || isset($data['Product_offer']) || isset($data['Product_codebar'])){
+            if(isset($data['Product_name'])|| isset($data['Porduct_category']) || isset($data['Product_description']) || isset($data['Product_price']) || isset($data['Product_offer']) || isset($data['Product_codebar'])){
                 return $data;
             }else {
                 die("Please fill out all inputs!");
@@ -69,7 +69,7 @@
 
             $Product = $this->fetchData();
 
-            $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
+            $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'],$Product['Porduct_category']);
 
            
             if($addedProduct){

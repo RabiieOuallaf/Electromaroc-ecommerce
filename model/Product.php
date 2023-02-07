@@ -21,9 +21,11 @@
             $this->Dbh = new Database;
         }
 
-        public function addProduct($Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage)
+        // === Add product === // 
+
+        public function addProduct($Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage, $ProductCategory)
         {
-            $sql = "INSERT INTO produits(produit_name, produit_codebar,  produit_refernce ,prix_achat,prix_offer, prix_final , produit_quantite, produit_description, produit_image) VALUES (:produit_name ,:produit_codebar, :produit_refernce, :prix_achat, :prix_offer, :prix_final,:produit_quantity, :produit_description, :produit_image)";
+            $sql = "INSERT INTO produits(produit_name, produit_codebar,  produit_refernce ,prix_achat,prix_offer, prix_final , produit_quantite, produit_description, produit_image, produit_category) VALUES (:produit_name ,:produit_codebar, :produit_refernce, :prix_achat, :prix_offer, :prix_final,:produit_quantity, :produit_description, :produit_image , :ProductCategory)";
 
             $this->Dbh->query($sql);
 
@@ -36,6 +38,7 @@
             $this->Dbh->bind(":produit_quantity",$ProductQuantity);
             $this->Dbh->bind(":produit_description",$ProductDescription);
             $this->Dbh->bind(":produit_image", $ProductImage); 
+            $this->Dbh->bind(":ProductCategory", $ProductCategory);
 
             $row = $this->Dbh->execute();
 
@@ -47,9 +50,10 @@
 
         }
 
-        public function updateProduct($ProductID, $Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage){
+        // === update Product === //
+        public function updateProduct($ProductID, $Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage,$ProductCategory){
 
-            $this->Dbh->query("UPDATE produits SET produit_name = :produit_name ,prix_achat = :prix_achat , prix_offer = :prix_offer , prix_final = :prix_final ,produit_description = :produit_description, produit_image = :produit_image , produit_quantite = :produit_quantity, produit_refernce = :produit_refernce, produit_codebar = :produit_codebar WHERE produit_id = :produit_id");
+            $this->Dbh->query("UPDATE produits SET produit_name = :produit_name ,prix_achat = :prix_achat , prix_offer = :prix_offer , prix_final = :prix_final ,produit_description = :produit_description, produit_image = :produit_image , produit_quantite = :produit_quantity, produit_refernce = :produit_refernce, produit_codebar = :produit_codebar, produit_category = :ProductCategory WHERE produit_id = :produit_id");
 
             $this->Dbh->bind(":produit_name",$Productname);
             $this->Dbh->bind(":prix_achat",$ProductPrice);
@@ -61,6 +65,7 @@
             $this->Dbh->bind(":produit_refernce",$ProductRefernce );
             $this->Dbh->bind(":produit_codebar",$ProductCodeBar);
             $this->Dbh->bind(":produit_id" , $ProductID);
+            $this->Dbh->bind(":ProductCategory", $ProductCategory);
 
             $updated = $this->Dbh->execute();
 
@@ -72,6 +77,8 @@
 
             
         }
+
+        // === display products by id === //
 
         public function DisplayProductById($id) {
             $sql = "SELECT * from produits WHERE produit_id = :id";
@@ -86,12 +93,15 @@
             }
         }
 
+        // === display products === //
         public function DisplayProducts(){
 
             $sql = "SELECT * FROM produits";
             return $this->Dbh->multiple($sql);
 
         }
+
+        // === delete products === //
 
         public function deleteProduct($id) {
             $delete = $this->Dbh->query("DELETE FROM produits WHERE produit_id = :id");
