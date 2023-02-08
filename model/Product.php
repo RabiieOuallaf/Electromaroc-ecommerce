@@ -16,15 +16,13 @@
 
         protected $Dbh;
 
-        public function __construct()
-        {
+        public function __construct() {
             $this->Dbh = new Database;
         }
 
         // === Add product === // 
 
-        public function addProduct($Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage, $ProductCategory)
-        {
+        public function addProduct($Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage, $ProductCategory) {
             $sql = "INSERT INTO produits(produit_name, produit_codebar,  produit_refernce ,prix_achat,prix_offer, prix_final , produit_quantite, produit_description, produit_image, produit_category) VALUES (:produit_name ,:produit_codebar, :produit_refernce, :prix_achat, :prix_offer, :prix_final,:produit_quantity, :produit_description, :produit_image , :ProductCategory)";
 
             $this->Dbh->query($sql);
@@ -51,7 +49,7 @@
         }
 
         // === update Product === //
-        public function updateProduct($ProductID, $Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage,$ProductCategory){
+        public function updateProduct($ProductID, $Productname, $ProductRefernce, $ProductCodeBar, $ProductPrice, $ProductOffer, $ProductFinal, $ProductQuantity, $ProductDescription, $ProductImage,$ProductCategory) {
 
             $this->Dbh->query("UPDATE produits SET produit_name = :produit_name ,prix_achat = :prix_achat , prix_offer = :prix_offer , prix_final = :prix_final ,produit_description = :produit_description, produit_image = :produit_image , produit_quantite = :produit_quantity, produit_refernce = :produit_refernce, produit_codebar = :produit_codebar, produit_category = :ProductCategory WHERE produit_id = :produit_id");
 
@@ -93,20 +91,38 @@
             }
         }
 
+        // === display products by category === // 
+
+        public function displayProductsByCategory($categoryID){
+            
+            $sql = "SELECT * FROM produits WHERE produit_category = $categoryID";
+            $row = $this->Dbh->multiple($sql);
+
+            if(!is_null($row)){
+                return $row;
+            }else{
+                return false;
+            }
+
+        }
+
         // === display products === //
-        public function DisplayProducts(){
+        public function DisplayProducts() {
 
             $sql = "SELECT * FROM produits";
             return $this->Dbh->multiple($sql);
 
         }
 
+         
+
         // === delete products === //
 
         public function deleteProduct($id) {
-            $delete = $this->Dbh->query("DELETE FROM produits WHERE produit_id = :id");
+
+            $this->Dbh->query("DELETE FROM produits WHERE produit_id = :id");
             $this->Dbh->bind(":id", $id);
-            $this->Dbh->execute();
+            $delete = $this->Dbh->execute();
             
             if($delete){
                 return true;
@@ -116,5 +132,7 @@
             
 
         }
+
+       
 
     }

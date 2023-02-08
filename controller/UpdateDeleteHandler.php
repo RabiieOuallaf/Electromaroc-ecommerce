@@ -2,7 +2,7 @@
 
 
     if($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET['productid'])){
-        $CategoryID = $_GET['productid'];
+        $ProductID = $_GET['productid'];
         if(file_exists("../controller/Products.php")){
             
             require_once "../controller/Products.php";

@@ -110,7 +110,7 @@
             // Fetch data
             $productId = $this->fetchId();
 
-            if(!$this->ProductModel->deleteProduct($productId)){
+            if($this->ProductModel->deleteProduct($productId)){
                 redirect("/dashbaord");
             }else {
                 die('something went wrong');
@@ -125,9 +125,21 @@
 
         // Display product by ID 
 
-        public function DisplayProductById(){
+        public function DisplayProductById() {
             $ProductID = $this->fetchId();
             return $this->ProductModel->DisplayProductById($ProductID);
+        }
+
+        // Display products by category
+
+        public function DisplayProductsByCategory($categoryID) {
+
+            if($this->ProductModel->DisplayProductsByCategory($categoryID)){
+                return $this->ProductModel->DisplayProductsByCategory($categoryID);
+            }else{
+                die("something went wrong!, please try later");
+            };
+
         }
     }
 
