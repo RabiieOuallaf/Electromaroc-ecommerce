@@ -124,6 +124,21 @@
             return $this->ProductModel->DisplayProducts();
         }
 
+        // Display products JSON format
+
+        
+
+        public function displayProductsByCategoryJson($categoryID){
+
+            $data = $this->ProductModel->DisplayProductsByCategory($categoryID);
+
+            if($data){
+                echo json_encode($data);
+            }else{
+                die("something went wrong!, please try later");
+            };
+        }
+
         // Display product by ID 
 
         public function DisplayProductById() {
@@ -146,18 +161,28 @@
 
     $init = new Products;
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
         
-        switch($_POST['type']){
+        switch($_POST["type"]){
 
-            case 'add':
+            case "add":
                 $init->addProduct();
                 break;
-            case 'update':
+            case "update":
                 $init->updateProduct();
                 break;
             default:
                 break;
 
+        }
+    }
+
+    if(isset($_SERVER["HTTP_CONTENT_TYPE"]) && !strpos($_SERVER["HTTP_CONTENT_TYPE"], "xml")){
+        if(!is_null($_GET["categoryid"]) && !empty($_GET["categoryid"])){
+            $categoryID = $_GET["categoryid"];
+            $init->displayProductsByCategoryJson($categoryID);
+
+        }else{
+            echo json_encode(array("status" => "something went wrong , please try again later!"));
         }
     }
