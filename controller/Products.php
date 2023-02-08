@@ -74,9 +74,10 @@
            
             if($addedProduct){
                  // upload the image 
-
+                
                 $target_dir = "../view/assets/uploads/";
                 $target_file = $target_dir . $Product["Product_image_name"];
+                
                 move_uploaded_file($Product['Product_image_tmp'] , $target_file);
                 redirect('/dashbaord');
             }else {

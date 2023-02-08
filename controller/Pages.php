@@ -50,5 +50,8 @@
         public function phoneCategory(){
             $this->view('phoneCategory');
         }
+        public function shop(){
+            $this->view('shop');
+        }
 
     }

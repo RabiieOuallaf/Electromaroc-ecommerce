@@ -37,12 +37,7 @@
             <div class="list w-84">
 
                 <ul class="flex justify-between gap-4" style="width: 100%;">
-                    <select class="cursor-pointer bg-inherit hover:text-lime-700 transition duration-170 ease-in-out" >
-                        <option value=""><a href="#categories">Categories</a></option>
-                        <option value="">Computers</option>
-                        <option value="">Phones</option>
-                        <option value="">Tablets</option>
-                    </select>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/shop">Shop</a></li>
                     <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#deals">Deals</a></li>
                     <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#sales">Sales</a></li>
                     <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#services">Services</a></li>
