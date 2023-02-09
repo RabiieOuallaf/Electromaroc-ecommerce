@@ -156,7 +156,7 @@ $CategoriesData = $Categories->displayCategories();
                     </div>
 
 
-                    <div class="button my-6 mx-3">
+                    <div class="button my-6 mx-3" id="cart-btn" data-id="<?= $Product["produit_id"]?>">
                         <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800"><span class="font-mono text-sm">Add to cart</span></button>
                     </div>
 

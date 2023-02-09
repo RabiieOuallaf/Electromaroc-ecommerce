@@ -15,10 +15,6 @@ SearchInput.addEventListener("blur", _ => {
 });
 
 
-const heroElements = document.querySelectorAll(".hidden");
-
-heroElements.forEach((element) => observer.observe(element));
-
 /* turn deals's heart to red in click == */
 
 const hearts = document.querySelectorAll("#heart");
@@ -47,12 +43,24 @@ for(let heart of hearts) {
 /* == Add Products to cart == */ 
 
 const cart_buttons = document.querySelectorAll("#cart-btn");
-
+var localStorageData = [];
 
 for(let cart_button of cart_buttons){
     cart_button.addEventListener("click", _ => {
-        console.log("hey :)");
+        let productID = cart_button.dataset.id;
+        if(!localStorageData.includes(productID)){
+            localStorageData.push(cart_button.dataset.id);
+            localStorage.setItem("product-id" , JSON.stringify(localStorageData));
+        }
+        
+
     });
 }
+
+/* == Store product id in local storage in order to use it later in the cart page== */
+
+
+
+
 
 
