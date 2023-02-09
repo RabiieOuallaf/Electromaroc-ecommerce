@@ -186,9 +186,9 @@
                     <!-- === order quantity === -->
 
                     <div class="order-quantity ml-8">
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
-                        <span id="quantity">1</span>
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
+                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="plusButton">+</span>
+                        <span id="quantity" data-quantity="0">0</span>
+                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="minusButton">-</span>
                     </div>
 
                 </div>
@@ -218,9 +218,9 @@
                     <!-- === order quantity === -->
 
                     <div class="order-quantity ml-8">
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
-                        <span id="quantity">1</span>
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
+                        <span id="plusButton" class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
+                        <span id="quantity" data-quantity="0">0</span>
+                        <span id="minusButton"class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
                     </div>
 
                 </div>
@@ -250,9 +250,9 @@
                     <!-- === order quantity === -->
 
                     <div class="order-quantity ml-8">
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
-                        <span id="quantity">1</span>
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
+                        <span id="plusButton" class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
+                        <span id="quantity" data-quantity="0">0</span>
+                        <span id="minusButton"class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
                     </div>
 
                 </div>
@@ -264,7 +264,7 @@
 
     </section>
 
-    <script src="<?= URLROOT . "/view/javascript/cart.js"?>"></script>
+    <script src="<?= URLROOT . "/view/assets/javascript/cart.js"?>"></script>
 
 </body>
 </html>
