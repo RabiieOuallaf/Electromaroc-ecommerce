@@ -70,7 +70,7 @@
                     
                 </div>
 
-                <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
+                <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out" onclick="location.href='/cart'">
                     <i class="fa-solid fa-cart-shopping mx-2 my-1"></i>
                     <span>Cart</span>
                 </div>

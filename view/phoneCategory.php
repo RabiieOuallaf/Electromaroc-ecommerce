@@ -128,7 +128,7 @@
 
 
                 <div class="button my-6 mx-3">
-                    <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800"><span class="font-mono text-sm">Add to cart</span></button>
+                    <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800" id="cart-btn"><span class="font-mono text-sm">Add to cart</span></button>
                 </div>
                 
             </div>

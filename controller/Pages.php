@@ -53,5 +53,8 @@
         public function shop(){
             $this->view('shop');
         }
+        public function cart(){
+            $this->view('cart');
+        }
 
     }

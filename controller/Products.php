@@ -177,6 +177,8 @@
         }
     }
 
+    // handle xml requests
+
     if(isset($_SERVER["HTTP_CONTENT_TYPE"]) && !strpos($_SERVER["HTTP_CONTENT_TYPE"], "xml")){
         if(!is_null($_GET["categoryid"]) && !empty($_GET["categoryid"])){
             $categoryID = $_GET["categoryid"];

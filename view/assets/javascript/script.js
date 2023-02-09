@@ -14,21 +14,6 @@ SearchInput.addEventListener("blur", _ => {
 
 });
 
-/* == Animations on scroll ==*/
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach( (entry) => {
-
-        if(entry.isIntersecting){
-            console.log(entry);
-            entry.target.classList.add('show');
-        }else {
-            entry.target.classList.remove('show');
-        }
-    })
-
-})
 
 const heroElements = document.querySelectorAll(".hidden");
 
@@ -57,9 +42,17 @@ for(let heart of hearts) {
 
         
     })
-
-    
 }
 
+/* == Add Products to cart == */ 
+
+const cart_buttons = document.querySelectorAll("#cart-btn");
+
+
+for(let cart_button of cart_buttons){
+    cart_button.addEventListener("click", _ => {
+        console.log("hey :)");
+    });
+}
 
 
