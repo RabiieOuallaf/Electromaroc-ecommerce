@@ -40,8 +40,7 @@ for(let heart of hearts) {
     })
 }
 
-/* == Add Products to cart == */ 
-
+/* == Store product id in local storage in order to use it later in the cart page == */
 const cart_buttons = document.querySelectorAll("#cart-btn");
 var localStorageData = [];
 
@@ -56,11 +55,17 @@ for(let cart_button of cart_buttons){
 
     });
 }
+const product_id_array = JSON.parse(localStorage.getItem("product-id"));
 
-/* == Store product id in local storage in order to use it later in the cart page== */
+for(let i = 0; i < product_id_array.length; i++){
+    let xhr = new XMLHttpRequest();
 
-
-
-
-
-
+    xhr.open("POST","localhost:9000/controller.php",true );
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState === xhr.DONE && xhr.status === 200){
+            console.log(xhr.response);
+        }
+    }
+    xhr.send("data=" + encodeURIComponent(product_id_array[i]));
+}

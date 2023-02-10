@@ -72,9 +72,7 @@
 
         public function Login(){
             
-            // Filtring the data 
 
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 
             $data = [
@@ -89,9 +87,6 @@
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-                // Filtring the data 
-
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 
                 $data = [
