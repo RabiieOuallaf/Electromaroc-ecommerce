@@ -159,103 +159,9 @@
 
             </div>
 
-            <div class="order-summary bg-white mx-10 py-8 px-10">
+            <div class="order-summary bg-white mx-10 py-8 px-10" id="product-list">
                 
-                <div class="order-informations flex gap-8">
-                    <!-- === order image === -->
-                    <div class="order-img">
-                        <img  src="<?= URLROOT . "/view/assets/uploads/screenshot_3.png"?>" alt="order image" class="w-32">
-                    </div>
-
-                    <!-- === order content === -->
-
-                    <div class="order-content">
-                        <div class="order-name">
-                            <h4 class="font-semibold">order name</h4>
-                        </div>
-
-                        <div class="order-description">
-                            <p class="font-medium text-sm">order description</p>
-                        </div>
-
-                        <div class="order-price">
-                            <span class="font-light text-sm">99.99$</span>
-                        </div>
-                    </div>
-
-                    <!-- === order quantity === -->
-
-                    <div class="order-quantity ml-8">
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="plusButton">+</span>
-                        <span id="quantity" data-quantity="0">0</span>
-                        <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="minusButton">-</span>
-                    </div>
-
-                </div>
-
-                <div class="order-informations flex gap-8">
-                    <!-- === order image === -->
-                    <div class="order-img">
-                        <img  src="<?= URLROOT . "/view/assets/uploads/screenshot_3.png"?>" alt="order image" class="w-32">
-                    </div>
-
-                    <!-- === order content === -->
-
-                    <div class="order-content">
-                        <div class="order-name">
-                            <h4 class="font-semibold">order name</h4>
-                        </div>
-
-                        <div class="order-description">
-                            <p class="font-medium text-sm">order description</p>
-                        </div>
-
-                        <div class="order-price">
-                            <span class="font-light text-sm">99.99$</span>
-                        </div>
-                    </div>
-
-                    <!-- === order quantity === -->
-
-                    <div class="order-quantity ml-8">
-                        <span id="plusButton" class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
-                        <span id="quantity" data-quantity="0">0</span>
-                        <span id="minusButton"class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
-                    </div>
-
-                </div>
-
-                <div class="order-informations flex gap-8">
-                    <!-- === order image === -->
-                    <div class="order-img">
-                        <img  src="<?= URLROOT . "/view/assets/uploads/screenshot_3.png"?>" alt="order image" class="w-32">
-                    </div>
-
-                    <!-- === order content === -->
-
-                    <div class="order-content">
-                        <div class="order-name">
-                            <h4 class="font-semibold">order name</h4>
-                        </div>
-
-                        <div class="order-description">
-                            <p class="font-medium text-sm">order description</p>
-                        </div>
-
-                        <div class="order-price">
-                            <span class="font-light text-sm">99.99$</span>
-                        </div>
-                    </div>
-
-                    <!-- === order quantity === -->
-
-                    <div class="order-quantity ml-8">
-                        <span id="plusButton" class="mx-2 p-2 border cursor-pointer text-xl font-semibold">+</span>
-                        <span id="quantity" data-quantity="0">0</span>
-                        <span id="minusButton"class="mx-2 p-2 border cursor-pointer text-xl font-semibold">-</span>
-                    </div>
-
-                </div>
+                
                     
             </div>
 
@@ -263,7 +169,7 @@
 
 
     </section>
-
+    <script src="<?= URLROOT . "/view/assets/javascript/script.js"?>"></script>
     <script src="<?= URLROOT . "/view/assets/javascript/cart.js"?>"></script>
 
 </body>

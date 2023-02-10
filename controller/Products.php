@@ -176,22 +176,3 @@
 
         }
     }
-
-    // handle xml requests
-
-    if(isset($_SERVER["HTTP_CONTENT_TYPE"]) && !strpos($_SERVER["HTTP_CONTENT_TYPE"], "xml")){
-        // if(!is_null($_GET["categoryid"]) && !empty($_GET["categoryid"])){
-        //     $categoryID = $_GET["categoryid"];
-        //     $init->displayProductsByCategoryJson($categoryID);
-
-        // }else{
-        //     echo json_encode(array("status" => "something went wrong , please try again later!"));
-        // }
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
-            if(isset($_POST["data"])){
-                $data = $_POST["data"];
-                echo json_encode(count($data));
-            }
-        }
-    }
-

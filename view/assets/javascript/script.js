@@ -41,6 +41,8 @@ for(let heart of hearts) {
 }
 
 /* == Store product id in local storage in order to use it later in the cart page == */
+
+
 const cart_buttons = document.querySelectorAll("#cart-btn");
 var localStorageData = [];
 
@@ -48,24 +50,65 @@ for(let cart_button of cart_buttons){
     cart_button.addEventListener("click", _ => {
         let productID = cart_button.dataset.id;
         if(!localStorageData.includes(productID)){
-            localStorageData.push(cart_button.dataset.id);
+            localStorageData.push({
+                "product-id" : cart_button.dataset.id,
+                "product-name": cart_button.dataset.name,
+                "product-description": cart_button.dataset.description,
+                "product-image": cart_button.dataset.image,
+                "product-price": cart_button.dataset.price
+            });
             localStorage.setItem("product-id" , JSON.stringify(localStorageData));
         }
         
 
     });
 }
-const product_id_array = JSON.parse(localStorage.getItem("product-id"));
 
-for(let i = 0; i < product_id_array.length; i++){
-    let xhr = new XMLHttpRequest();
+const storedProduct = localStorage.getItem("product-id");
+const products = JSON.parse(storedProduct);
+const product_list = document.getElementById("product-list");
 
-    xhr.open("POST","localhost:9000/controller.php",true );
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === xhr.DONE && xhr.status === 200){
-            console.log(xhr.response);
-        }
-    }
-    xhr.send("data=" + encodeURIComponent(product_id_array[i]));
+var product_list_content = "";
+
+console.log(products[0]["product-image"])
+
+
+for(let i = 0; i < products.length; i++){
+    product_list_content += `
+        <div class="order-informations flex gap-6 my-10">
+            <!-- === order image === -->
+            <div class="order-img">
+                <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-28">
+            </div>
+
+            <!-- === order content === -->
+
+            <div class="order-content">
+                <div class="order-name">
+                    <h4 class="font-semibold" id="product-name">${products[i]["product-name"]}</h4>
+                </div>
+
+                <div class="order-description">
+                    <p class="font-medium text-sm" id="product-description">${products[i]["product-description"]}</p>
+                </div>
+
+                <div class="order-price">
+                    <span class="font-light text-sm" id="product-price">${products[i]["product-price"]}$</span>
+                </div>
+            </div>
+
+        <!-- === order quantity === -->
+
+            <div class="order-quantity ml-8">
+                <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="plusButton">+</span>
+                <span id="quantity" data-quantity="0">0</span>
+                <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="minusButton">-</span>
+            </div>
+
+        </div>
+    `;
 }
+
+
+
+product_list.innerHTML = product_list_content;
