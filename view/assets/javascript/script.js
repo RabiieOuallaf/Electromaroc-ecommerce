@@ -78,7 +78,7 @@ for(let i = 0; i < products.length; i++){
         <div class="order-informations flex gap-6 my-10">
             <!-- === order image === -->
             <div class="order-img">
-                <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-28">
+                <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
             </div>
 
             <!-- === order content === -->
@@ -99,10 +99,12 @@ for(let i = 0; i < products.length; i++){
 
         <!-- === order quantity === -->
 
-            <div class="order-quantity ml-8">
-                <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="plusButton">+</span>
+            <div class="order-quantity ml-6">
+                <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton">+</span>
                 <span id="quantity" data-quantity="0">0</span>
-                <span class="mx-2 p-2 border cursor-pointer text-xl font-semibold" id="minusButton">-</span>
+                <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton">-</span>
+                <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton">X</span>
+
             </div>
 
         </div>

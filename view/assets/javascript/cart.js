@@ -1,5 +1,7 @@
 const plus_button = document.querySelectorAll("#plusButton");
 const minus_button = document.querySelectorAll("#minusButton");
+const cancel_button = document.querySelectorAll("#cancelButton");
+
 
 
 
@@ -19,4 +21,10 @@ for(let minus of minus_button){
         minus.previousElementSibling.dataset.quantity > 0 && minus.previousElementSibling.dataset.quantity--; // decrement the value of dataset-quantity property
         minus.previousElementSibling.innerHTML = minus.previousElementSibling.dataset.quantity; // display the new value to the end user 
     })
+}
+
+for(let cancel of cancel_button){
+    cancel.addEventListener("click", _ => {
+        cancel.parentNode.parentNode.remove()
+    });
 }
