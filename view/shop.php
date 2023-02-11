@@ -288,7 +288,7 @@ $CategoriesData = $Categories->displayCategories();
 
     </section>
 
-    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js" type="module"></script>
     <script src="<?= URLROOT; ?>/view/assets/javascript/shopAjax.js"></script>
 
 

@@ -70,7 +70,6 @@ const product_list = document.getElementById("product-list");
 
 var product_list_content = "";
 
-console.log(products[0]["product-image"])
 
 
 for(let i = 0; i < products.length; i++){
@@ -114,3 +113,29 @@ for(let i = 0; i < products.length; i++){
 
 
 product_list.innerHTML = product_list_content;
+
+
+(function products_to_backend() {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "http://localhost:9000/controller/handlers/frontEndProductsHandler.php",true);
+
+    xhr.setRequestHeader("Content-type" , "application/json");
+    
+    xhr.addEventListener("load",function(){
+        
+        if(xhr.readyState === 4 && xhr.status === 200){
+            console.log(`server status : 200 OK : ${xhr.responseText}`);
+        }else if(xhr.status === 404){
+            console.log("NOT FOUND");
+        }
+    });
+    
+    xhr.addEventListener("error", function(){
+        console.log(`request faild : ${xhr.statusText}`);
+    });
+        
+    xhr.send(JSON.stringify(storedProduct));
+
+})();
