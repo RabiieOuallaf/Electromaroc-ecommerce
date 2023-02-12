@@ -77,6 +77,7 @@ for(let i = 0; i < products.length; i++){
         <div class="order-informations flex gap-6 my-10">
             <!-- === order image === -->
             <div class="order-img">
+                <input type="hidden" name="producImage" value=${products[i]["product-image"]}>
                 <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
             </div>
 
@@ -115,27 +116,27 @@ for(let i = 0; i < products.length; i++){
 product_list.innerHTML = product_list_content;
 
 
-(function products_to_backend() {
+// (function products_to_backend() {
 
-    let xhr = new XMLHttpRequest();
+//     let xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "http://localhost:9000/controller/handlers/frontEndProductsHandler.php",true);
+//     xhr.open("POST", "http://localhost:9000/controller/handlers/frontEndProductsHandler.php",true);
 
-    xhr.setRequestHeader("Content-type" , "application/json");
+//     xhr.setRequestHeader("Content-type" , "application/json");
     
-    xhr.addEventListener("load",function(){
+//     xhr.addEventListener("load",function(){
         
-        if(xhr.readyState === 4 && xhr.status === 200){
-            console.log(`server status : 200 OK : ${xhr.responseText}`);
-        }else if(xhr.status === 404){
-            console.log("NOT FOUND");
-        }
-    });
+//         if(xhr.readyState === 4 && xhr.status === 200){
+//             console.log(`server status : 200 OK : ${xhr.responseText}`);
+//         }else if(xhr.status === 404){
+//             console.log("NOT FOUND");
+//         }
+//     });
     
-    xhr.addEventListener("error", function(){
-        console.log(`request faild : ${xhr.statusText}`);
-    });
+//     xhr.addEventListener("error", function(){
+//         console.log(`request faild : ${xhr.statusText}`);
+//     });
         
-    xhr.send(JSON.stringify(storedProduct));
+//     xhr.send(JSON.stringify(storedProduct));
 
-})();
+// })();

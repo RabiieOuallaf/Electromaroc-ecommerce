@@ -2,21 +2,23 @@
 
     
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_CONTENT_TYPE']) && $_SERVER['HTTP_CONTENT_TYPE'] === "application/json"){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        var_dump($_POST);
         
-        $requestBody = file_get_contents("php://input");
+        $data = [
+            "name" => $_POST['clientName']
+        ];
         
 
-        $data = $requestBody;
-        
         if($data){
             http_response_code(200);
-            echo json_decode($data);
+            var_dump($data);
         }else{
             http_response_code(400);
         }
         
     }else{
-        http_response_code(404);
+        echo json_encode($name);
         die();
     };

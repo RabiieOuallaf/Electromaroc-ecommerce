@@ -95,11 +95,12 @@
                 <div class="delivery-informations">
 
 
-                    <form action="" class="mx-5 my-3 px-5 py-7 w-[90%]">
+                    <form action="<?= URLROOT . '/controller/Orders.php' ?>" method="POST" class="mx-5 my-3 px-5 py-7 w-[90%]">
+
                         <div class="first-section flex w-[100%]">
                             <div class="client-name flex flex-col mx-2">
                                 <label for="name" class="font-semibold text-green-800 my-2" >Name: </label>
-                                <input type="text" name="name" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie ouallaf">
+                                <input type="text" name="clientName" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie ouallaf">
                             </div>
 
                             <div class="client-number flex flex-col mx-2">
@@ -127,7 +128,7 @@
                         </div>
 
                         
-                    </form>
+                    
 
                 </div>
 
@@ -164,6 +165,8 @@
                 
                     
             </div>
+
+            </form>
 
         </div>
 
