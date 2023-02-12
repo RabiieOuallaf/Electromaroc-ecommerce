@@ -118,7 +118,21 @@
         }
 
         
+
+        
     }
+
+    public function findUserByEmail($userEmail){
+        $userFound = $this->userModel->findUserByEmail($userEmail);
+
+        if($userFound){
+            return $userFound;
+        }else{
+            return false;
+        }
+    }
+
+
 
     public function createSession($user){
         
