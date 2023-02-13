@@ -30,6 +30,10 @@ for(let i = 0; i < orders.length; i++){
                         <input type="submit" name="type" value="confirm" class="text-red-500">
                         <input type="submit" name="type" value="reject" class="text-yellow-700">
                         <input type="hidden" name="productid" value="${orders[i]["product_id"]} ">
+                        <input type="hidden" name="productprice" value="${orders[i]["product-price"]} ">
+                        <input type="hidden" name="productquantity" value="${orders[i]["product-quantity"]} ">
+
+
 
                     </form>
             

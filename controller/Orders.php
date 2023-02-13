@@ -27,39 +27,52 @@
         }
 
         // Fetch the data 
-
-
-        public function addOrder(){
-            
-            $count = count($_POST['productId']);
-
-
-            for($i = 0; $i < $count; $i++){
-
-
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
-            
-        
-                $OrderAdded = $this->OrderModel->addOrder($_POST["productId"][$i],$_POST["productPrice"][$i], $_POST["productPrice"][$i]);
-
-                if($OrderAdded){
-                    redirect('/cart');
-                    return $OrderAdded;
-                }else{
-                    redirect('/shop');
-                    return false;
-                }
-
-            }
-                
+        public function fetchId(){
+            $data = [
+                'orderId' => $_GET['productid'],
+                'orderPrice' => $_GET['poductprice'],
+                'orderQuantity' => $_GET['productprice'] // to scale later 
+            ];
+            return $data;
         }
+
+
+        public function addOrder(){ 
+            
+            $data = $this->fetchId();
+            
+            
+            $OrderAdded = $this->OrderModel->addOrder($data);
+            var_dump("fofofoof");
+            if($OrderAdded){
+                redirect('/cart');
+                return $OrderAdded;
+            }else{
+                redirect('/shop');
+                return false;
+            }
+
+        }
+                
+    }
             
          
         
-    }
+    
     
     $init = new Orders;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $init->addOrder();
+    if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
+        switch($_GET['type']){
+            case 'confirm': 
+                
+                $init->addOrder();
+                break;
+            default:
+                break;
+        }
+
+            
+        
     }
