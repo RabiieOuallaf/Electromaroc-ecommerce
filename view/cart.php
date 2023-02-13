@@ -96,7 +96,7 @@
                 <div class="delivery-informations">
 
 
-                    <form action="<?= URLROOT . '/controller/Orders.php' ?>" method="POST" class="mx-5 my-3 px-5 py-7 w-[90%]">
+                    <form action="<?= URLROOT . '/controller/Orders.php' ?>" method="POST" class="mx-5 my-3 px-5 py-7 w-[90%]" id="products_form">
 
                         <div class="first-section flex w-[100%]">
                             <div class="client-name flex flex-col mx-2">
@@ -128,46 +128,36 @@
                             <input type="text" name="adress" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="75 street 98">
                         </div>
 
-                        
+                        <div class="products-list" id="products-list" style="display:none;">
+                            <div class="order-informations flex gap-6 my-10">
+                                <input type="hidden" name="productId[]" >
+                                <input type="hidden" name="productName[]">
+                                <input type="hidden" name="productDescription[]">
+                                <input type="hidden" name="productPrice[]" >
+                            </div>
+                        </div>
+
+                        <div class="client-adress flex flex-col mx-2">
+                            <input type="submit" onclick="sendProductsToDashbaord()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
+                        </div>
+
+                    </form>
                     
 
                 </div>
 
-                <!--== payment method ==-->
-                <h3 class="text-xl font-bold text-slate-000 m-5">Payment method</h3>
-                <div class="payment-method flex justify-around my-5">
+                
 
-
-                        <div class="option flex">
-                            <input type="checkbox" class="ml-7 mr-2">
-                            <span class="font-bold text-green-900 my-2">Paypal</span>
-                        </div>
-
-                        <div class="option flex">
-                            <input type="checkbox" class="ml-7 mr-2">
-                            <span class="font-bold text-green-900 my-2">cach on delivery</span>
-                        </div>
-
-                        <div class="option flex">
-                            <input type="checkbox" class="ml-7 mr-2 rounded-full">
-                            <span class="font-bold text-green-900 my-2">mastercard</span>
-                        </div>
-
-                </div>
-
-                <div class="client-adress flex flex-col mx-2">
-                    <input type="submit" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
-                </div>
+            
 
             </div>
 
-            <div class="order-summary bg-white mx-10 py-8 px-10" id="product-list">
+            <div class="order-summary bg-white mx-10 py-8 px-10" id="product-summary">
                 
                 
                     
             </div>
 
-            </form>
 
         </div>
 

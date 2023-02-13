@@ -290,6 +290,8 @@ $CategoriesData = $Categories->displayCategories();
 
     <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
     <script src="<?= URLROOT; ?>/view/assets/javascript/shopAjax.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/cart.js"></script>
+
 
 
 

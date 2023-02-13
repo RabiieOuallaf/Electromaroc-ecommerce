@@ -56,5 +56,8 @@
         public function cart(){
             $this->view('cart');
         }
+        public function dashbaordOrders(){
+            $this->view('dashbaordOrders');
+        }
 
     }

@@ -1,4 +1,6 @@
 <?php
+
+
     if(file_exists('../core/baseController.php')){
         
         require_once '../core/baseController.php';
@@ -21,36 +23,43 @@
         protected $OrderModel;
 
         public function __construct() {
-            $this->OrderModel = $this->model('Order');
+            $this->OrderModel = new Order;
         }
 
         // Fetch the data 
 
-        public function fetchData(){
-            $data = [
-                'OrderClientName' => $_POST['clientName']
-            ];
-
-            return $data;
-        }
 
         public function addOrder(){
-            $orderClientName = $this->fetchData();
+            
+            $count = count($_POST['productId']);
 
-            $OrderAdded = $this->OrderModel->addOrder($orderClientName['OrderClientName']);
 
-            if($OrderAdded){
-                redirect('/shop');
-                return $OrderAdded;
-            }else{
-                redirect('/cart');
-                return false;
+            for($i = 0; $i < $count; $i++){
+
+
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+            
+        
+                $OrderAdded = $this->OrderModel->addOrder($_POST["productId"][$i],$_POST["productPrice"][$i], $_POST["productPrice"][$i]);
+
+                if($OrderAdded){
+                    redirect('/cart');
+                    return $OrderAdded;
+                }else{
+                    redirect('/shop');
+                    return false;
+                }
+
             }
+                
         }
+            
+         
+        
     }
     
     $init = new Orders;
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-       $init->addOrder();
+        $init->addOrder();
     }
