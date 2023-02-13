@@ -1,8 +1,3 @@
-
-
-
-
-
 /* === Store product id in local storage in order to use it later === */
 
 
@@ -57,37 +52,28 @@ for(let i = 0; i < products_summary_length; i++){
             <div class="order-img">
                 <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
             </div>
-
             <!-- === order content === -->
-
             <div class="order-content">
                 <div class="order-name">
                     <input type="text" name="productName" value="${products[i]["product-name"]}" style="display:none;">
                     <h4 class="font-semibold" id="product-name">${products[i]["product-name"]}</h4>
                 </div>
-
                 <div class="order-description">
                     <input type="text" name="productDescription" value="${products[i]["product-description"]}" style="display:none;">
                     <p class="font-medium text-sm" id="product-description">${products[i]["product-description"]}</p>
                 </div>
-
                 <div class="order-price">
                     <input type="number" name="productPrice" value="${products[i]["product-price"]}" style="display:none;">
                     <span class="font-light text-sm" id="product-price">${products[i]["product-price"]}$</span>
                 </div>
             </div>
-
         <!-- === order quantity === -->
-
             <div class="order-quantity ml-6">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
                 <span id="quantity" data-quantity="0">0</span>
-
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
-
             </div>
-
         </div>
     `;
 }
@@ -138,6 +124,8 @@ for(let cancel of cancel_button){
 
     });
 }
+
+
 
 
 
