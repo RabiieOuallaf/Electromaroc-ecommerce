@@ -32,7 +32,7 @@
             $data = [
                 'productId' => $_GET['productid'],
                 'orderPrice' => $_GET['productprice'],
-                'orderQuantity' => $_GET['productprice'], // to scale later 
+                'orderQuantity' => $_GET['productquantity'], // to scale later 
                 'clientid' => (int)$_SESSION['user_id']
             ];
 

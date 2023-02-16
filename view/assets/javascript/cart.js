@@ -17,6 +17,7 @@ for(let cart_button of cart_buttons){
                 "product-description": cart_button.dataset.description,
                 "product-image": cart_button.dataset.image,
                 "product-price": cart_button.dataset.price,
+                "product-quantity": cart_button.dataset.quantity
     
             });
             localStorage.setItem("product-id" , JSON.stringify(localStorageData));
@@ -71,7 +72,7 @@ for(let i = 0; i < products_summary_length; i++){
         <!-- === order quantity === -->
             <div class="order-quantity ml-6">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
-                <span id="quantity" data-quantity="0">0</span>
+                <span id="quantity" data-quantity=${products[i]["product-quantity"]}>${products[i]["product-quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
             </div>
