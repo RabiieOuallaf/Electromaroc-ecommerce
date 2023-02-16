@@ -67,6 +67,17 @@
                 redirect('/dashbaordOrders');
             }
         }
+
+        public function displayOrdersByParam() {
+            $orderStatus = $_GET['orderstatus'];
+            $onHoldOrders = $this->OrderModel->displayOrdersByParam($orderStatus);
+
+            if($onHoldOrders) {
+                return($onHoldOrders);
+            }else{
+                return false;
+            }
+        }
                 
     }
  
@@ -75,15 +86,14 @@
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
         switch($_GET['type']){
-            case 'confirm':
-                  
+            case 'confirm':          
                 $init->confirmeOrder();
-                
                 break;
             case 'reject': 
                 $init->rejectOrder();
                 break;
             default:
+                $init->displayOrdersByParam();
                 break;
         }
 

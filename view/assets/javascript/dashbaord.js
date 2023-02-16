@@ -44,7 +44,9 @@ for(let i = 0; i < orders.length; i++){
         </table>
     `
 }
-    
+
+
+
 
 
 table_container.innerHTML = table_content;

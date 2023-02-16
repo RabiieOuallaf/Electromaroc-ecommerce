@@ -9,9 +9,8 @@ for(let selected_category of selected_categories){
         
         let xhr = new XMLHttpRequest();
 
-        xhr.open("GET", `http://localhost:9000/controller/Products.php/?categoryid=${selected_category.value}`,true);
+        xhr.open("GET", `http://localhost:9000/controller/Orders.php/?categoryid=${selected_category.value}`,true);
 
-        xhr.send();
         xhr.onload = () => {
             if(xhr.status == 200){
                 let Products = JSON.parse(xhr.response);
@@ -19,7 +18,8 @@ for(let selected_category of selected_categories){
                 
             }
         }
-
+        
+        xhr.send();
         
     });
 }

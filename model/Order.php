@@ -57,9 +57,22 @@
 
             
             $orderRejected = $this->Dbh->execute();
-            
+
             if($orderRejected) {
                 return $orderRejected;
+            }else{
+                return false;
+            }
+        }
+
+        // === display orders with on hold status === //
+
+        public function displayOrdersByParam($orderStatus) {
+            $sql = 'SELECT * FROM orders WHERE client_id = :client_id';
+
+            $orders = $this->Dbh->multipleJSON($sql ,':client_id', $orderStatus);
+            if($orders){
+                return($orders);
             }else{
                 return false;
             }

@@ -99,10 +99,15 @@
             $this->execute();
             return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
         }
 
-           
+          
+        public function multipleJSON($query, $param, $value) {
+            $this->stmt = $this->dbh->prepare($query);
+            $this->stmt->bindValue($param, $value);
+            $this->execute();
+            echo json_encode($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+        }
 
         public function rowCount(){
 

@@ -125,6 +125,26 @@ for(let cancel of cancel_button){
     });
 }
 
+/* === displayProducts with status === */ 
+
+(function displayProducts() {
+    const xml = new XMLHttpRequest();
+
+    xml.open('GET', 'http://localhost:9000/controller/Orders.php?orderstatus=1', false);
+
+
+    xml.onload = function() {
+        if(xml.DONE)  {
+            console.log(JSON.stringify(xml.response));
+        }else{
+            console.log("an error occured on request");
+        }
+    }
+
+    xml.send();
+
+})()
+
 
 
 
