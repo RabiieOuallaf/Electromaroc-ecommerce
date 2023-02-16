@@ -20,29 +20,51 @@
             $this->Dbh = new Database;
         }
 
+        // === confirme Order === //
 
-        
+        public function confirmeOrder($data) {
 
-       
-
-        // === Add products to Order === //
-
-        public function addOrder($data) {
-
-            $sql = 'INSERT INTO orders( product_id,product_total_price,product_quantity) VALUES (:product_id, :product_total_price, :product_quantity)';
+            $sql = 'INSERT INTO orders(product_id,product_total_price,product_quantity,order_status) VALUES (:product_id, :product_total_price, :product_quantity, :order_status)';
+            
             $this->Dbh->query($sql);
-            $this->Dbh->bind(':product_id', $data['orderId']);
-            $this->Dbh->bind(':product_total_price', $data['poductprice']);
+           
+            $this->Dbh->bind(':product_id', $data['productId']);
+            $this->Dbh->bind(':product_total_price', $data['orderPrice']);
             $this->Dbh->bind(':product_quantity', $data['orderQuantity']);
+            $this->Dbh->bind(':order_status', 'Confirmed');
 
+            
             $orderAdded = $this->Dbh->execute();
-
+            
             if($orderAdded){
-                return true;
+                return $orderAdded;
             }else {
                 return false;
             }
         }
-        
 
+        // === reject Order === // 
+
+        public function rejectOrder($data) {
+            $sql = 'INSERT INTO orders(product_id,product_total_price,product_quantity,order_status) VALUES (:product_id, :product_total_price, :product_quantity, :order_status)';
+            
+            $this->Dbh->query($sql);
+           
+            $this->Dbh->bind(':product_id', $data['productId']);
+            $this->Dbh->bind(':product_total_price', $data['orderPrice']);
+            $this->Dbh->bind(':product_quantity', $data['orderQuantity']);
+            $this->Dbh->bind(':order_status', 'Rejected');
+
+            
+            $orderRejected = $this->Dbh->execute();
+            
+            if($orderRejected) {
+                return $orderRejected;
+            }else{
+                return false;
+            }
+        }
+        
     }
+
+    

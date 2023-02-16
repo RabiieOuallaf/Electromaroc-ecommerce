@@ -27,47 +27,61 @@
         }
 
         // Fetch the data 
-        public function fetchId(){
+        public function fetchData(){
             $data = [
-                'orderId' => $_GET['productid'],
-                'orderPrice' => $_GET['poductprice'],
-                'orderQuantity' => $_GET['productprice'] // to scale later 
+                'productId' => $_GET['productid'],
+                'orderPrice' => $_GET['productprice'],
+                'orderQuantity' => $_GET['productprice'], // to scale later 
+                'orderId' => $_GET['orderid']
             ];
             return $data;
         }
 
 
-        public function addOrder(){ 
+        public function confirmeOrder() { 
             
-            $data = $this->fetchId();
+            $data = $this->fetchData();
+
+            $OrderAdded = $this->OrderModel->confirmeOrder($data);
+
             
-            
-            $OrderAdded = $this->OrderModel->addOrder($data);
-            var_dump("fofofoof");
             if($OrderAdded){
-                redirect('/cart');
-                return $OrderAdded;
+                redirect('/dashbaordOrders');
             }else{
-                redirect('/shop');
-                return false;
+                redirect('/dashbaordOrders');
+
             }
 
         }
+
+        public function rejectOrder() {
+
+            $orderData = $this->fetchData();
+ 
+
+            $rejectedOrder = $this->OrderModel->rejectOrder($orderData);
+
+            if($rejectedOrder){
+                redirect('/dashbaordOrders');
+            }else{
+                redirect('/dashbaordOrders');
+            }
+        }
                 
     }
-            
-         
-        
-    
-    
+ 
     $init = new Orders;
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
         switch($_GET['type']){
-            case 'confirm': 
+            case 'confirm':
+                  
+                $init->confirmeOrder();
                 
-                $init->addOrder();
+                break;
+            case 'reject': 
+                $init->rejectOrder();
                 break;
             default:
                 break;
