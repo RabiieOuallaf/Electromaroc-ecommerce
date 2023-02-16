@@ -26,6 +26,7 @@ for(let cart_button of cart_buttons){
     });
 }
 
+
 /* === Diplay products in the cart === */
 
 const storedProduct = localStorage.getItem("product-id");
@@ -118,7 +119,6 @@ for(let cancel of cancel_button){
 
                 products.splice(productPosition, 1);
                 localStorage.setItem("order" , JSON.stringify(products));
-
             }
         }
 
@@ -144,6 +144,29 @@ for(let cancel of cancel_button){
     xml.send();
 
 })()
+
+/* === confirme the order === */ 
+
+function buyProduct() {
+    
+    const xml = new XMLHttpRequest();
+
+    xml.open('POST', 'http://localhost:9000/controller/Orders.php', false);
+
+
+    xml.onload = function() {
+        if(xml.DONE) {
+            console.log('done');
+        }else{
+            console.log('not done');
+        }
+    }
+
+    const data = JSON.stringify(products_summary_data);
+
+    xml.send(data);
+
+}
 
 
 

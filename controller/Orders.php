@@ -18,6 +18,7 @@
         require_once 'model/Order.php';
 
     }
+    session_start();
     
     class Orders extends BaseController{
         protected $OrderModel;
@@ -32,8 +33,9 @@
                 'productId' => $_GET['productid'],
                 'orderPrice' => $_GET['productprice'],
                 'orderQuantity' => $_GET['productprice'], // to scale later 
-                'orderId' => $_GET['orderid']
+                'clientid' => (int)$_SESSION['user_id']
             ];
+
             return $data;
         }
 
@@ -69,12 +71,23 @@
         }
 
         public function displayOrdersByParam() {
-            $orderStatus = $_GET['orderstatus'];
-            $onHoldOrders = $this->OrderModel->displayOrdersByParam($orderStatus);
+            
+            $onHoldOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
 
             if($onHoldOrders) {
-                return($onHoldOrders);
+                return $onHoldOrders;
             }else{
+                return false;
+            }
+        }
+
+        public function addOrder() {
+            $data = $this->fetchData();
+            $addOrder = $this->OrderModel->confirmeOrder($data);
+
+            if($addOrder) {
+                return $addOrder;
+            }else {
                 return false;
             }
         }
@@ -99,4 +112,6 @@
 
             
         
+    }else if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $init->addOrder();
     }

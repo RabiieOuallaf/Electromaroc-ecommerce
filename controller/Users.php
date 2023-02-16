@@ -140,6 +140,7 @@
         
         $_SESSION['user_email'] = $user->user_email;
         $_SESSION['user_name'] = $user->user_username;
+        $_SESSION['user_id'] = $user->user_id;
 
         if($user->role == "admin"){
             $_SESSION['user_role'] = $user->role;
@@ -148,7 +149,6 @@
             redirect("/index");
         }
 
-        exit();
     }
 
     public function destroySession(){

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +139,7 @@
                         </div>
 
                         <div class="client-adress flex flex-col mx-2">
-                            <input type="submit" onclick="sendProductsToDashbaord()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
+                            <input type="submit" onclick="buyProduct()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
                         </div>
 
                     </form>
@@ -159,6 +160,11 @@
             </div>
 
 
+        </div>
+
+        <h3 class="text-xl font-bold text-slate-600 m-5">orders status : </h3>
+        <div class="Orders status bg-white mx-10 py-8 px-10">
+            
         </div>
 
 
