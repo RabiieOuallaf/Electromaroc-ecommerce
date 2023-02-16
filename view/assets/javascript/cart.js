@@ -28,6 +28,8 @@ for(let cart_button of cart_buttons){
 }
 
 
+
+
 /* === Diplay products in the cart === */
 
 const storedProduct = localStorage.getItem("product-id");
@@ -96,7 +98,6 @@ for(let plus of plus_button){
         
         plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
         plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
-       
     })
 }
 
