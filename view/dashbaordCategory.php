@@ -208,6 +208,6 @@
     <!-- ./body -->
     </div>
 
-    <script src="<?= URLROOT ?>/view/assets/scripts/dashboard.js"></script>
+                            
 </body>
 </html>

@@ -170,7 +170,7 @@
 
     </section>
     <script src="<?= URLROOT . "/view/assets/javascript/script.js"?>"></script>
-    <script src="<?= URLROOT . "/view/assets/javascript/cart.js"?>"></script>
-
+    <script src="<?= URLROOT . "/view/assets/javascript/cart/cart.js"?>"></script>
+    <script src="<?= URLROOT . "/view/assets/javascript/cart/cart_orderStatus.js"?>"></script>
 </body>
 </html>

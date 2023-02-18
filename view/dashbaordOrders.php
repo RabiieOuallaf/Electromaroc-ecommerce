@@ -204,7 +204,7 @@
     <!-- ./body -->
     </div>
 
-    <script src="<?= URLROOT ?>/view/assets/javascript/dashbaord.js"></script>
+    <script src="<?= URLROOT ?>/view/assets/scripts/dashbaord/dashboard.js"></script>
 
 </body>
 </html>

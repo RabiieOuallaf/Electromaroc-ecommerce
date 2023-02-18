@@ -104,7 +104,7 @@
 
     </section>
 
-    <script src="./assets/javascript/register.js"></script>
+    <script src="./assets/javascript/authentification/register.js"></script>
 
 </body>
 </html>

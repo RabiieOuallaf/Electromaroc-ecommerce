@@ -109,7 +109,7 @@
 
     </section>
 
-    <script src="<?= URLROOT; ?>/view/assets/javascript/register.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/authentification/register.js"></script>
 
 </body>
 </html>

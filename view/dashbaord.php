@@ -240,6 +240,6 @@
     <!-- ./body -->
     </div>
 
-    <script src="<?= URLROOT ?>/view/assets/scripts/dashboard.js"></script>
+    <script src="<?= URLROOT ?>/view/assets/scripts/dashbaord/dashboard.js"></script>
 </body>
 </html>
