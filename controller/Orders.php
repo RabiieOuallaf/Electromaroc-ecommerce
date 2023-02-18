@@ -19,6 +19,8 @@
 
     }
     session_start();
+    header(''); // you need to do some headers here
+    
     
     class Orders extends BaseController{
         protected $OrderModel;
@@ -29,6 +31,7 @@
 
         // Fetch the data 
         public function fetchData(){
+            
             $data = [
                 'productId' => $_GET['productid'],
                 'orderPrice' => $_GET['productprice'],
@@ -60,9 +63,7 @@
 
             $orderData = $this->fetchData();
  
-
             $rejectedOrder = $this->OrderModel->rejectOrder($orderData);
-
             if($rejectedOrder){
                 redirect('/dashbaordOrders');
             }else{
@@ -109,9 +110,7 @@
                 $init->displayOrdersByParam();
                 break;
         }
-
-            
-        
+    
     }else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $init->addOrder();
+        $init->addOrder(); 
     }

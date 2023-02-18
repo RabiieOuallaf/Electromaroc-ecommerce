@@ -158,7 +158,7 @@ function buyProduct() {
 
     xml.onload = function() {
         if(xml.DONE) {
-            console.log('done');
+            console.log(xml.response);
         }else{
             console.log('not done');
         }
