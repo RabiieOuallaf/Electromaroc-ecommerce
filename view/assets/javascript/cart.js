@@ -127,17 +127,21 @@ for(let cancel of cancel_button){
     });
 }
 
+
 /* === displayProducts with status === */ 
 
-(function displayProducts() {
+let client_orders = [];
+
+(function getUserProducts() { // this function will get the user products 
     const xml = new XMLHttpRequest();
 
-    xml.open('GET', 'http://localhost:9000/controller/Orders.php?orderstatus=1', false);
-
+    xml.open('GET', 'http://localhost:9000/controller/Orders.php', false);
 
     xml.onload = function() {
         if(xml.DONE)  {
-            console.log(JSON.stringify(xml.response));
+
+            client_orders = JSON.parse(xml.response);
+
         }else{
             console.log("an error occured on request");
         }
@@ -146,6 +150,49 @@ for(let cancel of cancel_button){
     xml.send();
 
 })()
+
+// after fetching the user's orders data now loop over it and insert it into the dom 
+let orders_status_content = '';
+const order_status_container = document.getElementById('Orders-status');
+
+for(let i = 0; i < client_orders.length; i++) {
+    orders_status_content += `
+        <div class="order-informations">
+
+            <!-- === order content === -->
+            <div class="order-content flex space-around gap-6 my-10">
+            
+                <div class="order-name">
+                    <h4 class="font-semibold" id="product-name">${client_orders[i]["order_id"]}</h4>
+                </div>
+
+                <div class="order-description">
+                    <p class="font-medium text-sm" id="product-description">${client_orders[i]["product_quantity"]}</p>
+                </div>
+
+                <div class="order-price">
+                    <span class="font-light text-sm" id="product-price">${client_orders[i]["product_total_price"]}$</span>
+                </div>
+
+                <div class="order-status">
+                    <span class="font-light text-sm" id="product-price">${client_orders[i]["order_status"]}$</span>
+                </div>
+
+                <div class="order-creating-date">
+                    <span class="font-light text-sm" id="product-price">${client_orders[i]["order_creating_date"]}$</span>
+                </div>
+
+                
+            </div>
+
+        </div>
+    `
+}
+
+// insert the html context to the orders status container in the dom 
+
+order_status_container.innerHTML = orders_status_content;
+
 
 /* === confirme the order === */ 
 

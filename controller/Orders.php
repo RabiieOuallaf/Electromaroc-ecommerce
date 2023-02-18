@@ -19,7 +19,6 @@
 
     }
     session_start();
-    header(''); // you need to do some headers here
     
     
     class Orders extends BaseController{
@@ -73,7 +72,7 @@
 
         public function displayOrdersByParam() {
             
-            $onHoldOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
+            $onHoldOrders = $this->OrderModel->displayOrdersByParam(0);
 
             if($onHoldOrders) {
                 return $onHoldOrders;

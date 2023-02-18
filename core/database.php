@@ -104,16 +104,25 @@
           
         public function multipleJSON($query, $param, $value) {
             $this->stmt = $this->dbh->prepare($query);
-            $this->stmt->bindValue($param, $value, PDO::PARAM_STR);
-            $this->execute();
-            echo json_encode($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+            $this->stmt->bindValue($param, $value, PDO::PARAM_INT);
+
+            if($this->execute()) {
+                echo json_encode($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+            }else{
+                return "There's no products in the cart";
+            };
         }
 
         public function multipleOrders($query, $param, $value) {
+            
             $this->stmt = $this->dbh->prepare($query);
-            $this->stmt->bindValue($param, $value, PDO::PARAM_STR);
-            $this->execute();
-            return ($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+            $this->stmt->bindValue($param, $value, PDO::PARAM_INT);
+            
+            if($this->execute()) {
+                echo json_encode($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+            }else {
+                return "There's no products in the cart";
+            }
         }
 
         public function rowCount(){

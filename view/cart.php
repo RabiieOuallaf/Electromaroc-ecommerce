@@ -163,7 +163,7 @@
         </div>
 
         <h3 class="text-xl font-bold text-slate-600 m-5">orders status : </h3>
-        <div class="Orders status bg-white mx-10 py-8 px-10">
+        <div class="Orders-status bg-white mx-10 py-8 px-10" id="Orders-status">
             
         </div>
 
