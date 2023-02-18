@@ -148,43 +148,43 @@
         <div class="overflow-x-auto shadow-md sm:rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden" >
-                <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                    <thead class="bg-gray-100 dark:bg-gray-700">
-                        <tr>
+                    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                        <thead class="bg-gray-100 dark:bg-gray-700">
+                            <tr>
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Product ID
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Product ID
+                                </th>
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Price
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Price
+                                </th>
 
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Product name
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Product name
+                                </th>
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Product Quantity
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Product Quantity
+                                </th>
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Product Image
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Product Image
+                                </th>
 
-                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Actions
-                            </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Actions
+                                </th>
 
-                        </tr>
-                    </thead>
-                    <tbody id="tbody-container">
-                    
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-container">
+                        
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
                 </div>
             </div>
         </div>
