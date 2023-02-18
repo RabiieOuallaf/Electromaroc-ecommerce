@@ -23,15 +23,15 @@
         // === confirme Order(add it to table with onhold status) === //
 
         public function confirmeOrder($data) {
-
+            
             $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status) VALUES (:client_id,:product_id, :product_total_price, :product_quantity, :order_status)';
             
             $this->Dbh->query($sql);
 
             $this->Dbh->bind(':product_id', $data['productId']);
-            $this->Dbh->bind(':client_id', $data['clientid']);
-            $this->Dbh->bind(':product_total_price', $data['orderPrice']);
-            $this->Dbh->bind(':product_quantity', $data['orderQuantity']);
+            $this->Dbh->bind(':client_id', $_SESSION['user_id']);
+            $this->Dbh->bind(':product_total_price', $data['productPrice']);
+            $this->Dbh->bind(':product_quantity', $data['productQuantity']);
             $this->Dbh->bind(':order_status', 'onhold');
       
             $orderAdded = $this->Dbh->execute();

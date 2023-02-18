@@ -36,22 +36,22 @@ const storedProduct = localStorage.getItem("product-id");
 const products = JSON.parse(storedProduct);
 // const products_list = document.getElementById("products-list");
 const products_summary = document.getElementById("product-summary");
+const products_summary_info = document.getElementById("product-summary-info");
 
 var product_list_content = "";
 
 const products_form = document.getElementById('products_form');
 const div = document.createElement('div');
 
-var products_summary_data = JSON.parse(localStorage.getItem("order"));
 var products_summary_length = products.length;
 // if products_summary_data > 0
-console.log(products_summary_length);
+
 
 
 for(let i = 0; i < products_summary_length; i++){
     product_list_content += `
         <div class="order-informations flex gap-6 my-10">
-            <input type="number" name="productId" value="${products[i]["product-id"]}" style="display:none;">
+            <input type="text" name="productId" value="${products[i]["product-id"]}" style="display:none;">
             <!-- === order image === -->
             <div class="order-img">
                 <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
@@ -67,13 +67,15 @@ for(let i = 0; i < products_summary_length; i++){
                     <p class="font-medium text-sm" id="product-description">${products[i]["product-description"]}</p>
                 </div>
                 <div class="order-price">
-                    <input type="number" name="productPrice" value="${products[i]["product-price"]}" style="display:none;">
+                    <input type="text" name="productPrice" value="${products[i]["product-price"]}" style="display:none;">
                     <span class="font-light text-sm" id="product-price">${products[i]["product-price"]}$</span>
+                    
                 </div>
             </div>
         <!-- === order quantity === -->
             <div class="order-quantity ml-6">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
+                <input type="text" name="productQuantity" value="${products[i]["product-quantity"]}" style="display:none;">
                 <span id="quantity" data-quantity=${products[i]["product-quantity"]}>${products[i]["product-quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
@@ -85,7 +87,7 @@ for(let i = 0; i < products_summary_length; i++){
 
 
 products_summary.innerHTML = product_list_content;
-
+products_summary_info.innerHTML = product_list_content;
 
 // loop over plus and minus buttons and add event listener to them 
 
@@ -126,35 +128,3 @@ for(let cancel of cancel_button){
 
     });
 }
-
-
-
-
-
-/* === confirme the order === */ 
-
-function buyProduct() {
-    
-    const xml = new XMLHttpRequest();
-
-    xml.open('POST', 'http://localhost:9000/controller/Orders.php', false);
-
-
-    xml.onload = function() {
-        if(xml.DONE) {
-            console.log(xml.response);
-        }else{
-            console.log('not done');
-        }
-    }
-
-    const data = JSON.stringify(products_summary_data);
-
-    xml.send(data);
-
-}
-
-
-
-
-

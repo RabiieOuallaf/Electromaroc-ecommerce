@@ -41,6 +41,18 @@
             return $data;
         }
 
+        public function fetchPostData() { // used only for posting the orders data in the DB
+            $data = [
+                'productName' => $_POST['productName'],
+                'productDescription' => $_POST['productDescription'],
+                'productPrice' => (int)$_POST['productPrice'],
+                'productId' => (int)$_POST['productId'],
+                'productQuantity' => (int)$_POST['productQuantity']
+            ];
+
+            return $data;
+        }
+
 
         public function confirmeOrder() { 
             
@@ -82,15 +94,19 @@
         }
 
         public function addOrder() {
-            $data = $this->fetchData();
+
+            $data = $this->fetchPostData();
+            
             $addOrder = $this->OrderModel->confirmeOrder($data);
+           
 
             if($addOrder) {
-                return $addOrder;
+                redirect('/cart');
             }else {
-                return false;
+                redirect('/cart');
             }
         }
+
                 
     }
  
