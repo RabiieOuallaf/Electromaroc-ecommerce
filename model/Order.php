@@ -65,13 +65,11 @@
         // === reject Order === // 
 
         public function rejectOrder($data) {
-            $sql = 'INSERT INTO orders(product_id,product_total_price,product_quantity,order_status) VALUES (:product_id, :product_total_price, :product_quantity, :order_status)';
+            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id';
             
             $this->Dbh->query($sql);
            
-            $this->Dbh->bind(':product_id', $data['productId']);
-            $this->Dbh->bind(':product_total_price', $data['orderPrice']);
-            $this->Dbh->bind(':product_quantity', $data['orderQuantity']);
+            $this->Dbh->bind(':order_id', $data['orderid']);
             $this->Dbh->bind(':order_status', 'Rejected');
 
             
