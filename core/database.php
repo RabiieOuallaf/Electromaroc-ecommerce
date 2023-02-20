@@ -102,12 +102,12 @@
         }
 
           
-        public function multipleJSON($query, $param, $value) {
+        public function multipleBind($query, $param, $value) {
             $this->stmt = $this->dbh->prepare($query);
             $this->stmt->bindValue($param, $value, PDO::PARAM_INT);
 
             if($this->execute()) {
-                echo json_encode($this->stmt->fetchAll(PDO::FETCH_ASSOC));
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
             }else{
                 return "There's no products in the cart";
             };

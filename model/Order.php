@@ -47,10 +47,9 @@
 
         public function confirmeOrderStatus($data) {
 
-            $sql = 'UPDATE orders SET order_status = :orderstatus WHERE order_id = :order_id';
+            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id';
             
             $this->Dbh->query($sql);
-           
             $this->Dbh->bind(':order_status', 'confirmed');
             $this->Dbh->bind(':order_id', $data['orderid']);
     
@@ -85,13 +84,27 @@
             }
         }
 
-        // === display orders with on hold status === //
+        // === display orders of each client  === //
 
         public function displayOrdersByParam($clientId) {
             $sql = 'SELECT * FROM orders WHERE client_id = :client_id';
 
             $orders = $this->Dbh->multipleOrders($sql ,':client_id', $clientId);
             if($orders){
+                return $orders;
+            }else{
+                return false;
+            }
+        }
+
+        // === display orders with onhold status === // 
+
+        public function displayOrdersByStatus($orderStatus) {
+            $sql = 'SELECT * from orders WHERE order_status = :order_status';
+
+            $orders = $this->Dbh->multipleBind($sql, ':order_status', $orderStatus);
+
+            if($orders) {
                 return $orders;
             }else{
                 return false;

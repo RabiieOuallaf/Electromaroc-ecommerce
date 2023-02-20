@@ -1,14 +1,14 @@
 <?php 
     !$_SESSION['user_role'] && redirect('/index');
     
-    if(file_exists("../controller/Products.php")){       
-        require_once "../controller/Products.php";
+    if(file_exists("../controller/Orders.php")){       
+        require_once "../controller/Orders.php";
     }else {
-        require_once "controller/Products.php";
+        require_once "controller/Orders.php";
     }
 
 
-    $Products = $init->displayProducts();
+    $Orders = $init->displayOrdersByStatus('onhold');
 
 ?>
 <!DOCTYPE html>
@@ -145,66 +145,99 @@
             <div class="max-w-2xl mx-auto">
 
         <div class="flex flex-col">
-        <div class="overflow-x-auto shadow-md sm:rounded-lg">
-            <div class="inline-block min-w-full align-middle">
-                <div class="overflow-hidden" >
-                    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                        <thead class="bg-gray-100 dark:bg-gray-700">
-                            <tr>
+            <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="inline-block min-w-full align-middle">
+                    <div class="overflow-hidden" >
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product ID
-                                </th>
+                        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                            <thead class="bg-gray-100 dark:bg-gray-700">
+                                <tr>
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Price
-                                </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Product ID
+                                    </th>
+                                    
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Product Name
+                                    </th>
+
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Price
+                                    </th>
 
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product name
-                                </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Description
+                                    </th>
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product Quantity
-                                </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Quantity
+                                    </th>
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Product Image
-                                </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Image
+                                    </th>
 
-                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Actions
-                                </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        Actions
+                                    </th>
 
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-container">
-                        
+                                </tr>
+                            </thead>
 
-                        </tbody>
+                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
-                    </table>
+                            <?php forEach($Orders as $order ){ ?>
+
+                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_id'] ?></td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_total_price']?></td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_quantity'] ?></td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_creating_date'] ?></td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_status'] ?></td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_id'] ?></td>
+                                    <td class="d-flex justify-content-around">
+
+                                        <form action="http://localhost:9000/controller/Orders.php" method="GET" class="flex flex-col">
+
+                                            <input type="submit" name="type" value="confirm" class="text-red-500">
+                                            <input type="submit" name="type" value="reject" class="text-yellow-700">
+                                            <input type="hidden" name="orderid" value="<?= (int)$order['order_id'] ?>">
+                                            <input type="hidden" name="productprice" value="<?= (int)$order['product_total_price']?>">
+                                            <input type="hidden" name="productquantity" value="<?= (int)$order['product_quantity'] ?>">
+                                            
+                                            
+                                        </form>
+                                    </td>
+                                    
+                                </tr>
+                                <?php }
+                                
+
+                            
+
+                            ?>
+                                
+                                
+                            
+                                
+                            </tbody>
+                        </table>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-
-
-        </div>
-            
-            
-
-        </div>
-            
-
-        </div>
+    </div>
+</div>
 
 
     <!-- ./body -->
     </div>
 
-    <script src="<?= URLROOT ?>/view/assets/scripts/dashbaord/dashboard.js"></script>
+    <script src="<?= URLROOT ?>/view/assets/javascript/dashbaord/dashbaord.js"></script>
 
 </body>
 </html>

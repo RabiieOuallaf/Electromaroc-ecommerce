@@ -32,10 +32,11 @@
         public function fetchData(){
             
             $data = [
-                'productId' => $_GET['productid'],
-                'orderPrice' => $_GET['productprice'],
-                'orderQuantity' => $_GET['productquantity'], // to scale later 
-                'clientid' => (int)$_SESSION['user_id']
+                // 'productId' => $_GET['productid'],
+                // 'orderPrice' => $_GET['productprice'],
+                // 'orderQuantity' => $_GET['productquantity'], // to scale later 
+                'clientid' => (int)$_SESSION['user_id'],
+                'orderid' => (int)$_GET['orderid']
             ];
 
             return $data;
@@ -47,20 +48,20 @@
                 'productDescription' => $_POST['productDescription'],
                 'productPrice' => (int)$_POST['productPrice'],
                 'productId' => (int)$_POST['productId'],
-                'productQuantity' => (int)$_POST['productQuantity']
+                'productQuantity' => (int)$_POST['productQuantity'],
+                
             ];
 
             return $data;
         }
 
 
-        public function confirmeOrder() { 
+        public function confirmeOrderStatus() { 
             
             $data = $this->fetchData();
+            $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
 
-            $OrderAdded = $this->OrderModel->confirmeOrder($data);
 
-            
             if($OrderAdded){
                 redirect('/dashbaordOrders');
             }else{
@@ -84,10 +85,10 @@
 
         public function displayOrdersByParam() {
             
-            $onHoldOrders = $this->OrderModel->displayOrdersByParam(0);
+            $ClientOrders = $this->OrderModel->displayOrdersByParam(0);
 
-            if($onHoldOrders) {
-                return $onHoldOrders;
+            if($ClientOrders) {
+                return $ClientOrders;
             }else{
                 return false;
             }
@@ -107,6 +108,18 @@
             }
         }
 
+        public function displayOrdersByStatus($orderStatus) {
+
+            $onHoldOrders = $this->OrderModel->displayOrdersByStatus($orderStatus);
+
+            if($onHoldOrders) {
+                return $onHoldOrders;
+            }else{
+                return false;
+            };
+
+        }
+
                 
     }
  
@@ -115,14 +128,14 @@
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
         switch($_GET['type']){
-            case 'confirm':          
-                $init->confirmeOrder();
+            case 'confirm':       
+                $init->confirmeOrderStatus();
                 break;
             case 'reject': 
                 $init->rejectOrder();
                 break;
             default:
-                $init->displayOrdersByParam();
+                // $init->displayOrdersByParam();
                 break;
         }
     
