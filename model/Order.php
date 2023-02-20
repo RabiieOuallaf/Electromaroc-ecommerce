@@ -22,31 +22,53 @@
 
         // === confirme Order(add it to table with onhold status) === //
 
-        public function confirmeOrder($data) {
-            
+        public function addOrder($data) {
+            // order data
             $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status) VALUES (:client_id,:product_id, :product_total_price, :product_quantity, :order_status)';
-            
             $this->Dbh->query($sql);
 
+            // orders data 
             $this->Dbh->bind(':product_id', $data['productId']);
             $this->Dbh->bind(':client_id', $_SESSION['user_id']);
             $this->Dbh->bind(':product_total_price', $data['productPrice']);
             $this->Dbh->bind(':product_quantity', $data['productQuantity']);
             $this->Dbh->bind(':order_status', 'onhold');
-      
+            
             $orderAdded = $this->Dbh->execute();
             
-            if($orderAdded){
+            if($orderAdded){ 
                 return $orderAdded;
+                
             }else {
                 return false;
             }
         }
 
+        public function addClientData($data) {
+
+            
+                $sql = 'INSERT INTO client(client_id,client_nomcomplet,client_telephone,client_adresse,client_ville) VALUES (:client_id,:client_nomcomplet,:client_telephone,:client_adresse,:client_ville)';
+                $this->Dbh->query($sql);
+                $this->Dbh->bind(':client_id', (int)$_SESSION['user_id']);
+                $this->Dbh->bind(':client_nomcomplet', $data['clientName']);
+                $this->Dbh->bind(':client_telephone', $data['phoneNumber']);
+                $this->Dbh->bind(':client_adresse', $data['adress']);
+                $this->Dbh->bind(':client_ville', $data['city']);
+                
+                $clientAdded = $this->Dbh->execute();
+
+                if($clientAdded) {
+                    return $clientAdded;
+                }else {
+                    return false;
+                }
+        }
+
+        
+
         // === change the order status to confirmed === // 
 
         public function confirmeOrderStatus($data) {
-
             $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id';
             
             $this->Dbh->query($sql);

@@ -44,12 +44,18 @@
 
         public function fetchPostData() { // used only for posting the orders data in the DB
             $data = [
+                // products data
                 'productName' => $_POST['productName'],
                 'productDescription' => $_POST['productDescription'],
                 'productPrice' => (int)$_POST['productPrice'],
                 'productId' => (int)$_POST['productId'],
                 'productQuantity' => (int)$_POST['productQuantity'],
-                
+                // client data
+                'clientName' => $_POST['clientName'],
+                'phoneNumber' => (int)$_POST['phoneNumber'],
+                'email' => $_POST['email'],
+                'city' => $_POST['city'],
+                'adress' => $_POST['adress'],
             ];
 
             return $data;
@@ -93,20 +99,40 @@
                 return false;
             }
         }
+        // add  client data to the data base 
+        public function addClientData() {
+            $data = $this->fetchPostData();
 
+            $addClientData = $this->OrderModel->addClientData($data);
+
+            if($addClientData ) {
+                return $addClientData;
+            }else {
+                return false;
+            }
+
+        
+        }
+        // add order to data base with onhold status
         public function addOrder() {
 
             $data = $this->fetchPostData();
             
-            $addOrder = $this->OrderModel->confirmeOrder($data);
-           
-
-            if($addOrder) {
+            // $addOrder = $this->OrderModel->addOrder($data);
+            $addOrder = $this->OrderModel->addOrder($data);
+            $addedClientData = $this->addClientData();
+            if($addOrder && $addedClientData) {
                 redirect('/cart');
             }else {
                 redirect('/cart');
             }
         }
+
+        // add client data to the data base 
+
+        
+
+
 
         public function displayOrdersByStatus($orderStatus) {
 
@@ -140,5 +166,6 @@
         }
     
     }else if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $init->addClientData();
         $init->addOrder(); 
     }

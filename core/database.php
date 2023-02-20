@@ -42,6 +42,8 @@
 
         }
 
+        
+
         // Banding values 
 
         public function bind($param, $value, $type = null){
