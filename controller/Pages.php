@@ -59,5 +59,8 @@
         public function dashbaordOrders(){
             $this->view('dashbaordOrders');
         }
+        public function displayProduct(){
+            $this->view('displayProduct');
+        }
 
     }
