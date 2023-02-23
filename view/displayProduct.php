@@ -120,6 +120,10 @@ $Product = $init->DisplayProductById();
 
     </section>
 
+    <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/shopAjax.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_productsSummary.js"></script>
+
 
 </body>
 </html>

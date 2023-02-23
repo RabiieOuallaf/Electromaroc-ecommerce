@@ -28,8 +28,6 @@ for(let cart_button of cart_buttons){
 }
 
 
-
-
 /* === Diplay products in the cart === */
 
 const storedProduct = localStorage.getItem("product-id");
