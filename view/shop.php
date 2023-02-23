@@ -156,7 +156,7 @@ $CategoriesData = $Categories->displayCategories();
 
 
                     <div class="button my-6 mx-3" id="cart-btn" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
-                        <a href="/displayProduct"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
+                        <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
                     </div>
 
                 </div>

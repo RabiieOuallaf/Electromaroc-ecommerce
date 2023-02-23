@@ -6,17 +6,10 @@ if (file_exists("../controller/Products.php")) {
     require_once "controller/Products.php";
 }
 
-$Products = $init->displayProducts();
+
+$Product = $init->DisplayProductById();
 
 
-if (file_exists("../controller/Categories.php")) {
-
-    require_once "../controller/Categories.php";
-} else {
-    require_once "controller/Categories.php";
-}
-$Categories = new Categories;
-$CategoriesData = $Categories->displayCategories();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,8 +91,8 @@ $CategoriesData = $Categories->displayCategories();
     <section class="displayProducts flex w-[90%] mx-20 my-10 ">
         <!-- Image section -->
 
-        <div class="product-image flex my-5 w-[40%]">
-            <img src="<?= URLROOT . '/view/assets/uploads/Screenshot_3.png' ?>" alt="product Image" class="w-96 h-96 rounded-md">
+        <div class="product-image flex my-6 w-[40%]">
+            <img src="<?= URLROOT . '/view/assets/uploads/' . $Product->produit_image ?>" alt="product Image" class="w-96 h-96 rounded-md">
         </div>
 
         <!-- Product informations -->
@@ -107,20 +100,19 @@ $CategoriesData = $Categories->displayCategories();
         <div class="product-informations w-[50%] ">
             
             
-            <div class="deals-descirption-content font-mono" style="width: 70%;">
+            <div class="deals-descirption-content font-mono my-6" style="width: 70%;">
 
-                <h2 class="my-10 font-semibold text-neutral-700 font-sans text-2xl">product name</h2>
-                <p class="text-md text-grey w-[80%]" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore sapiente repudiandae enim dolor? Voluptatem, quia architecto porro quos nisi fugit sed ipsam libero natus, vel ab, sint reprehenderit cumque.</p>
+                <h2 class="my-10 font-semibold text-neutral-700 font-sans text-2xl"><?= $Product->produit_name ?></h2>
+                <p class="text-md text-grey w-[80%]" ><?= $Product->produit_description ?></p>
 
-
-            </div>
-            <div class="deals-price" style="width: 20%;">
-
-                <h4 class="text-grey font-semibold my-4">99.99$</h4>
 
             </div>
 
-            <div class="button my-6 mx-3" id="cart-btn" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
+            <div class="deals-price my-6" style="width: 20%;">
+                <h4 class="text-grey font-semibold my-4"><?= $Product->prix_achat?>$</h4>
+            </div>
+
+            <div class="button my-6 mx-3" id="cart-btn" data-id="<?= $Product->produit_id ?>" data-name="<?= $Product->produit_name ?>" data-description="<?= $Product->produit_description ?>" data-price="<?= $Product->prix_achat ?> "data-image="<?= $Product->produit_image?>" data-quantity="<?= 1 ?>">
                 <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button>
             </div>
         </div>
