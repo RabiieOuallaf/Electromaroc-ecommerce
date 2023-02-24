@@ -1,36 +1,10 @@
-/* === Store product id in local storage in order to use it later === */
 
 
-const cart_buttons = document.querySelectorAll("#cart-btn");
-var localStorageData = [];
-
-
-for(let cart_button of cart_buttons){
-    cart_button.addEventListener("click", _ => {
-        let productID = cart_button.dataset.id;
-        if(!localStorageData.includes(productID)){
-            
-            localStorageData.push({
-
-                "product_id" : cart_button.dataset.id,
-                "product-name": cart_button.dataset.name,
-                "product-description": cart_button.dataset.description,
-                "product-image": cart_button.dataset.image,
-                "product-price": cart_button.dataset.price,
-                "product-quantity": cart_button.dataset.quantity
-    
-            });
-            localStorage.setItem("product-id" , JSON.stringify(localStorageData));
-        }
-        
-
-    });
-}
 
 
 /* === Diplay products in the cart === */
 
-const storedProduct = localStorage.getItem("product-id");
+const storedProduct = localStorage.getItem("products-cart-items");
 const products = JSON.parse(storedProduct);
 // const products_list = document.getElementById("products-list");
 const products_summary = document.getElementById("product-summary");
@@ -48,8 +22,8 @@ var products_summary_length = products.length;
 
 for(let i = 0; i < products_summary_length; i++){
     product_list_content += `
+    <input type="text" name="productId" value="${products[i]["product-id"]}" style="display:none;">
         <div class="order-informations flex gap-6 my-10">
-            <input type="text" name="productId" value="${products[i]["product-id"]}" style="display:none;">
             <!-- === order image === -->
             <div class="order-img">
                 <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
@@ -120,7 +94,8 @@ for(let cancel of cancel_button){
             if(productPosition !== -1){
 
                 products.splice(productPosition, 1);
-                localStorage.setItem("order" , JSON.stringify(products));
+                const newProducts = products;
+                localStorage.setItem("order" , JSON.stringify(newProducts));
             }
         }
 

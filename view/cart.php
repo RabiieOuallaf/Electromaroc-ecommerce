@@ -165,9 +165,7 @@
 
 
     </section>
-    <script src="<?= URLROOT . "/view/assets/javascript/cart/cart_buyingprocess.js"?>"></script>
-    <script src="<?= URLROOT . "/view/assets/javascript/cart/cart_orderStatus.js"?>"></script>
-    <script src="<?= URLROOT . "/view/assets/javascript/cart/cart_productsSummary.js"?>"></script>
 
+    <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_productsSummary.js"></script>
 </body>
 </html>
