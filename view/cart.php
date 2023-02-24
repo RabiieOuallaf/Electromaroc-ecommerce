@@ -97,47 +97,47 @@
 
                     <form action="<?= URLROOT . '/controller/Orders.php' ?>" method="POST" class="mx-5 my-3 px-5 py-7 w-[90%]" id="products_form">
 
-                        <div class="first-section flex w-[100%]">
-                            <div class="client-name flex flex-col mx-2">
-                                <label for="name" class="font-semibold text-green-800 my-2" >Name: </label>
-                                <input type="text" name="clientName" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie ouallaf" required>
+                            <div class="first-section flex w-[100%]">
+                                <div class="client-name flex flex-col mx-2">
+                                    <label for="name" class="font-semibold text-green-800 my-2" >Name: </label>
+                                    <input type="text" name="clientName" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie ouallaf" required>
+                                </div>
+
+                                <div class="client-number flex flex-col mx-2">
+                                    <label for="phoneNumber" class="font-semibold text-green-800 my-2">Phone number: </label>
+                                    <input type="text" name="phoneNumber" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="+212 771349156" required>
+                                </div>
+                            </div>
+                            
+                            <div class="second-section flex w-[100%]">
+                                <div class="client-email flex flex-col mx-2">
+                                    <label for="email" class="font-semibold text-green-800 my-2">Email: </label>
+                                    <input type="text" name="email" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie@gmail.com" required>
+                                </div>
+
+                                <div class="client-city flex flex-col mx-2">
+                                    <label for="city" class="font-semibold text-green-800 my-2">City name: </label>
+                                    <input type="text" name="city" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="orlando" required>
+                                </div>
+                            </div>
+                            
+
+                            <div class="client-adress flex flex-col mx-2">
+                                <label for="adress" class="font-semibold text-green-800 my-2">House adress: </label>
+                                <input type="text" name="adress" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="75 street 98" required>
                             </div>
 
-                            <div class="client-number flex flex-col mx-2">
-                                <label for="phoneNumber" class="font-semibold text-green-800 my-2">Phone number: </label>
-                                <input type="text" name="phoneNumber" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="+212 771349156" required>
-                            </div>
-                        </div>
-                        
-                        <div class="second-section flex w-[100%]">
-                            <div class="client-email flex flex-col mx-2">
-                                <label for="email" class="font-semibold text-green-800 my-2">Email: </label>
-                                <input type="text" name="email" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="rabie@gmail.com" required>
+
+                            <div class="client-adress flex flex-col mx-2">
+                                <input type="submit" onclick="buyProduct()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
                             </div>
 
-                            <div class="client-city flex flex-col mx-2">
-                                <label for="city" class="font-semibold text-green-800 my-2">City name: </label>
-                                <input type="text" name="city" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="orlando" required>
-                            </div>
-                        </div>
-                        
-
-                        <div class="client-adress flex flex-col mx-2">
-                            <label for="adress" class="font-semibold text-green-800 my-2">House adress: </label>
-                            <input type="text" name="adress" class="border border-slate-500 text-slate-700 font-semibold py-3 px-4 mb-4 rounded" placeholder="75 street 98" required>
-                        </div>
-
-
-                        <div class="client-adress flex flex-col mx-2">
-                            <input type="submit" onclick="buyProduct()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
-                        </div>
-
-                        
-                        <div class="order-summary bg-white mx-10 py-8 px-10" id="product-summary-info" style="display:none;">
-                
-                
+                            
+                            <div class="order-summary bg-white mx-10 py-8 px-10" id="product-summary-info" style="display:none;">
                     
-                        </div>
+                    
+                        
+                            </div>
                         
                     </form>
 
