@@ -97,7 +97,7 @@ $Product = $init->DisplayProductById();
 
         <!-- Product informations -->
 
-        <div class="product-informations w-[50%] ">
+        <div class="product-informations w-[50%] margin-auto ml-10">
             
             
             <div class="deals-descirption-content font-mono my-6" style="width: 70%;">
@@ -115,6 +115,14 @@ $Product = $init->DisplayProductById();
             <div class="button my-6 mx-3" id="cart-btn" data-id="<?= $Product->produit_id ?>" data-name="<?= $Product->produit_name ?>" data-description="<?= $Product->produit_description ?>" data-price="<?= $Product->prix_achat ?> "data-image="<?= $Product->produit_image?>" data-quantity="<?= 1 ?>">
                 <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button>
             </div>
+        </div>
+
+        <div class="order-informations w-[35%] rounded-md bg-inherint border border-green-800">
+            
+            <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
+            <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span><?= $Product->prix_achat ?></span></span>
+
+            
         </div>
 
 

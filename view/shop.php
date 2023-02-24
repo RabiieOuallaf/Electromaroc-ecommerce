@@ -108,7 +108,7 @@ $CategoriesData = $Categories->displayCategories();
 
         <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best deals of all times 💻</h2>
 
-        <div class="select-category flex gap-2">
+        <div class="select-categoryflex gap-2">
             <h3 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-xl">Select a category : </h3>
 
             <select name="Product_category" id="Product_category" class="w-32 h-8 my-10">
