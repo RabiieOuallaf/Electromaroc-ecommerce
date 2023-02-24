@@ -60,7 +60,6 @@ for(let i = 0; i < products_summary_length; i++){
 
 products_summary.innerHTML = product_list_content;
 products_summary_info.innerHTML = product_list_content;
-
 // loop over plus and minus buttons and add event listener to them 
 
 const plus_button = document.querySelectorAll("#plusButton");
@@ -82,22 +81,26 @@ for(let minus of minus_button){
     })
 }
 
-for(let cancel of cancel_button){
+for(let cancel of cancel_button){ 
     cancel.addEventListener("click", _ => {
         var product_set_id = cancel.dataset.id;
         cancel.parentNode.parentNode.remove();
-        
 
-        if(storedProduct.includes(product_set_id)){
+        // check if product was stored in localStorage
+        if(localStorage.getItem('products-cart-items')) { 
+            let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
 
-            var productPosition = products.findIndex(obj => obj.product_id === product_set_id); // to take the product's position in the array 
+            // get the position of the product to be removed
+            let productPosition = storedProducts.findIndex(obj => obj.product_id === product_set_id);
+
+            // Check if the product was found and then update the storedProducts array
             if(productPosition !== -1){
-
-                products.splice(productPosition, 1);
-                const newProducts = products;
-                localStorage.setItem("order" , JSON.stringify(newProducts));
+                storedProducts.splice(productPosition, 1);
+                localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
             }
         }
-
     });
 }
+
+
+
