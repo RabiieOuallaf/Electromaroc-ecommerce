@@ -18,6 +18,19 @@ const div = document.createElement('div');
 var products_summary_length = products.length;
 // if products_summary_data > 0
 
+function updaeTotalPrice(){
+    let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
+    let totalPrice = 0;
+
+
+    storedProducts.forEach(product => {
+        totalPrice += product['product_price'] * product['product_quantity'];
+    });
+    return totalPrice;
+}
+
+
+
 
 
 for(let i = 0; i < products_summary_length; i++){
@@ -26,38 +39,42 @@ for(let i = 0; i < products_summary_length; i++){
         <div class="order-informations flex gap-6 my-10">
             <!-- === order image === -->
             <div class="order-img">
-                <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product-image"]}" alt="order image" class="w-24">
+                <img  src="http://localhost:9000//view/assets/uploads/${products[i]["product_image"]}" alt="order image" class="w-24">
             </div>
             <!-- === order content === -->
             <div class="order-content">
                 <div class="order-name">
-                    <input type="text" name="productName" value="${products[i]["product-name"]}" style="display:none;">
-                    <h4 class="font-semibold" id="product-name">${products[i]["product-name"]}</h4>
+                    <input type="text" name="productName" value="${products[i]["product_name"]}" style="display:none;">
+                    <h4 class="font-semibold" id="product-name">${products[i]["product_name"]}</h4>
                 </div>
                 <div class="order-description">
-                    <input type="text" name="productDescription" value="${products[i]["product-description"]}" style="display:none;">
-                    <p class="font-medium text-sm" id="product-description">${products[i]["product-description"]}</p>
+                    <input type="text" name="productDescription" value="${products[i]["product_description"]}" style="display:none;">
+                    <p class="font-medium text-sm" id="product-description">${products[i]["product_description"]}</p>
                 </div>
                 <div class="order-price">
-                    <input type="text" name="productPrice" value="${products[i]["product-price"]}" style="display:none;">
-                    <span class="font-light text-sm" id="product-price">${products[i]["product-price"]}$</span>
+                    <input type="text" name="productPrice" value="${products[i]["product_price"]}" style="display:none;">
+                    <span class="font-light text-sm" id="product-price">${products[i]["product_price"]}$</span>
                     
                 </div>
             </div>
-        <!-- === order quantity === -->
+            <!-- === order quantity === -->
             <div class="order-quantity ml-6">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
-                <input type="text" name="productQuantity" value="${products[i]["product-quantity"]}" style="display:none;">
-                <span id="quantity" data-quantity=${products[i]["product-quantity"]}>${products[i]["product-quantity"]}</span>
+                <input type="text" name="productQuantity" value="${products[i]["product_quantity"]}" style="display:none;">
+                <span id="quantity" data-quantity=${products[i]["product-quantity"]}>${products[i]["product_quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
             </div>
+
         </div>
     `;
 }
 
 
-
+product_list_content += ` <!-- === order total price === -->
+<div class="order-total-price">
+    <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice">${updaeTotalPrice()}</span></span>
+</div>`
 products_summary.innerHTML = product_list_content;
 products_summary_info.innerHTML = product_list_content;
 // loop over plus and minus buttons and add event listener to them 
@@ -96,6 +113,12 @@ for(let cancel of cancel_button){
             if(productPosition !== -1){
                 storedProducts.splice(productPosition, 1);
                 localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
+                updaeTotalPrice();
+                product_list_content += ` <!-- === order total price === -->
+                    <div class="order-total-price">
+                        <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice">${updaeTotalPrice()}</span></span>
+                    </div>`
+                
             }
         }
     });

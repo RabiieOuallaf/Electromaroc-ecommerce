@@ -127,7 +127,8 @@ $Product = $init->DisplayProductById();
         <div class="order-informations w-[35%] rounded-md bg-inherint border border-green-800" id="order-informations">
             
             
-            
+            <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
+            <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice"></span></span>
 
             
         </div>
