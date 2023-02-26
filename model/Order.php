@@ -29,6 +29,8 @@
 
             // orders data 
             $this->Dbh->bind(':product_id', $data['productId']);
+            var_dump($data['product_id']);
+            exit;
             $this->Dbh->bind(':client_id', $_SESSION['user_id']);
             $this->Dbh->bind(':product_total_price', $data['productPrice']);
             $this->Dbh->bind(':product_quantity', $data['productQuantity']);
@@ -47,10 +49,11 @@
         public function addClientData($data) {
 
             
-                $sql = 'INSERT INTO client(client_id,client_nomcomplet,client_telephone,client_adresse,client_ville) VALUES (:client_id,:client_nomcomplet,:client_telephone,:client_adresse,:client_ville)';
+                $sql = 'INSERT INTO client(client_id,client_nomcomplet,client_email,client_telephone,client_adresse,client_ville) VALUES (:client_id,:client_nomcomplet,:client_email,:client_telephone,:client_adresse,:client_ville)';
                 $this->Dbh->query($sql);
                 $this->Dbh->bind(':client_id', (int)$_SESSION['user_id']);
                 $this->Dbh->bind(':client_nomcomplet', $data['clientName']);
+                $this->Dbh->bind(':client_email', $data['email']);
                 $this->Dbh->bind(':client_telephone', $data['phoneNumber']);
                 $this->Dbh->bind(':client_adresse', $data['adress']);
                 $this->Dbh->bind(':client_ville', $data['city']);

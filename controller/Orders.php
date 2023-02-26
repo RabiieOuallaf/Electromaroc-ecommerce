@@ -91,7 +91,7 @@
 
         public function displayOrdersByParam() {
             
-            $ClientOrders = $this->OrderModel->displayOrdersByParam(0);
+            $ClientOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
 
             if($ClientOrders) {
                 return $ClientOrders;
@@ -123,6 +123,7 @@
             $addedClientData = $this->addClientData();
             if($addOrder && $addedClientData) {
                 redirect('/cart');
+                
             }else {
                 redirect('/cart');
             }
@@ -166,6 +167,6 @@
         }
     
     }else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $init->addClientData();
+        
         $init->addOrder(); 
     }
