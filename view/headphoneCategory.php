@@ -22,7 +22,6 @@
 <body>
 
     <nav class="navbar font-mono">
-
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             
@@ -46,15 +45,10 @@
             <div class="list w-84">
 
                 <ul class="flex justify-between gap-4" style="width: 100%;">
-                    <select class="cursor-pointer bg-inherit hover:text-lime-700 transition duration-170 ease-in-out" >
-                        <option value=""><a href="#categories">Categories</a></option>
-                        <option value="">Computers</option>
-                        <option value="">Phones</option>
-                        <option value="">Tablets</option>
-                    </select>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Deals</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Sales</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/index.php">Services</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="/shop">Shop</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#deals">Deals</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#sales">Sales</a></li>
+                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#services">Services</a></li>
                 </ul>
 
             </div>
@@ -67,11 +61,24 @@
             <div class="features flex justify-between">
 
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="/register.php"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                   
+                
+                    <?php if(isset($_SESSION['user_name']) && isset($_SESSION['user_name'])){
+                        ?>
+                            <a href="../controller/Users.php">
+                                <span class="mx-3">Welcome back</span><span class="text-lime-800 font-bold"><?= $_SESSION['user_name'] ?>👋🏻</span>
+                            </a>
+                        <?php
+                    }else{
+                        ?>
+                        <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
+                        <?php
+                    } ?>
+                    
                     
                 </div>
 
-                <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
+                <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out" onclick="location.href='/cart'">
                     <i class="fa-solid fa-cart-shopping mx-2 my-1"></i>
                     <span>Cart</span>
                 </div>

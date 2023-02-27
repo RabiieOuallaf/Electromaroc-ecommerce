@@ -9,65 +9,7 @@
     <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-100">
-    <nav class="navbar font-mono">
-
-        <!-- First section of navbar -->
-        <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
-            
-            <div class="phone">
-                <i class="fa-sharp fa-solid fa-phone text-white"></i>
-                <span class="text-white">+212 77134-9156</span>
-            </div>
-
-            <div class="announce text-white">Get 50% of your first product</div>
-
-            <div class="options text-white"><span><a>change theme</a></span> | <span><a>languages</a></span></div>
-            
-        </div>
-
-        <!-- Second section of navbar -->
-
-        <div class="S-navbar bg-white h-16 flex justify-around items-center">
-
-            <div class="logo">ShopCart</div>
-
-            <div class="list w-84">
-
-                <ul class="flex justify-between gap-4" style="width: 100%;">
-                    <select class="cursor-pointer bg-inherit hover:text-lime-700 transition duration-170 ease-in-out" >
-                        <option value=""><a href="#categories">Categories</a></option>
-                        <option value="">Computers</option>
-                        <option value="">Phones</option>
-                        <option value="">Tablets</option>
-                    </select>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#deals">Deals</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#sales">Sales</a></li>
-                    <li class="cursor-pointer hover:text-lime-700 hover:text-lime-700 transition duration-170 ease-in-out"><a href="#services">Services</a></li>
-                </ul>
-
-            </div>
-
-            <div class="search relative ">
-                <input type="text" class="search-input rounded-full w-64 h-8 text-center bg-gray-200" placeholder="Search product" id="searchInput"/>
-                <i class="fa-solid fa-magnifying-glass absolute right-3 top-2"></i>
-            </div> 
-
-            <div class="features flex justify-between">
-
-                <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <a href="/register"><i class="fa-solid fa-user mx-2 my-1"></i><span>Account</span></a>
-                    
-                </div>
-
-                <div class="cart flex cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
-                    <i class="fa-solid fa-cart-shopping mx-2 my-1"></i>
-                    <span>Cart</span>
-                </div>
-            </div>
-
-        </div>
-
-    </nav>
+    
 
 
     <section class="register-page flex justify-center items-center my-8 " style="height: 100vh;">
