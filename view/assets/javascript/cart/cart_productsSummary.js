@@ -122,6 +122,7 @@ for(let plus of plus_button){
             const index = localStorageData.findIndex(productsData => productsData.product_id === productsData.product_id);
             if(index !== -1) {
                 productQuantity[i].value = Number(plus.nextElementSibling.dataset.quantity);
+
                 localStorageData.splice(index, 1 , data);
             }
 
@@ -147,17 +148,27 @@ for(let minus of minus_button){
             localStorageData = []
         }
 
-        let data = {
-            'product_id' : cartButton.dataset.id,
-            'product_name' : cartButton.dataset.name,
-            'product_description' : cartButton.dataset.description,
-            'product_image' : cartButton.dataset.image,
-            'product_price' : Number(cartButton.dataset.price),
-            'product_quantity' :Number(minus.previousElementSibling.dataset.quantity)
-        }
+        let productsData = []
 
-        const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
-        localStorageData.splice(index, 1 , data);
+        for(let i = 0; i < products_summary_length; i++){
+
+            let data = {
+                'product_id' : cartButton[i].dataset.id,
+                'product_name' : cartButton[i].dataset.name,
+                'product_description' : cartButton[i].dataset.description,
+                'product_image' : cartButton[i].dataset.image,
+                'product_price' : Number(cartButton[i].dataset.price),
+                'product_quantity' :Number(minus.previousElementSibling.dataset.quantity)
+            }
+
+            productsData = data;
+
+            const index = localStorageData.findIndex(data => data.product_id === data.product_id);
+            if(index !== -1) {
+                productQuantity[i].value = Number(minus.previousElementSibling.dataset.quantity);
+                localStorageData.splice(index, 1 , data);
+            }
+        }
 
         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
     })
