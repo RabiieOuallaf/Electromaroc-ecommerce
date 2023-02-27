@@ -53,7 +53,7 @@
                     'productDescription' => $_POST['productDescription'][$i],
                     'productPrice' => (int)$_POST['productPrice'][$i],
                     'productId' => (int)$_POST['productId'][$i],
-                    'productQuantity' => (int)$_POST['productQuantity'][$i],
+                    'productQuantity' => (int)$_POST['productQuantity'][$i]  ,
                     // client data
                     'clientName' => $_POST['clientName'],
                     'phoneNumber' => (int)$_POST['phoneNumber'],

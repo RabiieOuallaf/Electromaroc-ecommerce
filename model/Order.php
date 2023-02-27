@@ -26,6 +26,8 @@
             // order data
             $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status) VALUES (:client_id,:product_id, :product_total_price, :product_quantity, :order_status)';
             $this->Dbh->query($sql);
+            
+            if(empty($data['productQuantity']) ? 1 : $data['productQuantity']);
 
             // orders data 
             $this->Dbh->bind(':product_id', (int)$data['productId']);

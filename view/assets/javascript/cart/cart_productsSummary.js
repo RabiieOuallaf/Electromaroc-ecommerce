@@ -24,7 +24,7 @@ function updaeTotalPrice(){
 
 
     storedProducts.forEach(product => {
-        totalPrice += product['product_price'] * product['product_quantity'];
+        totalPrice += Number(product['product_price']) * Number(product['product_quantity']);
     });
     return totalPrice;
 }
@@ -60,8 +60,8 @@ for(let i = 0; i < products_summary_length; i++){
             </div>
             <!-- === order quantity === -->
             <div class="order-quantity ml-6">
+                <input type="number" name="productQuantity[]" id="productQuantity" value="" style="display:none;">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
-                <input type="text" name="productQuantity[]" value="${products[i]["product_quantity"]}" style="display:none;">
                 <span id="quantity" data-quantity=${products[i]["product_quantity"]}>${products[i]["product_quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
@@ -87,14 +87,14 @@ const plus_button = document.querySelectorAll("#plusButton");
 const minus_button = document.querySelectorAll("#minusButton");
 const cancel_button = document.querySelectorAll("#cancelButton");
 const cartButton = document.querySelectorAll("#cart-btn")
-
+const productQuantity = document.querySelectorAll('#productQuantity');
 
 for(let plus of plus_button){
     plus.addEventListener("click" , _ => {
-        const product_id_set = plus.dataset.id;
+
         plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
-        plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
-          
+        plus.nextElementSibling.innerHTML = Number(plus.nextElementSibling.dataset.quantity); // display the new value to the end user
+
 
         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
@@ -102,19 +102,36 @@ for(let plus of plus_button){
             localStorageData = []
         }
 
-        let data = {
-            'product_id' : cartButton.dataset.id,
-            'product_name' : cartButton.dataset.name,
-            'product_description' : cartButton.dataset.description,
-            'product_image' : cartButton.dataset.image,
-            'product_price' : Number(cartButton.dataset.price),
-            'product_quantity' : plus.previousElementSibling.dataset.quantity
-        }
+        let productsData = []
 
-        const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
-        localStorageData.splice(index, 1 , data);
+        for(let i = 0; i < products_summary_length; i++){
+            
+            let data = {
+                
+                'product_id' : cartButton[i].dataset.id,
+                'product_name' : cartButton[i].dataset.name,
+                'product_description' : cartButton[i].dataset.description,
+                'product_image' : cartButton[i].dataset.image,
+                'product_price' : Number(cartButton[i].dataset.price),
+                'product_quantity' : Number(plus.nextElementSibling.dataset.quantity)
+            }
+
+            productsData=data;
+
+            
+            const index = localStorageData.findIndex(productsData => productsData.product_id === productsData.product_id);
+            if(index !== -1) {
+                productQuantity[i].value = Number(plus.nextElementSibling.dataset.quantity);
+                localStorageData.splice(index, 1 , data);
+            }
 
         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
+
+
+        }
+
+        
+        
     })
 }
 
@@ -122,7 +139,7 @@ for(let minus of minus_button){
     minus.addEventListener("click", _ => {
         
         minus.previousElementSibling.dataset.quantity > 0 && minus.previousElementSibling.dataset.quantity--; // decrement the value of dataset-quantity property
-        minus.previousElementSibling.innerHTML = minus.previousElementSibling.dataset.quantity; // display the new value to the end user 
+        minus.previousElementSibling.innerHTML = Number(minus.previousElementSibling.dataset.quantity); // display the new value to the end user 
 
         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
@@ -136,7 +153,7 @@ for(let minus of minus_button){
             'product_description' : cartButton.dataset.description,
             'product_image' : cartButton.dataset.image,
             'product_price' : Number(cartButton.dataset.price),
-            'product_quantity' : minus.previousElementSibling.dataset.quantity
+            'product_quantity' :Number(minus.previousElementSibling.dataset.quantity)
         }
 
         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
@@ -163,11 +180,7 @@ for(let cancel of cancel_button){
                 storedProducts.splice(productPosition, 1);
                 localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
                 updaeTotalPrice();
-                product_list_content += ` <!-- === order total price === -->
-                    <div class="order-total-price">
-                        <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice">${updaeTotalPrice()}</span></span>
-                    </div>`
-                
+
             }
         }
     });

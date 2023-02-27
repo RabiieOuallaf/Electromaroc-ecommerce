@@ -88,8 +88,10 @@ const total_price = document.getElementById('totalPrice');
 
 for(let plus of plus_button){
     plus.addEventListener("click" , _ => {
+
         plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
         plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
+
 
         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
@@ -102,12 +104,15 @@ for(let plus of plus_button){
             'product_name' : cartButton.dataset.name,
             'product_description' : cartButton.dataset.description,
             'product_image' : cartButton.dataset.image,
-            'product_price' : cartButton.dataset.price,
-            'product_quantity' : plus.nextElementSibling.dataset.quantity
+            'product_price' : Number(cartButton.dataset.price),
+            'product_quantity' : Number(plus.nextElementSibling.dataset.quantity)
         }
 
         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
-        localStorageData.splice(index, 1 , data);
+        if(index !== -1) {
+
+            localStorageData.splice(index, 1 , data);
+        }
 
         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
@@ -137,8 +142,8 @@ for(let minus of minus_button){
             'product_name' : cartButton.dataset.name,
             'product_description' : cartButton.dataset.description,
             'product_image' : cartButton.dataset.image,
-            'product_price' : cartButton.dataset.price,
-            'product_quantity' : minus.previousElementSibling.dataset.quantity
+            'product_price' : Number(cartButton.dataset.price),
+            'product_quantity' : Number(minus.previousElementSibling.dataset.quantity)
         }
 
         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
