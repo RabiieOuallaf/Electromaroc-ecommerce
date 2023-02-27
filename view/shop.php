@@ -113,8 +113,8 @@ $CategoriesData = $Categories->displayCategories();
 
             <select name="Product_category" id="Product_category" class="w-32 h-8 my-10">
                 <?php foreach ($CategoriesData as $CategoryData) { ?>
-
-                    <option value="<?= $CategoryData["categorie_id"] ?>" id="selectedCategory"><?= $CategoryData["categories_name"] ?></option>
+                    <?php $location = $CategoryData["categories_name"]; ?>
+                   <option value="<?= $CategoryData["categorie_id"] ?>" id="selectedCategory" onclick='location.href="/<?= $location ?>"'><?= $CategoryData["categories_name"] ?></option>
 
                 <?php }
 

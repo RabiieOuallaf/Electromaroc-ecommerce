@@ -54,7 +54,6 @@ for(let i = 0; i < products_summary_length; i++){
                 </div>
                 <div class="order-price">
                     <input type="text" name="productPrice[]" value="${products[i]["product_price"]}" style="display:none;">
-                    <input type="hidden" id="cart-btn" data-id="${products[i]["product_id"]}" data-name="${products[i]["product_name"]}" data-description="${products[i]["product_description"]}" data-price="${products[i]["product_price"]}" data-image="${products[i]["product_image"]}" data-quantity="${products[i]["product_quantity"]}">
                     <span class="font-light text-sm" id="product-price">${products[i]["product_price"]}$</span>
                     
                 </div>
@@ -63,9 +62,13 @@ for(let i = 0; i < products_summary_length; i++){
             <div class="order-quantity ml-6">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
                 <input type="text" name="productQuantity[]" value="${products[i]["product_quantity"]}" style="display:none;">
-                <span id="quantity" data-quantity=${products[i]["product-quantity"]}>${products[i]["product_quantity"]}</span>
+                <span id="quantity" data-quantity=${products[i]["product_quantity"]}>${products[i]["product_quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold text-red-500" id="cancelButton" data-id="${products[i]["product_id"]}">X</span>
+            </div>
+
+            <div class="button my-6 mx-3 hidden" id="cart-btn" data-id="${products[i]["product_id"]}" data-name="${products[i]["product_name"]}" data-description="${products[i]["product_description"]}" data-price="${products[i]["product_price"]}" data-image="${products[i]["product_image"]}" data-quantity="${products[i]["product_quantity"]}">
+                <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button>
             </div>
 
         </div>
@@ -83,13 +86,15 @@ products_summary_info.innerHTML = product_list_content;
 const plus_button = document.querySelectorAll("#plusButton");
 const minus_button = document.querySelectorAll("#minusButton");
 const cancel_button = document.querySelectorAll("#cancelButton");
-const cartButton = document.querySelectorAll("#cartButton")
+const cartButton = document.querySelectorAll("#cart-btn")
+
 
 for(let plus of plus_button){
     plus.addEventListener("click" , _ => {
-        
+        const product_id_set = plus.dataset.id;
         plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
         plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
+          
 
         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
@@ -102,8 +107,8 @@ for(let plus of plus_button){
             'product_name' : cartButton.dataset.name,
             'product_description' : cartButton.dataset.description,
             'product_image' : cartButton.dataset.image,
-            'product_price' : cartButton.dataset.price,
-            'product_quantity' : plus.nextElementSibling.dataset.quantity
+            'product_price' : Number(cartButton.dataset.price),
+            'product_quantity' : plus.previousElementSibling.dataset.quantity
         }
 
         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
@@ -130,7 +135,7 @@ for(let minus of minus_button){
             'product_name' : cartButton.dataset.name,
             'product_description' : cartButton.dataset.description,
             'product_image' : cartButton.dataset.image,
-            'product_price' : cartButton.dataset.price,
+            'product_price' : Number(cartButton.dataset.price),
             'product_quantity' : minus.previousElementSibling.dataset.quantity
         }
 

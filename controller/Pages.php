@@ -32,22 +32,22 @@
         public function updateCategory(){
             $this->view('updateCategory');
         }
-        public function computersCategory() {
+        public function computers() {
             $this->view('computersCategory');
         }
-        public function gamingCategory(){
+        public function gaming(){
             $this->view('gamingCategory');
         }
-        public function headphoneCategory(){
+        public function headphone(){
             $this->view('headphoneCategory');
         }
-        public function ipadCategory(){
+        public function ipad(){
             $this->view('ipadCategory');
         }
-        public function mentorCategory(){
+        public function mentor(){
             $this->view('mentorCategory');
         }
-        public function phoneCategory(){
+        public function phone(){
             $this->view('phoneCategory');
         }
         public function shop(){

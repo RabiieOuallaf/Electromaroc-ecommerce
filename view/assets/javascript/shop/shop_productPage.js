@@ -65,11 +65,17 @@ const ProductQuantity = Number(ObjectFromLocalStorageById(productId).product_qua
 
 const totalPriceContainer = document.getElementById('order-informations');
 
-totalPriceContainer.innerHTML = `
-    <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
-    <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
+const updateTotalPrice = () => {
+    totalPriceContainer.innerHTML = `
+        <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
+        <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
+    
+    `
+}
 
-`
+setInterval(updateTotalPrice, 1000);
+
+
 
 
 
@@ -105,16 +111,16 @@ for(let plus of plus_button){
 
         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
-        totalPriceContainer.innerHTML = `
-            <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
-            <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
-    
-        `
-
-
+        updateTotalPrice()
+        
     })
 }
 
+// totalPriceContainer.innerHTML = `
+//     <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
+//     <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
+
+// `
 for(let minus of minus_button){
     minus.addEventListener("click", _ => {
         minus.previousElementSibling.dataset.quantity > 0 && minus.previousElementSibling.dataset.quantity--; // decrement the value of dataset-quantity property
@@ -140,12 +146,9 @@ for(let minus of minus_button){
 
         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
+        updateTotalPrice()
 
-        totalPriceContainer.innerHTML = `
-            <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
-        <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
-    
-        `
+        
 
 
     })
