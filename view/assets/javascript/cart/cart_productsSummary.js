@@ -35,7 +35,7 @@ function updaeTotalPrice(){
 
 for(let i = 0; i < products_summary_length; i++){
     product_list_content += `
-        <input type="text" name="productId[]" value="${products[i]["product-id"]}" style="display:none;">
+        <input type="text" name="productId[]" value="${products[i]["product_id"]}" style="display:none;">
         <div class="order-informations flex gap-6 my-10">
             <!-- === order image === -->
             <div class="order-img">

@@ -129,7 +129,7 @@
 
 
                             <div class="client-adress flex flex-col mx-2">
-                                <input type="submit" onclick="" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
+                                <input type="submit" onclick="freeLocalStorage()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
                             </div>
 
                             
@@ -152,6 +152,8 @@
             <div class="order-summary bg-white mx-10 py-8 px-10" id="product-summary">
                 
                 
+
+                </table>
                     
             </div>
 
@@ -159,8 +161,37 @@
         </div>
 
         <h3 class="text-xl font-bold text-slate-600 m-5">orders status : </h3>
-        <div class="Orders-status bg-white mx-10 py-8 px-10" id="Orders-status">
-            
+        <div class="Orders-status bg-white mx-10 py-8 px-10">
+        <table class="min-w-full table-fixed">
+            <thead class="bg-gray-700">
+                <tr>
+
+                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                        Order ID
+                    </th>
+
+                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                        Product quantity
+                    </th>
+
+                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                        order total cost
+                    </th>
+
+                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                        order status
+                    </th>
+
+                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                        order creating date
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tbody-container" class="bg-green-800 dark:divide-gray-600">
+        
+                
+
+            </tbody>
         </div>
 
 
@@ -168,6 +199,8 @@
 
     <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_productsSummary.js"></script>
     <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_orderStatus.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_freeLocalStorage.js"></script>
+
 
 
 </body>

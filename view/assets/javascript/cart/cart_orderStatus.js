@@ -22,54 +22,23 @@ let client_orders = [];
 })()
 
 // after fetching the user's orders data now loop over it and insert it into the dom 
-let orders_status_content = '';
-const order_status_container = document.getElementById('Orders-status');
+var orders_status_content = '';
+const order_status_container = document.getElementById('tbody-container');
 
 for(let i = 0; i < client_orders.length; i++) {
     orders_status_content += `
 
 
-        <table class="min-w-full table-fixed">
-            <thead class="bg-gray-700">
-                <tr>
+        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                        Order ID
-                    </th>
-
-                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                        Product quantity
-                    </th>
-
-                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                        order total cost
-                    </th>
-
-                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                        order status
-                    </th>
-
-                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                        order creating date
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="tbody-container" class="bg-green-800 dark:divide-gray-600">
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_id"]}</td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_quantity"]}</td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_total_price"]}$</td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_status"]}</td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_creating_date"]}</td>
         
-                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-
-                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_id"]}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_quantity"]}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_total_price"]}$</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_status"]}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_creating_date"]}</td>
-                
-                
-                </tr>
-
-            </tbody>
-
-        </table>
+        
+        </tr>
 
     `
 }

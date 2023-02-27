@@ -28,10 +28,10 @@
             $this->Dbh->query($sql);
 
             // orders data 
-            $this->Dbh->bind(':product_id', $data['productId']);
-            $this->Dbh->bind(':client_id', $_SESSION['user_id']);
-            $this->Dbh->bind(':product_total_price', $data['productPrice']);
-            $this->Dbh->bind(':product_quantity', $data['productQuantity']);
+            $this->Dbh->bind(':product_id', (int)$data['productId']);
+            $this->Dbh->bind(':client_id', (int)$_SESSION['user_id']);
+            $this->Dbh->bind(':product_total_price', (int)$data['productPrice']);
+            $this->Dbh->bind(':product_quantity', (int)$data['productQuantity']);
             $this->Dbh->bind(':order_status', 'onhold');
             
             $orderAdded = $this->Dbh->execute();
