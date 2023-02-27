@@ -43,28 +43,38 @@
         }
 
         public function fetchPostData() { // used only for posting the orders data in the DB
-            $data = [
-                // products data
-                'productName' => $_POST['productName'],
-                'productDescription' => $_POST['productDescription'],
-                'productPrice' => (int)$_POST['productPrice'],
-                'productId' => (int)$_POST['productId'],
-                'productQuantity' => (int)$_POST['productQuantity'],
-                // client data
-                'clientName' => $_POST['clientName'],
-                'phoneNumber' => (int)$_POST['phoneNumber'],
-                'email' => $_POST['email'],
-                'city' => $_POST['city'],
-                'adress' => $_POST['adress'],
-            ];
+            $count = count($_POST['productName']);
+            $productsData = array();
+            
+            for($i = 0; $i < $count; $i++) {
+                $data = [
+                    // products data
+                    'productName' => $_POST['productName'][$i],
+                    'productDescription' => $_POST['productDescription'][$i],
+                    'productPrice' => (int)$_POST['productPrice'][$i],
+                    'productId' => (int)$_POST['productId'][$i],
+                    'productQuantity' => (int)$_POST['productQuantity'][$i],
+                    // client data
+                    'clientName' => $_POST['clientName'],
+                    'phoneNumber' => (int)$_POST['phoneNumber'],
+                    'email' => $_POST['email'],
+                    'city' => $_POST['city'],
+                    'adress' => $_POST['adress']
+                ];
+                $productsData[] = $data;
+            }
 
-            return $data;
+            return $productsData;
+
+            
+
         }
 
 
         public function confirmeOrderStatus() { 
             
             $data = $this->fetchData();
+            
             $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
 
 
@@ -102,8 +112,8 @@
         // add  client data to the data base 
         public function addClientData() {
             $data = $this->fetchPostData();
-
-            $addClientData = $this->OrderModel->addClientData($data);
+            
+            $addClientData = $this->OrderModel->addClientData($data[0]);
 
             if($addClientData ) {
                 return $addClientData;
@@ -116,10 +126,17 @@
         // add order to data base with onhold status
         public function addOrder() {
 
-            $data = $this->fetchPostData();
+
+            $productsData = $this->fetchPostData();
+            $countProduct = count($productsData);
+
+            for($i = 0; $i < $countProduct; $i++) {
+
+                $addOrder = $this->OrderModel->addOrder($productsData[$i]);
+            }
             
+        
             // $addOrder = $this->OrderModel->addOrder($data);
-            $addOrder = $this->OrderModel->addOrder($data);
             $addedClientData = $this->addClientData();
             if($addOrder && $addedClientData) {
                 redirect('/cart');

@@ -129,7 +129,7 @@
 
 
                             <div class="client-adress flex flex-col mx-2">
-                                <input type="submit" onclick="buyProduct()" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
+                                <input type="submit" onclick="" class="border-2  p-1 border-none bg-green-800 text-white rounded-xl my-5 hover:bg-white hover:text-black hover:border transition duration-200 ease-in-out" value="valider the order">
                             </div>
 
                             
@@ -168,6 +168,7 @@
 
     <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_productsSummary.js"></script>
     <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_orderStatus.js"></script>
+
 
 </body>
 </html>

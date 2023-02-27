@@ -3,6 +3,7 @@ var products_summary_data = localStorage.getItem('order');
 const form = document.getElementById('products_form');
 
 const form_data = new FormData(form);
+
 function buyProduct() {
     
     const xml = new XMLHttpRequest();
@@ -19,6 +20,7 @@ function buyProduct() {
     }
 
     const data = 'data' + encodeURIComponent(products_summary_data) + form_data;
+    console.log(data);
 
     xml.send(data)
 

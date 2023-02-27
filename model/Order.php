@@ -29,8 +29,6 @@
 
             // orders data 
             $this->Dbh->bind(':product_id', $data['productId']);
-            var_dump($data['product_id']);
-            exit;
             $this->Dbh->bind(':client_id', $_SESSION['user_id']);
             $this->Dbh->bind(':product_total_price', $data['productPrice']);
             $this->Dbh->bind(':product_quantity', $data['productQuantity']);
