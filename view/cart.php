@@ -136,7 +136,11 @@
                             <div class="order-summary bg-white mx-10 py-8 px-10" id="product-summary-info" style="display:none;">
                     
                     
+                            
                         
+                            </div>
+                            <div class="order-total-price">
+                                <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice"></span></span>
                             </div>
                         
                     </form>

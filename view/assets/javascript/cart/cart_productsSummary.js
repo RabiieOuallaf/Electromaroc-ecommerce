@@ -18,16 +18,7 @@ const div = document.createElement('div');
 var products_summary_length = products.length;
 // if products_summary_data > 0
 
-function updaeTotalPrice(){
-    let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
-    let totalPrice = 0;
 
-
-    storedProducts.forEach(product => {
-        totalPrice += Number(product['product_price']) * Number(product['product_quantity']);
-    });
-    return totalPrice;
-}
 
 
 
@@ -44,10 +35,10 @@ for(let i = 0; i < products_summary_length; i++){
             </div>
             <!-- === order content === -->
             <div class="order-content">
-                <div class="order-name">
-                    <input type="text" name="productName[]" value="${products[i]["product_name"]}" style="display:none;">
-                    <h4 class="font-semibold" id="product-name">${products[i]["product_name"]}</h4>
-                </div>
+            <div class="order-name">
+            <input type="text" name="productName[]" value="${products[i]["product_name"]}" style="display:none;">
+            <h4 class="font-semibold" id="product-name">${products[i]["product_name"]}</h4>
+            </div>
                 <div class="order-description">
                     <input type="text" name="productDescription[]" value="${products[i]["product_description"]}" style="display:none;">
                     <p class="font-medium text-sm" id="product-description">${products[i]["product_description"]}</p>
@@ -56,10 +47,10 @@ for(let i = 0; i < products_summary_length; i++){
                     <input type="text" name="productPrice[]" value="${products[i]["product_price"]}" style="display:none;">
                     <span class="font-light text-sm" id="product-price">${products[i]["product_price"]}$</span>
                     
-                </div>
-            </div>
-            <!-- === order quantity === -->
-            <div class="order-quantity ml-6">
+                    </div>
+                    </div>
+                    <!-- === order quantity === -->
+                    <div class="order-quantity ml-6">
                 <input type="number" name="productQuantity[]" id="productQuantity" value="" style="display:none;">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
                 <span id="quantity" data-quantity=${products[i]["product_quantity"]}>${products[i]["product_quantity"]}</span>
@@ -72,14 +63,26 @@ for(let i = 0; i < products_summary_length; i++){
             </div>
 
         </div>
-    `;
-}
+        `;
+    }
+    
+    
+    function updaeTotalPrice(){
+        let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
+        let totalPrice = 0;
+    
+    
+        storedProducts.forEach(product => {
+            totalPrice += Number(product['product_price']) * Number(product['product_quantity']);
+        });
+        ;
+        return totalPrice;
+    }
 
+        
+    console.log(updaeTotalPrice)
+    
 
-product_list_content += ` <!-- === order total price === -->
-<div class="order-total-price">
-    <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice" id="totalPrice">${updaeTotalPrice()}</span></span>
-</div>`
 products_summary.innerHTML = product_list_content;
 products_summary_info.innerHTML = product_list_content;
 // loop over plus and minus buttons and add event listener to them 
@@ -88,6 +91,7 @@ const minus_button = document.querySelectorAll("#minusButton");
 const cancel_button = document.querySelectorAll("#cancelButton");
 const cartButton = document.querySelectorAll("#cart-btn")
 const productQuantity = document.querySelectorAll('#productQuantity');
+const totalPrice = document.getElementById('totalPrice');
 
 for(let plus of plus_button){
     plus.addEventListener("click" , _ => {
@@ -124,9 +128,10 @@ for(let plus of plus_button){
                 productQuantity[i].value = Number(plus.nextElementSibling.dataset.quantity);
 
                 localStorageData.splice(index, 1 , data);
+                window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
+                totalPrice.innerHTML = updaeTotalPrice();
             }
 
-        window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
 
         }
@@ -167,10 +172,12 @@ for(let minus of minus_button){
             if(index !== -1) {
                 productQuantity[i].value = Number(minus.previousElementSibling.dataset.quantity);
                 localStorageData.splice(index, 1 , data);
+                window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
+                totalPrice.innerHTML = updaeTotalPrice();
+
             }
         }
 
-        window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
     })
 }
 
