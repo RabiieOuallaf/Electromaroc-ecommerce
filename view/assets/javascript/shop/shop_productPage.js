@@ -72,86 +72,89 @@ const updateTotalPrice = () => {
     
     `
 }
+updateTotalPrice();
+
+
 
 // loop over plus and minus buttons and add event listener to them 
 
-const plus_button = document.querySelectorAll("#plusButton");
-const minus_button = document.querySelectorAll("#minusButton");
-const cancel_button = document.querySelectorAll("#cancelButton");
-const total_price = document.getElementById('totalPrice');
+// const plus_button = document.querySelectorAll("#plusButton");
+// const minus_button = document.querySelectorAll("#minusButton");
+// const cancel_button = document.querySelectorAll("#cancelButton");
+// const total_price = document.getElementById('totalPrice');
 
-for(let plus of plus_button){
-    plus.addEventListener("click" , _ => {
+// for(let plus of plus_button){
+//     plus.addEventListener("click" , _ => {
 
-        plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
-        plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
+//         plus.nextElementSibling.dataset.quantity++; // icrement the value of dataset-quantity property
+//         plus.nextElementSibling.innerHTML = plus.nextElementSibling.dataset.quantity; // display the new value to the end user
 
 
-        let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
+//         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
-        if(localStorageData === null) {
-            localStorageData = []
-        }
+//         if(localStorageData === null) {
+//             localStorageData = []
+//         }
 
-        let data = {
-            'product_id' : cartButton.dataset.id,
-            'product_name' : cartButton.dataset.name,
-            'product_description' : cartButton.dataset.description,
-            'product_image' : cartButton.dataset.image,
-            'product_price' : Number(cartButton.dataset.price),
-            'product_quantity' : Number(plus.nextElementSibling.dataset.quantity)
-        }
+//         let data = {
+//             'product_id' : cartButton.dataset.id,
+//             'product_name' : cartButton.dataset.name,
+//             'product_description' : cartButton.dataset.description,
+//             'product_image' : cartButton.dataset.image,
+//             'product_price' : Number(cartButton.dataset.price),
+//             'product_quantity' : Number(plus.nextElementSibling.dataset.quantity)
+//         }
 
-        const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
-        if(index !== -1) {
+//         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
+//         if(index !== -1) {
 
-            localStorageData.splice(index, 1 , data);
-        }
+//             localStorageData.splice(index, 1 , data);
+//         }
 
-        window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
+//         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
-        updateTotalPrice()
+//         updateTotalPrice()
         
-    })
-}
+//     })
+// }
 
 // totalPriceContainer.innerHTML = `
 //     <span class="text-xl font-bold text-slate-600 mx-10 w-[50%]">Product summary</span>
 //     <span class="text-lg font-bold text-slate-500 mx-10 w-[50%]">Total price : <span class="totalPrice">${ProductPrice * ProductQuantity}</span></span>
 
 // `
-for(let minus of minus_button){
-    minus.addEventListener("click", _ => {
-        minus.previousElementSibling.dataset.quantity > 0 && minus.previousElementSibling.dataset.quantity--; // decrement the value of dataset-quantity property
-        minus.previousElementSibling.innerHTML = minus.previousElementSibling.dataset.quantity; // display the new value to the end user 
+// for(let minus of minus_button){
+//     minus.addEventListener("click", _ => {
+//         minus.previousElementSibling.dataset.quantity > 0 && minus.previousElementSibling.dataset.quantity--; // decrement the value of dataset-quantity property
+//         minus.previousElementSibling.innerHTML = minus.previousElementSibling.dataset.quantity; // display the new value to the end user 
 
-        let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
+//         let localStorageData = JSON.parse(localStorage.getItem('products-cart-items'));
 
-        if(localStorageData === null) {
-            localStorageData = []
-        }
+//         if(localStorageData === null) {
+//             localStorageData = []
+//         }
 
-        let data = {
-            'product_id' : cartButton.dataset.id,
-            'product_name' : cartButton.dataset.name,
-            'product_description' : cartButton.dataset.description,
-            'product_image' : cartButton.dataset.image,
-            'product_price' : Number(cartButton.dataset.price),
-            'product_quantity' : Number(minus.previousElementSibling.dataset.quantity)
-        }
+//         let data = {
+//             'product_id' : cartButton.dataset.id,
+//             'product_name' : cartButton.dataset.name,
+//             'product_description' : cartButton.dataset.description,
+//             'product_image' : cartButton.dataset.image,
+//             'product_price' : Number(cartButton.dataset.price),
+//             'product_quantity' : Number(minus.previousElementSibling.dataset.quantity)
+//         }
 
-        const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
-        localStorageData.splice(index, 1 , data);
+//         const index = localStorageData.findIndex(data => data.product_id === Product.product_id);
+//         localStorageData.splice(index, 1 , data);
 
-        window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
+//         window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
 
-        updateTotalPrice()
+//         updateTotalPrice()
 
         
 
 
-    })
-}
+//     })
+// }
 
 
 
