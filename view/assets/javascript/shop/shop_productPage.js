@@ -73,12 +73,6 @@ const updateTotalPrice = () => {
     `
 }
 
-setInterval(updateTotalPrice, 1000);
-
-
-
-
-
 // loop over plus and minus buttons and add event listener to them 
 
 const plus_button = document.querySelectorAll("#plusButton");

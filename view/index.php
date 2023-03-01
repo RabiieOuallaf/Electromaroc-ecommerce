@@ -510,7 +510,7 @@
 
     <!-- Start services section -->
 
-    <section class="help-services my-10" style="height: 90vh;" id="services">
+    <section class="help-services my-10 " style="height: 90vh;" id="services">
 
         <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Services to help you shop</h2>
 

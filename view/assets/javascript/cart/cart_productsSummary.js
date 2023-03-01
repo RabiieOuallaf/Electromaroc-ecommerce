@@ -85,6 +85,7 @@ for(let i = 0; i < products_summary_length; i++){
 
 products_summary.innerHTML = product_list_content;
 products_summary_info.innerHTML = product_list_content;
+
 // loop over plus and minus buttons and add event listener to them 
 const plus_button = document.querySelectorAll("#plusButton");
 const minus_button = document.querySelectorAll("#minusButton");
@@ -92,6 +93,8 @@ const cancel_button = document.querySelectorAll("#cancelButton");
 const cartButton = document.querySelectorAll("#cart-btn")
 const productQuantity = document.querySelectorAll('#productQuantity');
 const totalPrice = document.getElementById('totalPrice');
+
+totalPrice.innerHTML = updaeTotalPrice();
 
 for(let plus of plus_button){
     plus.addEventListener("click" , _ => {
@@ -197,7 +200,7 @@ for(let cancel of cancel_button){
             if(productPosition !== -1){
                 storedProducts.splice(productPosition, 1);
                 localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
-                updaeTotalPrice();
+                totalPrice.innerHTML = updaeTotalPrice();
 
             }
         }
