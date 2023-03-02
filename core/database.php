@@ -75,6 +75,7 @@
         // Execute the prepared statement 
         
         public function execute(){
+            
             return $this->stmt->execute();
         }
 
@@ -94,6 +95,7 @@
             return $this->stmt->fetch(PDO::FETCH_OBJ);
 
         }
+
 
         public function multiple($query){
 

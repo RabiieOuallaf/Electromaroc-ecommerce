@@ -23,19 +23,18 @@
         // Register 
 
         public function register($data){
-            $this->db->query('INSERT INTO admins (user_username ,user_password ,user_email) VALUES (:username, :password, :email)');
+
+            $this->db->query('INSERT INTO users(user_username,user_password,user_email) VALUES (:username,:password,:email)');
 
             $this->db->bind(':username' , $data['FName']);
             $this->db->bind(':password', $data['Password']);
             $this->db->bind(':email', $data['Email']);
-
+            
             // Execute 
-
+            
             if($this->db->execute()){
-
                 return true;
-
-            }else {
+            }else {     
                 
                 return false;
             }
@@ -43,20 +42,28 @@
 
         public function Login($email, $password){
 
-            $sql = 'SELECT * FROM admins WHERE user_email = :email AND user_password = :pwd';
+            $sql = 'SELECT * FROM users WHERE user_email = :email AND user_password = :password';
             $this->db->query($sql);
             $this->db->bind(':email', $email);
-            $this->db->bind(':pwd', $password);
+            $this->db->bind(':password', $password);
 
+            
             $row = $this->db->single();
-        
-            $user_pwd = $row->user_password;
+            
+    
+            if($row) {
+                $user_password = $row->user_password;
 
-            if($password == $user_pwd){
-                return $row;
-            } else {
+                if($password = $user_password){
+                    return $row;
+                } else {
+                    return false;
+                }
+            }else {
                 return false;
             }
+
+            
         }
 
 

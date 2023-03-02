@@ -25,21 +25,18 @@
 
         public function Register(){
 
-              // Filtring the data 
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
                     'FName' => $_POST['FName'],
                     'Email' => $_POST['Email'],
                     'Password' => $_POST['Password']
                 ];
+                
                 // Handling unwanted cases 
                 if(empty($data['FName'] || $data['Email'] || $data['Password'] )){
                     redirect('/register');
                     echo 'Please fill out all inputs';
                 }
                 // Hash password 
-
-                $data['Password'] = password_hash($data['Password'], PASSWORD_DEFAULT);
 
                 if($this->userModel->Register($data)){
                     redirect('/login');
@@ -60,31 +57,31 @@
             ];
 
             // Check if the request method is post 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $data = [
+            $data = [
 
-                    'Email' => $_POST['Email'],
-                    'Password' => $_POST['Password']
-    
-                ];
-                // Handling unwanted cases 
+                'Email' => $_POST['Email'],
+                'Password' => $_POST['Password']
 
-                if(empty($data['Email'] || $data['Password'])){
-                    redirect('/index');
-                    die('Please fill all inputs');
-                }
+            ];
+            // Handling unwanted cases 
 
-                $loggedInUser = $this->userModel->Login($data['Email'], $data['Password']);
+            if(empty($data['Email'] || $data['Password'])){
+                redirect('/index');
+                die('Please fill all inputs');
+            }
 
-                // Create session 
+            $loggedInUser = $this->userModel->Login($data['Email'], $data['Password']);
 
-                if($loggedInUser){
-                    $this->createSession($loggedInUser);       
-                }else {
-                    die('User dose not exsits!');
-                }         
+            // Create session 
 
-        }
+            if($loggedInUser){
+                $this->createSession($loggedInUser);       
+            }else {
+                die('Sorry, Something went wrong! Please make sure from your account informations');
+
+            }         
+
+        
 
         
 
@@ -153,4 +150,6 @@
                 break;
             default: 
                 break;
+    }else {
+        $init->destroySession();
     }
