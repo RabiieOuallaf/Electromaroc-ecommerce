@@ -5,7 +5,7 @@ let client_orders = [];
 (function getUserProducts() { // this function will get the user products 
     const xml = new XMLHttpRequest();
 
-    xml.open('GET', 'http://localhost:9000/controller/Orders.php', false);
+    xml.open('GET', 'http://localhost:9000/controller/Orders.php/?type=ordersByParam', false);
 
     xml.onload = function() {
         if(xml.DONE)  {
@@ -42,6 +42,7 @@ for(let i = 0; i < client_orders.length; i++) {
 
     `
 }
+console.log('he')
 
 // insert the html context to the orders status container in the dom 
 

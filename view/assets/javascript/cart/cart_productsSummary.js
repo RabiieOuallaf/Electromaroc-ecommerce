@@ -5,7 +5,7 @@
 /* === Diplay products in the cart === */
 
 const storedProduct = localStorage.getItem("products-cart-items");
-const products = JSON.parse(storedProduct);
+const products = JSON.parse(storedProduct) || 0;
 // const products_list = document.getElementById("products-list");
 const products_summary = document.getElementById("product-summary");
 const products_summary_info = document.getElementById("product-summary-info");
@@ -51,7 +51,7 @@ for(let i = 0; i < products_summary_length; i++){
                     </div>
                     <!-- === order quantity === -->
                     <div class="order-quantity ml-6">
-                <input type="number" name="productQuantity[]" id="productQuantity" value="" style="display:none;">
+                <input type="number" name="productQuantity[]" id="productQuantity" value="${products[i]['product_quantity']}" style="display:none;">
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="plusButton" data-id="${products[i]["product_id"]}">+</span>
                 <span id="quantity" data-quantity=${products[i]["product_quantity"]}>${products[i]["product_quantity"]}</span>
                 <span class="mx-1 p-2 border cursor-pointer text-xl font-semibold" id="minusButton" data-id="${products[i]["product_id"]}">-</span>
@@ -80,7 +80,6 @@ for(let i = 0; i < products_summary_length; i++){
     }
 
         
-    console.log(updaeTotalPrice)
     
 
 products_summary.innerHTML = product_list_content;
@@ -126,7 +125,7 @@ for(let plus of plus_button){
             productsData=data;
 
             
-            const index = localStorageData.findIndex(productsData => productsData.product_id === productsData.product_id);
+            const index = localStorageData.findIndex(productsData => productsData.product_id === cartButton[i].dataset.id);
             if(index !== -1) {
                 productQuantity[i].value = Number(plus.nextElementSibling.dataset.quantity);
 
@@ -178,8 +177,10 @@ for(let minus of minus_button){
                 window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
                 totalPrice.innerHTML = updaeTotalPrice();
 
+                console.log(index);
             }
         }
+
 
     })
 }
@@ -194,15 +195,16 @@ for(let cancel of cancel_button){
             let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
 
             // get the position of the product to be removed
-            let productPosition = storedProducts.findIndex(obj => obj.product_id === product_set_id);
+            let index = storedProducts.findIndex(obj => obj.product_id === cartButton[i].dataset.id);
 
             // Check if the product was found and then update the storedProducts array
-            if(productPosition !== -1){
-                storedProducts.splice(productPosition, 1);
+            if(index !== -1){
+                storedProducts.splice(index, 1);
                 localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
                 totalPrice.innerHTML = updaeTotalPrice();
-
+                console.log(index);
             }
+
         }
     });
 }

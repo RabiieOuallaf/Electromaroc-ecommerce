@@ -24,7 +24,7 @@
 
         public function addOrder($data) {
             // order data
-            $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status) VALUES (:client_id,:product_id, :product_total_price, :product_quantity, :order_status)';
+            $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status ) VALUES (:client_id,:product_id,:product_total_price,:product_quantity,:order_status)';
             $this->Dbh->query($sql);
             
             if(empty($data['productQuantity']) ? 1 : $data['productQuantity']);
@@ -35,7 +35,7 @@
             $this->Dbh->bind(':product_total_price', (int)$data['productPrice']);
             $this->Dbh->bind(':product_quantity', (int)$data['productQuantity']);
             $this->Dbh->bind(':order_status', 'onhold');
-            
+
             $orderAdded = $this->Dbh->execute();
             
             if($orderAdded){ 

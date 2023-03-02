@@ -44,7 +44,9 @@
 
         public function fetchPostData() { // used only for posting the orders data in the DB
             $count = count($_POST['productName']);
+            $orderId = 0;
             $productsData = array();
+            
             
             for($i = 0; $i < $count; $i++) {
                 $data = [
@@ -59,11 +61,12 @@
                     'phoneNumber' => (int)$_POST['phoneNumber'],
                     'email' => $_POST['email'],
                     'city' => $_POST['city'],
-                    'adress' => $_POST['adress']
+                    'adress' => $_POST['adress'],
                 ];
                 $productsData[] = $data;
+                
             }
-
+            
             return $productsData;
 
             
@@ -99,7 +102,7 @@
             }
         }
 
-        public function displayOrdersByParam() {
+        public function displayOrdersByParam() { // display order by param (i use the session to get the user's id )
             
             $ClientOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
 
@@ -109,6 +112,18 @@
                 return false;
             }
         }
+
+        // public function displayOrders() {
+        //     $total = 0;
+        //     $orders = $this->displayOrdersByParam();
+
+        //     $data = array();
+
+        //     foreach($orders as $order) {
+        //         $orderProducts = 
+        //     }
+
+        // }
         // add  client data to the data base 
         public function addClientData() {
             $data = $this->fetchPostData();
@@ -128,14 +143,15 @@
 
 
             $productsData = $this->fetchPostData();
+            
+            
             $countProduct = count($productsData);
 
             for($i = 0; $i < $countProduct; $i++) {
-
+                
                 $addOrder = $this->OrderModel->addOrder($productsData[$i]);
             }
-            
-        
+
             // $addOrder = $this->OrderModel->addOrder($data);
             $addedClientData = $this->addClientData();
             if($addOrder && $addedClientData) {
@@ -178,6 +194,8 @@
             case 'reject': 
                 $init->rejectOrder();
                 break;
+            case 'ordersByParam': 
+                $init->displayOrdersByParam();
             default:
                 break;
         }

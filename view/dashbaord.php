@@ -86,17 +86,17 @@
 
                     </li>
                     <li class="px-5 hidden md:block">
-                    <div class="flex flex-row items-center h-8">
-                        <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
-                    </div>
+                        <div class="flex flex-row items-center h-8">
+                            <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
+                        </div>
                     </li>
                     <li>
-                    <a href="dashbaord" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">dashboard</span>
-                    </a>
+                        <a href="dashbaord" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fa-solid fa-gauge"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">dashboard</span>
+                        </a>
                     </li>
 
                     <li>
@@ -118,12 +118,12 @@
                     </li>
 
                     <li>
-                    <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">the store</span>
-                    </a>
+                        <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fa-solid fa-gauge"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">the store</span>
+                        </a>
                     </li>
                     
 
@@ -139,92 +139,92 @@
 
             
 
-        <div class="max-w-2xl mx-auto">
+            <div class="max-w-2xl mx-auto">
 
-            <div class="flex flex-col">
-                <div class="overflow-x shadow-md sm:rounded-lg">
-                    <div class="inline-block min-w-full align-middle">
-                        <div class="overflow-hidden">
-                            <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                                <thead class="bg-gray-100 dark:bg-gray-700">
-                                    <tr>
+                <div class="flex flex-col">
+                    <div class="overflow-x shadow-md sm:rounded-lg">
+                        <div class="inline-block min-w-full align-middle">
+                            <div class="overflow-hidden">
+                                <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                    <thead class="bg-gray-100 dark:bg-gray-700">
+                                        <tr>
 
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Product ID
-                                        </th>
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Product ID
+                                            </th>
+                                            
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Product Name
+                                            </th>
+
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Price
+                                            </th>
+
+
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Description
+                                            </th>
+
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Quantity
+                                            </th>
+
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Image
+                                            </th>
+
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Actions
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+
+                                    <?php forEach($Products as $Product ){ ?>
+
+                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
+                                            <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="product image" style="width:100%;"/></td>
+                                            <td class="d-flex justify-content-around">
+
+                                                <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
+
+                                                    <input type="submit" name="type" value="delete" class="text-red-500">
+                                                    <input type="submit" name="type" value="update" class="text-yellow-700">
+                                                    <input type="hidden" name="productid" value="<?php echo $Product['produit_id'] ?>">
+
+                                                </form>
                                         
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Product Name
-                                        </th>
-
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Price
-                                        </th>
-
-
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Description
-                                        </th>
-
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Quantity
-                                        </th>
-
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Image
-                                        </th>
-
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Actions
-                                        </th>
-
-                                    </tr>
-                                </thead>
-
-                                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-
-                                <?php forEach($Products as $Product ){ ?>
-
-                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
-                                        <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="product image" style="width:100%;"/></td>
-                                        <td class="d-flex justify-content-around">
-
-                                            <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
-
-                                                <input type="submit" name="type" value="delete" class="text-red-500">
-                                                <input type="submit" name="type" value="update" class="text-yellow-700">
-                                                <input type="hidden" name="productid" value="<?php echo $Product['produit_id'] ?>">
-
-                                            </form>
-                                    
-                                        </td>
+                                            </td>
+                                            
+                                        </tr>
+                                        <?php }
                                         
-                                    </tr>
-                                    <?php }
+
                                     
 
-                                
-
-                                ?>
+                                    ?>
+                                        
+                                        
                                     
-                                    
-                                
-                                    
-                                </tbody>
-                            </table>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
-
-
-        </div>
             
             
 
