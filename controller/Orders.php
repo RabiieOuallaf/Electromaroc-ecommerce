@@ -179,7 +179,6 @@
                 $init->rejectOrder();
                 break;
             default:
-                $init->displayOrdersByParam();
                 break;
         }
     
