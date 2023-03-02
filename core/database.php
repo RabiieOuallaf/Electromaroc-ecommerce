@@ -103,6 +103,13 @@
 
         }
 
+        public function multipleNoStatement($query){ // the same as multiple method , but without preparing the query 
+
+            $this->execute();
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
           
         public function multipleBind($query, $param, $value) {
             $this->stmt = $this->dbh->prepare($query);

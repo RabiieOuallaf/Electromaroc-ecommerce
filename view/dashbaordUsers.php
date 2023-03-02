@@ -1,14 +1,19 @@
 <?php 
-    !$_SESSION['user_role'] && redirect('/index');
-    
-    if(file_exists("../controller/Products.php")){       
-        require_once "../controller/Products.php";
+    if(!$_SESSION['user_role']){
+        redirect('/index');
+    };
+
+    if(file_exists('../controller/Users.php')){   
+    var_dump('$Users');
+
+        require_once '../controller/Users.php';
     }else {
-        require_once "controller/Products.php";
+        require_once 'controller/Users.php';
     }
 
 
-    $Products = $init->displayProducts();
+    $Users = $init->displayUsers();
+
 
 ?>
 <!DOCTYPE html>
@@ -79,6 +84,7 @@
         <div class="mt-12 flex flex-col top-14 left-0 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
             <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                 <ul class="flex flex-col py-4 space-y-1 items-center">
+
                     <li class="rounded-full border-2 border-blue-500 w-32 h-32 overflow-hidden">
                         
                         <img src="<?= URLROOT . '/view/assets/images/admin.jpg' ?>" alt="admin picture">
@@ -97,30 +103,25 @@
                             <span class="ml-2 text-sm tracking-wide truncate">dashboard</span>
                         </a>
                     </li>
+
                     <li>
-                        <a href="dashbaordCategory" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                            <span class="inline-flex justify-center items-center ml-4">
-                                <i class="fa-solid fa-gauge"></i>
-                            </span>
-                            <span class="ml-2 text-sm tracking-wide truncate">categories</span>
-                        </a>
+                    <a href="dashbaordCategory" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">categories</span>
+                    </a>
                     </li>
+
                     <li>
-                        <a href="dashbaordOrders" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                            <span class="inline-flex justify-center items-center ml-4">
-                                <i class="fa-solid fa-gauge"></i>
-                            </span>
-                            <span class="ml-2 text-sm tracking-wide truncate">Orders</span>
-                        </a>
+                    <a href="dashbaordOrders" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Orders</span>
+                    </a>
                     </li>
-                    <li>
-                        <a href="dashbaordUsers" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                            <span class="inline-flex justify-center items-center ml-4">
-                                <i class="fa-solid fa-gauge"></i>
-                            </span>
-                            <span class="ml-2 text-sm tracking-wide truncate">Users</span>
-                        </a>
-                    </li>
+
                     <li>
                         <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">
@@ -146,71 +147,49 @@
             <div class="max-w-2xl mx-auto">
 
                 <div class="flex flex-col">
-                    <div class="overflow-x shadow-md sm:rounded-lg">
+                    <div class="overflow-x-auto shadow-md sm:rounded-lg">
                         <div class="inline-block min-w-full align-middle">
-                            <div class="overflow-hidden">
+                            <div class="overflow-hidden" >
+
                                 <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
                                     <thead class="bg-gray-100 dark:bg-gray-700">
                                         <tr>
 
                                             <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Product ID
+                                                user id
                                             </th>
                                             
                                             <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Product Name
+                                                username
                                             </th>
 
                                             <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Price
-                                            </th>
-
-
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Description
+                                                user_email
                                             </th>
 
                                             <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Quantity
+                                                user role
                                             </th>
 
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Image
-                                            </th>
-
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                Actions
-                                            </th>
+                                           
 
                                         </tr>
                                     </thead>
 
                                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
-                                    <?php forEach($Products as $Product ){ ?>
+                                    <?php forEach($Users as $user ){ ?>
 
                                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_id"]?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
-                                            <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="product image" style="width:100%;"/></td>
-                                            <td class="d-flex justify-content-around">
-
-                                                <form action="<?= URLROOT ?>/controller/UpdateDeleteHandler.php" method="GET" class="flex flex-col">
-
-                                                    <input type="submit" name="type" value="delete" class="text-red-500">
-                                                    <input type="submit" name="type" value="update" class="text-yellow-700">
-                                                    <input type="hidden" name="productid" value="<?php echo $Product['produit_id'] ?>">
-
-                                                </form>
-                                        
-                                            </td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $user['user_id'] ?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $user['user_username']?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $user['user_email'] ?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $user['role'] ?></td>
+                                            
                                             
                                         </tr>
-                                        <?php }
+                                    <?php }
                                         
 
                                     
@@ -222,25 +201,19 @@
                                         
                                     </tbody>
                                 </table>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-            
-            
-
         </div>
-            
-
-        </div>
-
 
     <!-- ./body -->
     </div>
 
-    <script src="<?= URLROOT ?>/view/assets/scripts/dashbaord/dashboard.js"></script>
+    <script src="<?= URLROOT ?>/view/assets/javascript/dashbaord/dashbaord.js"></script>
+
 </body>
 </html>

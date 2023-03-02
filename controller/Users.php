@@ -1,108 +1,77 @@
 <?php
 
-    require_once '../core/BaseController.php';
+    if(file_exists("../core/baseController.php")){ 
+        require_once "../core/baseController.php";
+    }else {
+        require_once "core/baseController.php";
+    }
 
+    if(file_exists("../model/User.php")){   
+        require_once "../model/User.php";
+    }else {
+
+        require_once "model/User.php";
+    }
 
     class Users extends BaseController{
 
-        private $userModel;
+        public $userModel;
 
         public function __construct(){
 
             $this->userModel = $this->model('User');
+            
         }
 
         public function Register(){
 
-            // Check if the request method is post 
-
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-                // Filtring the data 
-
+              // Filtring the data 
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-
                 $data = [
-
-                    "FName" => $_POST['FName'],
-                    "Email" => $_POST['Email'],
-                    "Password" => $_POST['Password']
-    
+                    'FName' => $_POST['FName'],
+                    'Email' => $_POST['Email'],
+                    'Password' => $_POST['Password']
                 ];
-
                 // Handling unwanted cases 
-
-                if(empty($data["FName"] || $data["Email"] || $data["Password"] )){
-                    
-                    redirect("/register");
-                    echo "Please fill out all inputs";
-    
+                if(empty($data['FName'] || $data['Email'] || $data['Password'] )){
+                    redirect('/register');
+                    echo 'Please fill out all inputs';
                 }
                 // Hash password 
 
                 $data['Password'] = password_hash($data['Password'], PASSWORD_DEFAULT);
 
                 if($this->userModel->Register($data)){
-                    redirect("/login");
+                    redirect('/login');
                 }else{
-                    die("Sorry, Something went wrong! Please make sure from your account informations");
+                    die('Sorry, Something went wrong! Please make sure from your account informations');
                 }
-
-
-            }else {
-
-                echo "Sorry , the request method should be a POST";
-
-                $data = [
-
-                    "FName" => '',
-                    "Email" => '',
-                    "Password" => ''
-    
-                ];
-
-                redirect("/register");
-            }
-
-
             
         }
 
 
         public function Login(){
-            
-
-
 
             $data = [
 
-                "Email" => $_POST['Email'],
-                "Password" => $_POST['Password']
+                'Email' => $_POST['Email'],
+                'Password' => $_POST['Password']
 
             ];
 
-                
             // Check if the request method is post 
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-
-
                 $data = [
 
-                    "Email" => $_POST['Email'],
-                    "Password" => $_POST['Password']
+                    'Email' => $_POST['Email'],
+                    'Password' => $_POST['Password']
     
                 ];
-
                 // Handling unwanted cases 
 
-                if(empty($data["Email"] || $data["Password"])){
-
-                    redirect("/index");
-                    die("Please fill all inputs");
-    
+                if(empty($data['Email'] || $data['Password'])){
+                    redirect('/index');
+                    die('Please fill all inputs');
                 }
 
                 $loggedInUser = $this->userModel->Login($data['Email'], $data['Password']);
@@ -112,7 +81,7 @@
                 if($loggedInUser){
                     $this->createSession($loggedInUser);       
                 }else {
-                    die("User dose not exsits!");
+                    die('User dose not exsits!');
                 }         
 
         }
@@ -142,11 +111,11 @@
         $_SESSION['user_name'] = $user->user_username;
         $_SESSION['user_id'] = $user->user_id;
 
-        if($user->role == "admin"){
+        if($user->role == 'admin'){
             $_SESSION['user_role'] = $user->role;
-            redirect("/dashbaord");
-        }else if($user->role == "client"){
-            redirect("/index");
+            redirect('/dashbaord');
+        }else if($user->role == 'client'){
+            redirect('/index');
         }
 
     }
@@ -156,32 +125,32 @@
         session_unset();
         session_destroy();
 
-        redirect("/index");
+        redirect('/index');
       
+    }
+
+    public function DisplayUsers() {
+        $users = $this->userModel->displayUsers();
+        if($users) {
+            return $users;
+        }else {
+            echo "There's no users!";
+        }
     }
 
 }
 
     $init = new Users;
 
-    if($_SERVER["REQUEST_METHOD"] == "POST")
+    if($_SERVER['REQUEST_METHOD'] === 'POST')
 
-    switch($_POST['type']){
-
-        case 'register':
-
-            $init->Register();
-            break;
-
-        case 'login':
-
-            $init->Login();
-            break;
-
-        default: 
-            break;
-    }else {
-        
-        $init->destroySession();
-        
+        switch($_POST['type']){
+            case 'register':
+                $init->Register();
+                break;
+            case 'login':
+                $init->Login();
+                break;
+            default: 
+                break;
     }

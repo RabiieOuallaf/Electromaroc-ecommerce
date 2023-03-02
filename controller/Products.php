@@ -1,21 +1,14 @@
 <?php 
 
-    if(file_exists("../core/baseController.php")){
-            
+    if(file_exists("../core/baseController.php")){        
         require_once "../core/baseController.php";
-
     }else {
         require_once "core/baseController.php";
-
     }
-
-    if(file_exists("../model/Product.php")){
-        
+    if(file_exists("../model/Product.php")){   
         require_once "../model/Product.php";
-
     }else {
         require_once "model/Product.php";
-
     }
 
     
@@ -164,7 +157,6 @@
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         
         switch($_POST["type"]){
-
             case "add":
                 $init->addProduct();
                 break;

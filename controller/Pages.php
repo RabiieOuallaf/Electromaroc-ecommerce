@@ -62,5 +62,8 @@
         public function displayProduct(){
             $this->view('displayProduct');
         }
+        public function dashbaordUsers(){
+            $this->view('dashbaordUsers');
+        }
 
     }

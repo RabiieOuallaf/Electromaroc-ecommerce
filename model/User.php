@@ -1,12 +1,20 @@
 <?php 
 
-    require_once '../core/Database.php';
-    require_once '../config/config.php';
-    require_once '../helpers/url_helpers.php';
+    if(file_exists("../core/database.php")){
+        require_once '../core/database.php';
+        require_once '../config/config.php';
+        require_once '../helpers/url_helpers.php';
+        require_once "../core/database.php";
+    }else {
+        require_once 'core/database.php';
+        require_once 'config/config.php';
+        require_once 'helpers/url_helpers.php';
+        require_once "core/database.php";
+    } 
 
     class User {
 
-        private $db;
+        protected $db;
 
         public function __construct(){
             $this->db = new Database;
@@ -35,7 +43,7 @@
 
         public function Login($email, $password){
 
-            $sql = "SELECT * FROM admins WHERE user_email = :email AND user_password = :pwd";
+            $sql = 'SELECT * FROM admins WHERE user_email = :email AND user_password = :pwd';
             $this->db->query($sql);
             $this->db->bind(':email', $email);
             $this->db->bind(':pwd', $password);
@@ -56,7 +64,7 @@
 
         public function findUserByEmail($email) {
 
-            $this->db->query("SELECT * FROM users WHERE email = :email");
+            $this->db->query('SELECT * FROM users WHERE email = :email');
             $this->db->bind(':email', $email);
 
             $row = $this->db->single();
@@ -68,6 +76,17 @@
                 return $row;
 
             }else {
+                return false;
+            }
+        }
+
+        public function displayUsers() {
+            $sql = $this->db->query('SELECT * FROM users'); 
+            $users = $this->db->multipleNoStatement($sql);
+            
+            if($users) {
+                return $users;
+            }else{
                 return false;
             }
         }
