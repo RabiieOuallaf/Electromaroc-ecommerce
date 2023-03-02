@@ -177,7 +177,6 @@ for(let minus of minus_button){
                 window.localStorage.setItem('products-cart-items', JSON.stringify(localStorageData));
                 totalPrice.innerHTML = updaeTotalPrice();
 
-                console.log(index);
             }
         }
 
@@ -202,7 +201,7 @@ for(let cancel of cancel_button){
                 storedProducts.splice(index, 1);
                 localStorage.setItem("products-cart-items", JSON.stringify(storedProducts));
                 totalPrice.innerHTML = updaeTotalPrice();
-                console.log(index);
+
             }
 
         }
