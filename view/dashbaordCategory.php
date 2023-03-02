@@ -79,7 +79,6 @@
         <div class="mt-12 flex flex-col top-14 left-0 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
             <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                 <ul class="flex flex-col py-4 space-y-1 items-center">
-
                     <li class="rounded-full border-2 border-blue-500 w-32 h-32 overflow-hidden">
                         
                         <img src="<?= URLROOT . '/view/assets/images/admin.jpg' ?>" alt="admin picture">
@@ -98,25 +97,39 @@
                             <span class="ml-2 text-sm tracking-wide truncate">dashboard</span>
                         </a>
                     </li>
-
                     <li>
-                    <a href="dashbaordCategory" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">categories</span>
-                    </a>
+                        <a href="dashbaordCategory" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fa-solid fa-gauge"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">categories</span>
+                        </a>
                     </li>
-
                     <li>
-                    <a href="dashbaordOrders" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">Orders</span>
-                    </a>
+                        <a href="dashbaordOrders" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fa-solid fa-gauge"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">Orders (by each product)</span>
+                        </a>
+                        
                     </li>
-
+                    <li>
+                            <a href="dashbaordOrdersGroup" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                                <span class="inline-flex justify-center items-center ml-4">
+                                    <i class="fa-solid fa-gauge"></i>
+                                </span>
+                                <span class="ml-2 text-sm tracking-wide truncate">Orders group</span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="dashbaordUsers" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fa-solid fa-gauge"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">Users</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="index" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">

@@ -65,5 +65,8 @@
         public function dashbaordUsers(){
             $this->view('dashbaordUsers');
         }
+        public function dashbaordOrdersGroup(){
+            $this->view('dashbaordOrdersGroup');
+        }
 
     }
