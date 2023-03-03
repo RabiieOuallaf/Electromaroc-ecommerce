@@ -97,43 +97,40 @@
         <div class="deals-list categories-list grid lg:grid-cols-4 gap-10 m-auto">
 
             <!-- First product  -->
-            <?php forEach($Products as $Product){ ?>
-                    
+            <?php forEach($Products as $Product){ ?>        
+                <div class="product">
 
-                    <div class="product" >
-
-                    <div class="deals-image relative m-auto  bg-zinc-200 w-64 h-64 rounded-xl">
+                    <div class="deals-image relative m-auto bg-zinc-200 w-64 h-64 rounded-xl">
 
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="camera" class="m-auto">
-                        
+                        <img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"] ?>" alt="camera" class="m-auto">
+
                     </div>
-        
-                    <div class="deals-description flex justify-between m-auto my-5" style="width: 90%;" >
-        
+
+                    <div class="deals-description flex justify-between m-auto my-5" style="width: 90%;">
+
                         <div class="deals-descirption-content font-mono" style="width: 70%;">
 
-                            <h3 class=""><?= $Product["produit_name"]?></h3>
-                            <p class="text-xs text-grey"><?= $Product["produit_description"]?></p>
+                            <h3 class=""><?= $Product["produit_name"] ?></h3>
+                            <p class="text-xs text-grey"><?= $Product["produit_description"] ?></p>
 
                         </div>
 
                         <div class="deals-price" style="width: 20%;">
 
-                            <h4 class="text-grey font-semibold"><?= $Product["prix_achat"]?></h4>
-                            
+                            <h4 class="text-grey font-semibold"><?= $Product["prix_achat"] ?></h4>
+
                         </div>
 
                     </div>
 
 
-                    <div class="button my-6 mx-3">
-                        <button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800"><span class="font-mono text-sm">Add to cart</span></button>
+                    <div class="button my-6 mx-3" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
+                        <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
                     </div>
-                    
+
                 </div>
-            
-                <?php }
+            <?php }
             ?>
 
             
