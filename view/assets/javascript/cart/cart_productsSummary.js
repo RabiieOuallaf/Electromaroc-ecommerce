@@ -194,7 +194,7 @@ for(let cancel of cancel_button){
             let storedProducts = JSON.parse(localStorage.getItem("products-cart-items"));
 
             // get the position of the product to be removed
-            let index = storedProducts.findIndex(obj => obj.product_id === cartButton[i].dataset.id);
+            let index = storedProducts.findIndex(obj => obj.product_id === product_set_id);
 
             // Check if the product was found and then update the storedProducts array
             if(index !== -1){
