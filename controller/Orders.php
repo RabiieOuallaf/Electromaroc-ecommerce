@@ -141,24 +141,25 @@
         // add order to data base with onhold status
         public function addOrder() {
 
-
             $productsData = $this->fetchPostData();
-            
-            
-            $countProduct = count($productsData);
+            if(!empty($productsData['productName']) || !is_null($productsData) && !empty($productsData['productDescription']) && !empty($productsData['productPrice']) && !empty($productsData['productId']) && !empty($productsData['productQuantity'])){
+                $countProduct = count($productsData);
 
-            for($i = 0; $i < $countProduct; $i++) {
-                
-                $addOrder = $this->OrderModel->addOrder($productsData[$i]);
-            }
+                for($i = 0; $i < $countProduct; $i++) {
+                    
+                    $addOrder = $this->OrderModel->addOrder($productsData[$i]);
+                }
 
-            // $addOrder = $this->OrderModel->addOrder($data);
-            $addedClientData = $this->addClientData();
-            if($addOrder && $addedClientData) {
-                redirect('/cart');
-                
-            }else {
-                redirect('/cart');
+                // $addOrder = $this->OrderModel->addOrder($data);
+                $addedClientData = $this->addClientData();
+                if($addOrder && $addedClientData) {
+                    redirect('/cart');
+                    
+                }else {
+                    redirect('/cart');
+                }
+            }else{
+                die('add a product to the cart first');
             }
         }
 

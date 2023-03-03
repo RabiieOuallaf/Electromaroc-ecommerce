@@ -1,9 +1,4 @@
-
-
-
-
 /* === Diplay products in the cart === */
-
 const storedProduct = localStorage.getItem("products-cart-items");
 const products = JSON.parse(storedProduct) || 0;
 // const products_list = document.getElementById("products-list");
@@ -17,12 +12,6 @@ const div = document.createElement('div');
 
 var products_summary_length = products.length;
 // if products_summary_data > 0
-
-
-
-
-
-
 
 for(let i = 0; i < products_summary_length; i++){
     product_list_content += `
