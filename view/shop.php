@@ -35,7 +35,7 @@ $CategoriesData = $Categories->displayCategories();
 
 <body>
 
-<nav class="navbar font-mono">
+    <nav class="navbar font-mono">
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             
