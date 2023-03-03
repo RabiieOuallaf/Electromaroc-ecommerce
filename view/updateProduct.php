@@ -4,14 +4,18 @@
     }
     !$_SESSION['user_role'] && redirect('/index');
 
-    if(file_exists("../controller/Products.php")){
-        
+    if(file_exists("../controller/Products.php")){  
         require_once "../controller/Products.php";
-
     }else {
         require_once "controller/Products.php";
-
     }
+    if(file_exists("../controller/Categories.php")){
+        require_once "../controller/Categories.php";
+    }else {
+        require_once "controller/Categories.php";
+    }
+    $Categories = new Categories; 
+    $CategoriesData = $Categories->displayCategories();  
     $Product = new Products;
 
 
@@ -128,7 +132,7 @@
                                 <form action="<?= URLROOT ?>/controller/Products.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="type" value="update">
 
-                                    <input type="hidden" name="productid" value="<?= $productToUpdate->produit_id ?>">
+                                    <input type="hidden" name="productid" value="<?= $productToUpdate->produit_id ?>" >
                                     <div class="grid gap-y-2 text-sm grid-cols-1 md:grid-cols-5 my-8">
                                         <div class="md:col-span-5">
                                             <label for="Product_name" class="text-black">Product name</label>
@@ -140,6 +144,20 @@
                                             <input type="text" name="Product_refernce" id="Product_refernce" class="text-black h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="<?=$productToUpdate->produit_refernce ?>" />
                                         </div>
 
+                                        <div class="md:col-span-5">
+                                            <label for="Product_category" class="text-black">Product category</label>
+                                            <select name="" id="Product_category">
+                                                <?php forEach($CategoriesData as $CategoryData){ ?>
+
+                                                    <option value="<?= $CategoryData["categorie_id"] ?>"><?= $CategoryData["categories_name"]?></option>
+
+                                                    <?php } 
+                                                
+                                                ?>
+                                                
+
+                                            </select>
+                                        </div>
 
                                         <div class="md:col-span-5">
                                             <label for="Product_description" class="text-black">Product description</label>

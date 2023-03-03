@@ -23,7 +23,7 @@
         }
 
         // fetching the data 
-        public function fetchData() {
+        public function fetchPostData() {
             $data = [
                 "Product_name" => $_POST['Product_name'],
                 "Product_refernce" => $_POST['Product_refernce'],
@@ -44,23 +44,48 @@
                 die("Please fill out all inputs!");
             }
 
+        }
 
+        // fetch the get data 
+        public function fetchGetData() {
+            
+            $data = [
+                "Product_name" => $_GET['Product_name'],
+                "Product_refernce" => $_GET['Product_refernce'],
+                "Product_price_final" => (int)$_GET['Product_price_final'],
+                "Product_description" => $_GET['Product_description'],
+                "Product_price" => (int)$_GET['Product_price'],
+                "Product_offer" => (int)$_GET['Product_offer'],
+                "Product_codebar" => (int)$_GET['Product_codebar'],
+                "Product_Quantity" => (int)$_GET['Product_Quantity'],
+                "Product_image_name" => $_FILES['Product_image']["name"],
+                "Product_image_tmp" => $_FILES['Product_image']["tmp_name"],
+                "Porduct_category" => (int)$_GET['Product_category']
+            ];
 
+            if(isset($data['Product_name'])|| isset($data['Porduct_category']) || isset($data['Product_description']) || isset($data['Product_price']) || isset($data['Product_offer']) || isset($data['Product_codebar'])){
+                return $data;
+            }else {
+                die("Please fill out all inputs!");
+            }
+            
         }
         // Get the only the product id (in case the admin wants to delete or update a specif product)
 
-        public function fetchId() {
+        public function fetchGetId() {
 
             $id = $_GET['productid'];
             return $id;
 
         }
 
+    
+
         // Add product
 
         public function addProduct() {
 
-            $Product = $this->fetchData();
+            $Product = $this->fetchPostData();
 
             $addedProduct = $this->ProductModel->addProduct($Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'],$Product['Porduct_category']);
 
@@ -81,9 +106,11 @@
         // update 
         public function updateProduct() {
 
-            $Product = $this->fetchData();
-            $id = $_POST['productid'];
-            $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'] );
+            $Product = $this->fetchPostData();
+            $id = (int)$_POST['productid'];
+            var_dump($Product);
+
+            $updatedProduct = $this->ProductModel->updateProduct($id ,$Product['Product_name'],$Product['Product_refernce'],$Product['Product_codebar'],$Product['Product_price'],$Product['Product_offer'],$Product['Product_price_final'],$Product['Product_Quantity'],$Product['Product_description'],$Product['Product_image_name'], $Product['Product_category']);
 
             if($updatedProduct){
                 $target_dir = "../view/assets/uploads/";
@@ -102,7 +129,7 @@
         public function deleteProduct() { 
 
             // Fetch data
-            $productId = $this->fetchId();
+            $productId = $this->fetchGetId();
 
             if($this->ProductModel->deleteProduct($productId)){
                 redirect("/dashbaord");
@@ -135,7 +162,7 @@
         // Display product by ID 
 
         public function DisplayProductById() {
-            $ProductID = $this->fetchId();
+            $ProductID = $this->fetchGetId();
             return $this->ProductModel->DisplayProductById($ProductID);
         }
 
@@ -154,13 +181,15 @@
 
     $init = new Products;
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         
-        switch($_POST["type"]){
-            case "add":
+        switch($_POST['type']){
+            case 'add':
+
                 $init->addProduct();
                 break;
-            case "update":
+            case 'update':
+
                 $init->updateProduct();
                 break;
             default:
