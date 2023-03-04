@@ -142,14 +142,12 @@
         public function addOrder() {
 
             $productsData = $this->fetchPostData();
-            if(!empty($productsData['productName']) || !is_null($productsData) && !empty($productsData['productDescription']) && !empty($productsData['productPrice']) && !empty($productsData['productId']) && !empty($productsData['productQuantity'])){
+            if(!empty($productsData)){
                 $countProduct = count($productsData);
-
                 for($i = 0; $i < $countProduct; $i++) {
                     
                     $addOrder = $this->OrderModel->addOrder($productsData[$i]);
                 }
-
                 // $addOrder = $this->OrderModel->addOrder($data);
                 $addedClientData = $this->addClientData();
                 if($addOrder && $addedClientData) {
@@ -162,11 +160,6 @@
                 die('add a product to the cart first');
             }
         }
-
-        // add client data to the data base 
-
-        
-
 
 
         public function displayOrdersByStatus($orderStatus) {
@@ -197,6 +190,7 @@
                 break;
             case 'ordersByParam': 
                 $init->displayOrdersByParam();
+                break;
             default:
                 break;
         }

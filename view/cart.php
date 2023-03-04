@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    
+    if(empty($_SESSION) || is_null($_SESSION)){
+        header('location: /index');
+    }
+    
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
