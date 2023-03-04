@@ -36,52 +36,48 @@
         }
 
         public function fetchPostData() { // used only for posting the orders data in the DB
-            $count = count($_POST['productName']);
-            $productsData = array();
+            if($_POST['productName'] && !empty($_POST['productName'])) {
             
-            
-            for($i = 0; $i < $count; $i++) {
-                $data = [
-                    // products data
-                    'productName' => $_POST['productName'][$i],
-                    'productDescription' => $_POST['productDescription'][$i],
-                    'productPrice' => (int)$_POST['productPrice'][$i],
-                    'productId' => (int)$_POST['productId'][$i],
-                    'productQuantity' => (int)$_POST['productQuantity'][$i]  ,
-                    // client data
-                    'clientName' => $_POST['clientName'],
-                    'phoneNumber' => (int)$_POST['phoneNumber'],
-                    'email' => $_POST['email'],
-                    'city' => $_POST['city'],
-                    'adress' => $_POST['adress'],
-                ];
-                $productsData[] = $data;
+                $count = count($_POST['productName']);
+                $productsData = array();
+                            
+                for($i = 0; $i < $count; $i++) {
+                    $data = [
+                        // products data
+                        'productName' => $_POST['productName'][$i],
+                        'productDescription' => $_POST['productDescription'][$i],
+                        'productPrice' => (int)$_POST['productPrice'][$i],
+                        'productId' => (int)$_POST['productId'][$i],
+                        'productQuantity' => (int)$_POST['productQuantity'][$i]  ,
+                        // client data
+                        'clientName' => $_POST['clientName'],
+                        'phoneNumber' => (int)$_POST['phoneNumber'],
+                        'email' => $_POST['email'],
+                        'city' => $_POST['city'],
+                        'adress' => $_POST['adress'],
+                    ];
+                    $productsData[] = $data;
+                }
+                return $productsData;
+            }else{
+                return false;
             }
-            return $productsData;
 
         }
 
 
-        public function confirmeOrderStatus() { 
-            
+        public function confirmeOrderStatus() {  
             $data = $this->fetchData();
-            
             $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
-
-
             if($OrderAdded){
                 redirect('/dashbaordOrders');
             }else{
                 redirect('/dashbaordOrders');
-
             }
-
         }
 
         public function rejectOrder() {
-
             $orderData = $this->fetchData();
-
             $rejectedOrder = $this->OrderModel->rejectOrder($orderData);
             if($rejectedOrder){
                 redirect('/dashbaordOrders');
@@ -93,10 +89,8 @@
         public function displayOrdersByParam() { // display order by param (i use the session to get the user's id )
             
             $ClientOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
-            
-
             if($ClientOrders) {
-                json_decode( $ClientOrders);
+                json_decode($ClientOrders);
             }else{
                 return false;
             }
@@ -131,7 +125,8 @@
         public function addOrder() {
 
             $productsData = $this->fetchPostData();
-            if(!empty($productsData)){
+            if($productsData){
+                var_dump('heere');
                 $countProduct = count($productsData);
                 for($i = 0; $i < $countProduct; $i++) {
                     
@@ -146,6 +141,7 @@
                     redirect('/cart');
                 }
             }else{
+
                 die('add a product to the cart first');
             }
         }
