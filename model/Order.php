@@ -72,14 +72,14 @@
         // === change the order status to confirmed === // 
 
         public function confirmeOrderStatus($data) {
-            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id';
+            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id AND product_id = :product_id AND order_status != "confirmed"';
             
             $this->Dbh->query($sql);
             $this->Dbh->bind(':order_status', 'confirmed');
             $this->Dbh->bind(':order_id', $data['orderid']);
+            $this->Dbh->bind(':product_id', $data['productId']);
     
-            $orderAdded = $this->Dbh->execute();
-            
+            $orderAdded = $this->Dbh->execute();     
             if($orderAdded){
                 return $orderAdded;
             }else {
@@ -90,12 +90,14 @@
         // === reject Order === // 
 
         public function rejectOrder($data) {
-            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id';
+            $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id AND product_id = :product_id AND order_status != "Rejected"';
             
             $this->Dbh->query($sql);
            
             $this->Dbh->bind(':order_id', $data['orderid']);
+            $this->Dbh->bind(':product_id', $data['productId']);
             $this->Dbh->bind(':order_status', 'Rejected');
+
 
             
             $orderRejected = $this->Dbh->execute();

@@ -25,14 +25,17 @@
         public function fetchData(){
             
             $data = [
-                // 'productId' => $_GET['productid'],
+                'productId' => (int)$_GET['productid'],
                 // 'orderPrice' => $_GET['productprice'],
                 // 'orderQuantity' => $_GET['productquantity'], // to scale later 
                 'clientid' => (int)$_SESSION['user_id'],
                 'orderid' => (int)$_GET['orderid']
             ];
-
-            return $data;
+            if($data) {
+                return $data;
+            }else {
+                return false;
+            }
         }
 
         public function fetchPostData() { // used only for posting the orders data in the DB
@@ -68,11 +71,16 @@
 
         public function confirmeOrderStatus() {  
             $data = $this->fetchData();
-            $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
-            if($OrderAdded){
-                redirect('/dashbaordOrders');
+           
+            if($data){
+                $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
+                if($OrderAdded){
+                    redirect('/dashbaordOrders');
+                }else{
+                    redirect('/dashbaordOrders');
+                }
             }else{
-                redirect('/dashbaordOrders');
+                return false;
             }
         }
 

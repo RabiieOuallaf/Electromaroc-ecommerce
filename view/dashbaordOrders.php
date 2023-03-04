@@ -210,6 +210,7 @@
                                                     <input type="submit" name="type" value="reject" class="text-yellow-700">
                                                     <input type="hidden" name="orderid" value="<?= (int)$order['order_id'] ?>">
                                                     <input type="hidden" name="productprice" value="<?= (int)$order['product_total_price']?>">
+                                                    <input type="hidden" name="productid" value="<?= (int)$order['product_id']?>">
                                                     <input type="hidden" name="productquantity" value="<?= (int)$order['product_quantity'] ?>">
                                                     
                                                     
