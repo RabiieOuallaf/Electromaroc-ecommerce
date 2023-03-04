@@ -1,22 +1,15 @@
 <?php
 
 
-    if(file_exists('../core/baseController.php')){
-        
+    if(file_exists('../core/baseController.php')){    
         require_once '../core/baseController.php';
-
     }else {
         require_once 'core/baseController.php';
-
     }
-
-    if(file_exists('../model/Order.php')){
-        
+    if(file_exists('../model/Order.php')){   
         require_once '../model/Order.php';
-
     }else {
         require_once 'model/Order.php';
-
     }
     session_start();
     
@@ -44,7 +37,6 @@
 
         public function fetchPostData() { // used only for posting the orders data in the DB
             $count = count($_POST['productName']);
-            $orderId = 0;
             $productsData = array();
             
             
@@ -64,12 +56,8 @@
                     'adress' => $_POST['adress'],
                 ];
                 $productsData[] = $data;
-                
             }
-            
             return $productsData;
-
-            
 
         }
 
@@ -93,7 +81,7 @@
         public function rejectOrder() {
 
             $orderData = $this->fetchData();
- 
+
             $rejectedOrder = $this->OrderModel->rejectOrder($orderData);
             if($rejectedOrder){
                 redirect('/dashbaordOrders');
@@ -105,9 +93,10 @@
         public function displayOrdersByParam() { // display order by param (i use the session to get the user's id )
             
             $ClientOrders = $this->OrderModel->displayOrdersByParam($_SESSION['user_id']);
+            
 
             if($ClientOrders) {
-                return $ClientOrders;
+                json_decode( $ClientOrders);
             }else{
                 return false;
             }

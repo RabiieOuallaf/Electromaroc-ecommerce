@@ -3,12 +3,15 @@
 let client_orders = [];
 
 (function getUserProducts() { // this function will get the user products 
-    
     const xml = new XMLHttpRequest();
-    xml.open('GET', 'http://localhost:9000/controller/Orders.php/?type=ordersByParam', true);
+
+    xml.open('GET', 'http://localhost:9000/controller/Orders.php/?type=ordersByParam', false);
+
     xml.onload = function() {
         if(xml.DONE)  {
+
             client_orders = JSON.parse(xml.response);
+
         }else{
             console.log("an error occured on request");
         }
@@ -26,8 +29,12 @@ const order_status_container = document.getElementById('tbody-container');
 
 let totalPriceOfOrder = 0;
 
-
 for(let i = 0; i < client_orders.length; i++) {
+    
+
+    totalPriceOfOrder = client_orders.reduce((accumulator, order) => {
+        return accumulator + Number(order.product_total_price);
+    }, 0);
 
 
     orders_status_content += `
@@ -44,8 +51,10 @@ for(let i = 0; i < client_orders.length; i++) {
         
         
         </tr>
-        `
+
+    `
 }
+
 
 // insert the html context to the orders status container in the dom 
 
