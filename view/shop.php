@@ -182,17 +182,7 @@ $CategoriesData = $Categories->displayCategories();
 
         <div class="pages-count flex justify-evenly font-semiboldbg-gray-500 my-10 w-full font-">
 
-        <?php 
-            $total_products = count($Products);
-            
-            $products_per_page = 5;
-
-            $total_pages = ceil($total_products / $products_per_page);
-
-            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-            
-        ?>
+        
 
             <span class="transition ease-in-out hover:text-green-700"> <a href="/shop">1</a> </span>
             <span class="transition ease-in-out hover:text-green-700"> <a href="/shop2">2</a> </span>
