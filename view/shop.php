@@ -134,9 +134,9 @@ $CategoriesData = $Categories->displayCategories();
             <!-- First product  -->
             <?php foreach ($Products as $Product) { ?>
 
-
+                
                 <div class="product">
-
+                    
                     <div class="deals-image relative m-auto bg-zinc-200 w-64 h-64 rounded-xl">
 
                         <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
@@ -163,8 +163,13 @@ $CategoriesData = $Categories->displayCategories();
 
 
                     <div class="button my-6 mx-3" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
-                        <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
+                        <?php if($Product["produit_quantite"] == 0): ?>
+                            <p class="font-mono text-sm text-red-500">Out of Stock</p>
+                        <?php else: ?>
+                            <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
+                        <?php endif; ?>
                     </div>
+
 
                 </div>
 

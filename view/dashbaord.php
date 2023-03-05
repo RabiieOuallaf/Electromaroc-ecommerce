@@ -197,6 +197,7 @@
                                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                     <?php forEach($Products as $Product ){ ?>
+                                        
 
                                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
@@ -204,6 +205,8 @@
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_name"]?></td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["prix_achat"]?></td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_description"]?></td>
+                                            
+                                            
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $Product["produit_quantite"]?></td>
                                             <td class="w-96"><img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"]?>" alt="product image" style="width:100%;"/></td>
                                             <td class="d-flex justify-content-around">
