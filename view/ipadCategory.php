@@ -4,8 +4,14 @@
     }else {
         require_once "controller/Products.php";
     }
-
     $Products = $init->DisplayProductsByCategory(3);
+    if (file_exists("../controller/Categories.php")) {
+        require_once "../controller/Categories.php";
+    } else {
+        require_once "controller/Categories.php";
+    }
+    $Categories = new Categories;
+    $CategoriesData = $Categories->displayCategories();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,6 +106,19 @@
     <section style="height: 100vh" class="phone-category my-5 mx-5" id="deals">
 
         <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best ipad deals 📱</h2>
+        <div class="select-categoryflex gap-2">
+            <h3 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-xl">Select a category : </h3>
+
+            <select name="Product_category" id="Product_category" class="w-32 h-8 my-10">
+                <?php foreach ($CategoriesData as $CategoryData) { ?>
+                    <?php $location = $CategoryData["categories_name"]; ?>
+                   <option value="<?= $CategoryData["categorie_id"] ?>" id="selectedCategory" onclick='location.href="/<?= $location ?>"'><?= $CategoryData["categories_name"] ?></option>
+
+                <?php }
+
+                ?>
+            </select>
+        </div>
 
         <div class="deals-list categories-list grid lg:grid-cols-4 gap-10 m-auto">
 
