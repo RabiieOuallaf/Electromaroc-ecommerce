@@ -68,5 +68,8 @@
         public function dashbaordOrdersGroup(){
             $this->view('dashbaordOrdersGroup');
         }
+        public function shop2(){
+            $this->view('shop2');
+        }
 
     }

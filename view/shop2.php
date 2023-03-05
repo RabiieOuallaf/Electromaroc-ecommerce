@@ -1,34 +1,41 @@
-<?php 
-    if(file_exists("../controller/Products.php")){       
-        require_once "../controller/Products.php";
-    }else {
-        require_once "controller/Products.php";
-    }
-    $Products = $init->DisplayProductsByCategory(1);
-    if (file_exists("../controller/Categories.php")) {
+<?php
 
-        require_once "../controller/Categories.php";
-    } else {
-        require_once "controller/Categories.php";
-    }
-    $Categories = new Categories;
-    $CategoriesData = $Categories->displayCategories();
+if (file_exists("../controller/Products.php")) {
+    require_once "../controller/Products.php";
+} else {
+    require_once "controller/Products.php";
+}
+
+$Products = $init->displayProducts();
+
+
+if (file_exists("../controller/Categories.php")) {
+
+    require_once "../controller/Categories.php";
+} else {
+    require_once "controller/Categories.php";
+}
+$Categories = new Categories;
+$CategoriesData = $Categories->displayCategories();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo SITENAME ?></title>
-        <link rel="stylesheet" href="./assets/css/styles.css"></link>
-        <link rel="stylesheet" href="./assets/css/tailwind.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo SITENAME ?></title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    </link>
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
+</head>
+
 <body>
 
-<nav class="navbar font-mono">
+    <nav class="navbar font-mono">
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
             
@@ -106,7 +113,7 @@
 
     <section style="height: 100vh" class="computer-category my-5 mx-5" id="deals">
 
-        <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best computer's deals 💻</h2>
+        <h2 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Best deals of all times 💻</h2>
 
         <div class="select-categoryflex gap-2">
             <h3 class="my-10 mx-7 font-semibold text-neutral-700 font-sans text-xl">Select a category : </h3>
@@ -123,60 +130,56 @@
         </div>
 
         <div class="deals-list categories-list grid lg:grid-cols-4 gap-10 m-auto">
+    <?php for($i = 6; $i < count($Products); $i++): ?>
+        <?php $Product = $Products[$i]; ?>
+        <div class="product">
+            
+            <div class="deals-image relative m-auto bg-zinc-200 w-64 h-64 rounded-xl">
 
-            <!-- First product  -->
-            <?php forEach($Products as $Product){ ?>        
-                <div class="product">
+                <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
+                <img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"] ?>" alt="camera" class="m-auto">
 
-                    <div class="deals-image relative m-auto bg-zinc-200 w-64 h-64 rounded-xl">
+            </div>
 
-                        <i class="fa-regular fa-heart mx-5 mt-5" id="heart"></i>
-                        <img src="<?= URLROOT . '/view/assets/uploads/' . $Product["produit_image"] ?>" alt="camera" class="m-auto">
+            <div class="deals-description flex justify-between m-auto my-5" style="width: 90%;">
 
-                    </div>
+                <div class="deals-descirption-content font-mono" style="width: 70%;">
 
-                    <div class="deals-description flex justify-between m-auto my-5" style="width: 90%;">
-
-                        <div class="deals-descirption-content font-mono" style="width: 70%;">
-
-                            <h3 class=""><?= $Product["produit_name"] ?></h3>
-                            <p class="text-xs text-grey"><?= $Product["produit_description"] ?></p>
-
-                        </div>
-
-                        <div class="deals-price" style="width: 20%;">
-
-                            <h4 class="text-grey font-semibold"><?= $Product["prix_achat"] ?></h4>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="button my-6 mx-3" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
-                        <?php if($Product["produit_quantite"] == 0): ?>
-                            <p class="font-mono text-sm text-red-500">Out of Stock</p>
-                        <?php else: ?>
-                            <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
-                        <?php endif; ?>
-                    </div>
+                    <h3 class=""><?= $Product["produit_name"] ?></h3>
+                    <p class="text-xs text-grey"><?= $Product["produit_description"] ?></p>
 
                 </div>
-            <?php }
-            ?>
 
-            
+                <div class="deals-price" style="width: 20%;">
+
+                    <h4 class="text-grey font-semibold"><?= $Product["prix_achat"] ?></h4>
+
+                </div>
+
+            </div>
+
+
+            <div class="button my-6 mx-3" data-id="<?= $Product["produit_id"] ?>" data-name="<?= $Product["produit_name"] ?>" data-description="<?= $Product["produit_description"] ?>" data-price="<?= $Product["prix_achat"] ?> "data-image="<?= $Product["produit_image"]?>" data-quantity="<?= 1 ?>">
+                <?php if($Product["produit_quantite"] == 0): ?>
+                    <p class="font-mono text-sm text-red-500">Out of Stock</p>
+                <?php else: ?>
+                    <a href="/displayProduct/?productid=<?= $Product['produit_id']?>"class="font-mono text-sm"><button class="border-2 border-stone-800 rounded-full px-3 py-1 hover:text-lime-700 hover:border-lime-800">Add to cart</button></a>
+                <?php endif; ?>
+            </div>
+
+
         </div>
+    <?php endfor ?>
+</div>
+
 
 
         <div class="pages-count flex justify-evenly font-semiboldbg-gray-500 my-10 w-full font-">
 
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">1</a> </span>
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">2</a> </span>
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">3</a> </span>
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">4</a> </span>
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">5</a> </span>
-            <span class="transition ease-in-out hover:text-green-700"> <a href="">6</a> </span>
+        
+            <span class="transition ease-in-out hover:text-green-700"> <a href="/shop">1</a> </span>
+            <span class="transition ease-in-out hover:text-green-700"> <a href="/shop2">2</a> </span>
+           
 
         </div>
 
@@ -184,38 +187,38 @@
         <footer class="my-20 mx-5 flex" style="height: 40vh;">
 
             <div class="about-us mx-10">
-                
+
                 <div class="identity">
                     <!-- A logo will go here  -->
-    
+
                     <h4 class="my-5 font-semibold text-neutral-700 font-sans text-2xl">Electro maroc</h4>
                     <p class="font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptatum eum vitae veritatis</p>
-    
+
                     <div class="payments my-7">
-    
+
                         <h4 class="font-semibold text-neutral-700 font-sans text-xl">Accepted payments</h4>
                         <hr width="35%">
-    
+
                         <div class="pay-brands my-5">
                             <i class="fa-brands fa-cc-paypal"></i>
                             <i class="fa-solid fa-money-bill"></i>
                             <i class="fa-brands fa-cc-visa"></i>
                             <i class="fa-brands fa-cc-apple-pay"></i>
                         </div>
-                        
-    
+
+
                     </div>
-    
+
                 </div>
-    
+
             </div>
-    
+
             <div class="propretis flex justify-around" style="width: 100%;">
-    
+
                 <div class="proprey">
-    
+
                     <h5 class="font-semibold  my-5 text-neutral-500">About-us</h5>
-    
+
                     <ul>
                         <li><a class="cursor-pointer">About us</a></li>
                         <li><a class="cursor-pointer">About us</a></li>
@@ -223,13 +226,13 @@
                         <li><a class="cursor-pointer">About us</a></li>
                         <li><a class="cursor-pointer">About us</a></li>
                     </ul>
-    
+
                 </div>
-    
+
                 <div class="proprey">
-    
+
                     <h5 class="font-semibold my-5 text-neutral-500">Our-services</h5>
-    
+
                     <ul>
                         <li><a class="cursor-pointer">Our services</a></li>
                         <li><a class="cursor-pointer">Our services</a></li>
@@ -237,13 +240,13 @@
                         <li><a class="cursor-pointer">Our services</a></li>
                         <li><a class="cursor-pointer">Our services</a></li>
                     </ul>
-    
+
                 </div>
-    
+
                 <div class="proprey">
-    
+
                     <h5 class="font-semibold my-5 text-neutral-500">Our-deals</h5>
-    
+
                     <ul>
                         <li><a class="cursor-pointer">Our services</a></li>
                         <li><a class="cursor-pointer">Our services</a></li>
@@ -251,13 +254,13 @@
                         <li><a class="cursor-pointer">Our services</a></li>
                         <li><a class="cursor-pointer">Our services</a></li>
                     </ul>
-    
+
                 </div>
-    
+
                 <div class="proprey">
-    
+
                     <h5 class="font-semibold my-5 text-neutral-500">Our-products</h5>
-    
+
                     <ul>
                         <li><a class="cursor-pointer">Our Products</a></li>
                         <li><a class="cursor-pointer">Our Products</a></li>
@@ -265,13 +268,13 @@
                         <li><a class="cursor-pointer">Our Products</a></li>
                         <li><a class="cursor-pointer">Our Products</a></li>
                     </ul>
-    
+
                 </div>
-    
+
                 <div class="proprey">
-    
+
                     <h5 class="font-semibold my-5 text-neutral-500">Our-clients</h5>
-    
+
                     <ul>
                         <li><a class="cursor-pointer">Our Clients</a></li>
                         <li><a class="cursor-pointer">Our Clients</a></li>
@@ -279,20 +282,24 @@
                         <li><a class="cursor-pointer">Our Clients</a></li>
                         <li><a class="cursor-pointer">Our Clients</a></li>
                     </ul>
-    
+
                 </div>
-    
+
             </div>
         </footer>
-        
-        
+
+
 
     </section>
 
     <script src="<?= URLROOT; ?>/view/assets/javascript/script.js"></script>
+    <script src="<?= URLROOT; ?>/view/assets/javascript/cart/cart_productsSummary.js"></script>
 
 
 
-    
+
+
+
 </body>
+
 </html>

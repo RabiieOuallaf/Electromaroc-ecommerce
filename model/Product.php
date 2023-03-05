@@ -114,10 +114,6 @@
 
         }
 
-        
-
-         
-
         // === delete products === //
 
         public function deleteProduct($id) {
@@ -131,10 +127,6 @@
             }else {
                 return false;
             }
-            
 
         }
-
-       
-
     }
