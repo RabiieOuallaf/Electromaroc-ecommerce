@@ -27,7 +27,7 @@
             $data = [
                 'productId' => (int)$_GET['productid'],
                 // 'orderPrice' => $_GET['productprice'],
-                // 'orderQuantity' => $_GET['productquantity'], // to scale later 
+                'productQuantity' => (int)$_GET['productQuantity'], 
                 'clientid' => (int)$_SESSION['user_id'],
                 'orderid' => (int)$_GET['orderid']
             ];
@@ -134,7 +134,6 @@
 
             $productsData = $this->fetchPostData();
             if($productsData){
-                var_dump('heere');
                 $countProduct = count($productsData);
                 for($i = 0; $i < $countProduct; $i++) {
                     
@@ -189,6 +188,5 @@
         }
     
     }else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
         $init->addOrder(); 
     }

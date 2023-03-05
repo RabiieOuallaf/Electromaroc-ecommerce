@@ -11,8 +11,6 @@
     <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-
     <nav class="navbar font-mono">
         <!-- First section of navbar -->
         <div class="F-navbar bg-green-900 container mx-auto px-12 flex justify-between">
@@ -55,7 +53,7 @@
                 <div class="account flex mx-4 cursor-pointer hover:text-lime-700 transition duration-170 ease-in-out">
                    
                 
-                    <?php if(isset($_SESSION['user_name']) && isset($_SESSION['user_name'])){
+                    <?php if(isset($_SESSION['user_name'])){
                         ?>
                             <a href="../controller/Users.php">
                                 <span class="mx-3">Welcome back</span><span class="text-lime-800 font-bold"><?= $_SESSION['user_name'] ?>👋🏻</span>

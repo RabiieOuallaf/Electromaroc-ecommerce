@@ -78,26 +78,47 @@
             $this->Dbh->bind(':order_status', 'confirmed');
             $this->Dbh->bind(':order_id', $data['orderid']);
             $this->Dbh->bind(':product_id', $data['productId']);
-    
-            $orderAdded = $this->Dbh->execute();     
-            if($orderAdded){
-                return $orderAdded;
+            
+            $orderStatusChanged = $this->Dbh->execute();     
+            if($orderStatusChanged){
+                $productQuantityChanged = $this->changeProductQuantity($data);
+                if($productQuantityChanged) {
+                    return $orderStatusChanged;
+                }
             }else {
+                die('something went wrong , check confirmeOrderStatus method');
+            }
+        }
+
+        // === Change the product quantity === // 
+
+        public function changeProductQuantity($data) {
+            $sql = 'UPDATE produits SET produit_quantite = :product_quantity WHERE produit_id = :product_id';
+            $this->Dbh->query($sql);
+            $this->Dbh->bind(':product_quantity', 0);
+            $this->Dbh->bind(':product_id', $data['productId'] );
+
+            $quantityChanged = $this->Dbh->execute();
+            
+            if($quantityChanged){
+                return $quantityChanged;
+            }else{
+                
                 return false;
             }
+
         }
 
         // === reject Order === // 
 
         public function rejectOrder($data) {
+
             $sql = 'UPDATE orders SET order_status = :order_status WHERE order_id = :order_id AND product_id = :product_id AND order_status != "Rejected"';
-            
             $this->Dbh->query($sql);
            
             $this->Dbh->bind(':order_id', $data['orderid']);
             $this->Dbh->bind(':product_id', $data['productId']);
             $this->Dbh->bind(':order_status', 'Rejected');
-
 
             
             $orderRejected = $this->Dbh->execute();
