@@ -96,6 +96,18 @@
 
         }
 
+        public function singleBind($query, $param, $value) { // ge a single result and allow the param binding 
+
+            $this->stmt = $this->dbh->prepare($query);
+            $this->stmt->bindValue($param,$value, PDO::PARAM_INT);
+
+            if($this->execute()) {
+                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            }else {
+                return "there's no item in this table with this param";
+            }
+        }
+
 
         public function multiple($query){
 

@@ -197,11 +197,10 @@
                                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_id'] ?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_total_price']?></td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_quantity'] ?></td>
+                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['product_total_price']?></td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_creating_date'] ?></td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_status'] ?></td>
-                                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $order['order_id'] ?></td>
                                             <td class="d-flex justify-content-around">
 
                                                 <form action="http://localhost:9000/controller/Orders.php" method="GET" class="flex flex-col">

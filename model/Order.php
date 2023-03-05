@@ -79,34 +79,59 @@
             $this->Dbh->bind(':order_id', $data['orderid']);
             $this->Dbh->bind(':product_id', $data['productId']);
             
-            $orderStatusChanged = $this->Dbh->execute();     
-            if($orderStatusChanged){
-                $productQuantityChanged = $this->changeProductQuantity($data);
-                if($productQuantityChanged) {
+            $productQuantityChanged = $this->changeProductQuantity($data);
+            if($productQuantityChanged) {
+                // if there's enough items in the stock , change change the order status to confirmed
+                $orderStatusChanged = $this->Dbh->execute();     
+                if($orderStatusChanged){
                     return $orderStatusChanged;
+                }else {
+                    die('something went wrong , check confirmeOrderStatus method');
                 }
-            }else {
-                die('something went wrong , check confirmeOrderStatus method');
-            }
+            } 
         }
 
         // === Change the product quantity === // 
 
         public function changeProductQuantity($data) {
-            $sql = 'UPDATE produits SET produit_quantite = :product_quantity WHERE produit_id = :product_id';
-            $this->Dbh->query($sql);
-            $this->Dbh->bind(':product_quantity', 0);
-            $this->Dbh->bind(':product_id', $data['productId'] );
-
-            $quantityChanged = $this->Dbh->execute();
+            $productQuantity = (int)$this->getProductIntialQuantity($data['productId']);
             
-            if($quantityChanged){
-                return $quantityChanged;
-            }else{
+            if($productQuantity - $data['productQuantity'] > 0) { // if there's enough items in the stock
+                $sql = 'UPDATE produits SET produit_quantite = produit_quantite - :order_quantite WHERE produit_id = :product_id';
+                $this->Dbh->query($sql);
                 
+                $this->Dbh->bind(':order_quantite', $data['productQuantity']);
+                $this->Dbh->bind(':product_id', $data['productId']);
+    
+                $quantityChanged = $this->Dbh->execute();
+                
+                if($quantityChanged){
+                    return $quantityChanged;
+                }else{
+                    
+                    return false;
+                }
+
+            }else {
+                die("The product quantity isn't enough to confirme this order , This order will be automatically rejected!");
+                $this->rejectOrder($data);
+            }
+            
+
+        }
+
+        // === Product initial quantity === //
+
+        public function getProductIntialQuantity($productId) {
+            $sql = 'SELECT produit_quantite FROM produits WHERE produit_id = :product_id';
+            $productInitialQuantity = $this->Dbh->singleBind($sql, ':product_id', $productId);
+            if($productInitialQuantity) {
+                return $productInitialQuantity;
+            }else {
+                die("there's no product with thid id in the table");
                 return false;
             }
-
+            
         }
 
         // === reject Order === // 
