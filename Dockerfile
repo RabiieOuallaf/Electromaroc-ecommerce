@@ -1,6 +1,7 @@
-    FROM php:5.6.40-apache
+    FROM 8.0.27-apache
 
-    WORKDIR /app
+    WORKDIR /controller/model/view
 
     RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
+    COPY . . 
