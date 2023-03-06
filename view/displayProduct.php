@@ -5,11 +5,12 @@ if (file_exists("../controller/Products.php")) {
 } else {
     require_once "controller/Products.php";
 }
-
-
 $Product = $init->DisplayProductById();
 
-
+session_start();
+if(empty($_SESSION) || is_null($_SESSION)){
+    header('location: /login');
+}    
 ?>
 <!DOCTYPE html>
 <html lang="en">

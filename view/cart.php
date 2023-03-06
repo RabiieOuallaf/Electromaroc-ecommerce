@@ -2,7 +2,7 @@
     session_start();
     
     if(empty($_SESSION) || is_null($_SESSION)){
-        header('location: /index');
+        header('location: /login');
     }
     
     

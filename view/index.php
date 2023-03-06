@@ -111,21 +111,18 @@
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-7 my-3">computers</h3>
                 <img src="<?= URLROOT;?>/view/assets/images/computer.jpg" alt="computer" class="relative rounded-lg">
             </div>
-
             <!-- Category -->
             <div class="phone-cate cursor-pointer hover:animate-pulse" onClick="location.href='/phone'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">phone</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/phones.jpg" alt="phone" class="relative rounded-lg">
             </div>
-
             <!-- Category -->
             <div class="ipad-cate cursor-pointer hover:animate-pulse" onclick="location.href='/ipad'">
 
                 <h3 class="font-mono text-white text-lg absolute z-10 mx-11 my-3">ipad</h3>
                 <img src="<?= URLROOT; ?>/view/assets/images/ipad.jpg" alt="ipad" class="relative rounded-lg">
             </div>
-
             <!-- Category -->
             <div class="headphone-cate cursor-pointer hover:animate-pulse" onclick="location.href='/headphone'">
 
@@ -152,9 +149,7 @@
         </div>
 
     </section>
-
     <!-- Start best deals section -->
-
     <section style="height: 100vh" class="overflow-x-auto" id="deals">
 
         <h2 class="my-7 mx-7 font-semibold text-neutral-700 font-sans text-2xl">Todays Best Deals For You!</h2>
