@@ -73,7 +73,9 @@
             $data = $this->fetchData();
            
             if($data){
+                
                 $OrderAdded = $this->OrderModel->confirmeOrderStatus($data);
+                
                 if($OrderAdded){
                     redirect('/dashbaordOrders');
                 }else{

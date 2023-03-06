@@ -176,46 +176,6 @@
                 die("something went wrong!, please try later");
             };
         }
-
-
-        public function pagination() {
-
-            $total_products = $this->ProductModel->getTotalProducts();
-
-        // Calculate the number of pages
-        $num_pages = ceil($total_products / 4);
-
-        // Retrieve the page number from the URL
-        $page_num = isset($_GET['page']) ? $_GET['page'] : 1;
-
-        // Calculate the offset
-        $offset = ($page_num - 1) * 4;
-
-        // Retrieve the products for the current page
-        $products = $this->ProductModel->get_products(4, $offset);
-
-        // Pass the products and the current page number to the view
-        $this->view('products/index', [
-            'products' => $products,
-            'page_num' => $page_num,
-            'num_pages' => $num_pages
-        ]);
-
-        // In your view:
-
-        // Display the products as you normally would
-
-        // Generate links for each page
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $num_pages; $i++) {
-            if ($i == $page_num) {
-                echo "<span>$i</span>";
-            } else {
-                echo sprintf('<a href="?page=%s">%s</a>', $i, $i);
-            }
-        }
-        echo '</div>';
-        }
         
 
     }

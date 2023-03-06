@@ -33,7 +33,7 @@ for(let i = 0; i < client_orders.length; i++) {
     
 
     totalPriceOfOrder = client_orders.reduce((accumulator, order) => {
-        return accumulator + Number(order.product_total_price);
+        return accumulator + Number(order.product_total_price) * Number(order.product_quantity);
     }, 0);
 
 
