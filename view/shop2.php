@@ -172,8 +172,6 @@ $CategoriesData = $Categories->displayCategories();
     <?php endfor ?>
 </div>
 
-
-
         <div class="pages-count flex justify-evenly font-semiboldbg-gray-500 my-10 w-full font-">
 
         
@@ -182,7 +180,6 @@ $CategoriesData = $Categories->displayCategories();
            
 
         </div>
-
 
         <footer class="my-20 mx-5 flex" style="height: 40vh;">
 
