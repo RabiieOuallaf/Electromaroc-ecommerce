@@ -44,6 +44,7 @@ for(let i = 0; i < client_orders.length; i++) {
 
             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_id"]}</td>
             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_quantity"]}</td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_name"]}</td>
             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["product_total_price"] * client_orders[i]["product_quantity"]}$</td>
             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_status"]}</td>
             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${client_orders[i]["order_creating_date"]}</td>
