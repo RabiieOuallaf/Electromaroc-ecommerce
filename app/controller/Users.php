@@ -148,8 +148,15 @@
             case 'login':
                 $init->Login();
                 break;
+            
             default: 
                 break;
     }else {
-        $init->destroySession();
+        switch($_GET['type']){
+            case 'logout':
+                $init->destroySession();
+                break;
+            default: 
+                break;
+        }
     }

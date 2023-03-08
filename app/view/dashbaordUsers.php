@@ -1,11 +1,7 @@
 <?php 
-    if(!$_SESSION['user_role']){
-        redirect('/index');
-    };
+    
 
     if(file_exists('../controller/Users.php')){   
-    var_dump('$Users');
-
         require_once '../controller/Users.php';
     }else {
         require_once 'controller/Users.php';
