@@ -25,6 +25,7 @@
         public function addOrder($data) {
             
             // order data
+           
             $sql = 'INSERT INTO orders(client_id,product_id,product_total_price,product_quantity,order_status,product_name) VALUES (:client_id,:product_id,:product_total_price,:product_quantity,:order_status,:product_name)';
             $this->Dbh->query($sql);
             
@@ -49,7 +50,6 @@
 
         public function addClientData($data) {
 
-            
                 $sql = 'INSERT INTO client(client_id,client_nomcomplet,client_email,client_telephone,client_adresse,client_ville) VALUES (:client_id,:client_nomcomplet,:client_email,:client_telephone,:client_adresse,:client_ville)';
                 $this->Dbh->query($sql);
                 $this->Dbh->bind(':client_id', (int)$_SESSION['user_id']);

@@ -34,7 +34,7 @@ for(let i = 0; i < products_summary_length; i++){
                 </div>
                 <div class="order-price">
                     <input type="text" name="productPrice[]" value="${products[i]["product_price"]}" style="display:none;">
-                    <span class="font-light text-sm" id="product-price">${products[i]["product_price"]}$</span>
+                    <span class="font-light text-sm" id="product-price">${products[i]["product_price"]} * ${products[i]['product_quantity']} = ${products[i]["product_price"] * products[i]['product_quantity']}</span>
                     
                     </div>
                     </div>
